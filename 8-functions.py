@@ -41,8 +41,21 @@ print(hello_func('hello', 'robb'))
 
 # function with optional positional arguments and optional keyword arguments
 def student_info(*args, **kwargs):
-    print(args)
-    print(kwargs)
+    print('\nstudent_info')
+    print(f'args   : {args}')
+    print(f'kwargs : {kwargs}')
 
 
 student_info('args1', 'args2', kwargs1=1, kwargs2=2)
+#
+#   unpacking parameters
+#
+courses = ['math', 'art']
+info = {'name': 'robb', 'age': 40}
+# not what we want:
+# courses and info become two elements of the tuple args
+student_info(courses, info)
+
+# correct
+student_info(*courses, **info)
+
