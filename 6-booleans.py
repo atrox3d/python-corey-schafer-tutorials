@@ -16,4 +16,15 @@ print(f'identity: a is b : {a is b}')
 print(f'id(a): {id(a)}')
 print(f'id(b): {id(b)}')
 
+# false values
+
+false_values = [False, None, 0, '', "", list(), tuple(), set(), dict()]
+print(f'false_values = {false_values}')
+
+for val in false_values:
+    if val:
+        print(f'{val} is True')
+    else:
+        print(f'{val} is False')
+
 
