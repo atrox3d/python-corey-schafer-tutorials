@@ -2,35 +2,22 @@
 # https://www.youtube.com/watch?v=W8KRzm-HUcc
 #
 #################################################################################
-# lists
-"""
- list2 and list1 are the same list, so, if we modify one of them we get both modified
-"""
-list1 = ['history', 'math', 'physics', 'compsci']
-list2 = list1
-
-print(list1)
-print(list2)
-
-list1[0] = 'art'
-
-print(list1)
-print(list2)
-
-# tuples
+# sets
 """
 """
-tuple1 = ('history', 'math', 'physics', 'compsci')
-tuple2 = tuple1
-
-print(tuple1)
-print(tuple2)
-
-try:
-    tuple1[0] = 'art'
-except TypeError as te:
-    print(f'Exception: {te}')
-
-print(tuple1)
-print(tuple2)
-
+cs_courses = {'history', 'math', 'physics', 'compsci'}
+art_courses = {'history', 'math', 'art', 'design'}
+print(f'cs_courses = {cs_courses})')
+print(f'art_courses = {art_courses})')
+# duplicate elimination
+cs_courses = {'history', 'math', 'physics', 'compsci', 'math'}
+print('adding another math to cs_courses...')
+print(f'cs_courses = {cs_courses})')
+#
+print(f"is math in cs_courses: {'yes' if 'math' in cs_courses else 'no'}")
+# intersection
+print('intersection:', cs_courses.intersection(art_courses))
+# difference
+print('difference:', cs_courses.difference(art_courses))
+# union
+print('union:', cs_courses.union(art_courses))
