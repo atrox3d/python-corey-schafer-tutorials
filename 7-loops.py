@@ -2,7 +2,9 @@
 # https://www.youtube.com/watch?v=6iF8Xb7Z3wQ
 #
 #################################################################################
-
+#
+# for loops
+#
 nums = list(range(1, 6))
 print(nums)
 
@@ -29,3 +31,6 @@ print('\nrange loop')
 for num in range(10):
     print(num)
 
+#
+# while loops
+#
