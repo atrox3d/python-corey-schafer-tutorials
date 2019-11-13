@@ -25,23 +25,27 @@ print(message.count('Hello'))
 print(message.count('l'))
 print(message.find('World'))
 print(message.find('Universe'))
-
+#
+# create new string object
+#
 new_message = message.replace('World', 'Universe')
 print(new_message)
 print(message)
+#
 # string concatenation
+#
 greeting = 'Hello'
 name = 'Michael'
-
+# base concatenation
 message = greeting + name
 print(message)
 
 message = greeting + ', ' + name + '. Welcome!'
 print(message)
-
+# str format method
 message = '{}, {}. Welcome!'.format(greeting, name)
 print(message)
-
+# f strings
 message = f'{greeting}, {name.upper()}. Welcome!'
 print(message)
 #
