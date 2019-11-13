@@ -4,8 +4,8 @@
 #################################################################################
 
 
-# simple hello function
 def hello_func():
+    """simple hello function"""
     print('hello from hello_func')
 
 
@@ -13,8 +13,8 @@ print(hello_func)
 hello_func()
 
 
-# function returning string
 def hello_func():
+    """function returning string"""
     return 'hello from hello_func'
 
 
@@ -22,16 +22,16 @@ print(hello_func())
 print(hello_func().upper())
 
 
-# function returns strings and accept parameter
 def hello_func(greeting):
+    """function returns strings and accept parameter"""
     return '{} Function.'.format(greeting)
 
 
 print(hello_func('hello'))
 
 
-# function with positional argument and optional parameter with default value
 def hello_func(greeting, name='you'):
+    """function with positional argument and optional parameter with default value"""
     return '{}, {}.'.format(greeting, name)
 
 
@@ -39,8 +39,8 @@ print(hello_func('hello'))
 print(hello_func('hello', 'robb'))
 
 
-# function with optional positional arguments and optional keyword arguments
 def student_info(*args, **kwargs):
+    """function with optional positional arguments and optional keyword arguments"""
     print('\nstudent_info')
     print(f'args   : {args}')
     print(f'kwargs : {kwargs}')
