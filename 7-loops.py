@@ -34,3 +34,8 @@ for num in range(10):
 #
 # while loops
 #
+print('\nwhile loop')
+x = 0
+while x < 10:
+    print(x)
+    x += 1
