@@ -13,25 +13,32 @@ print(courses[2:])
 #
 # list methods
 #
+# inplace editing methods
+#
 courses.append('art')
 print(courses)
+
 courses.insert(0, 'cheffing')
 print(courses)
+
 courses2 = ['art', 'education']
 courses.insert(0, courses2)
 print(courses)
+
 courses = ['history', 'math', 'physics', 'compsci']
 courses.extend(courses2)
 print(courses)
+
 art = courses.pop()
 print(courses, art)
+
 courses.reverse()
 print(courses)
 original_courses = courses.copy()
 courses.sort()
 print(courses)
 courses = original_courses
-
+# non in place
 sorted_courses = sorted(courses)
 print(sorted_courses, courses)
 
@@ -49,6 +56,7 @@ for course in courses:
 for index, course in enumerate(courses):
     print(index, course)
 
+# conversion to and from string
 course_string = ', '.join(courses)
 print(course_string)
 
