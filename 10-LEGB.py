@@ -27,17 +27,17 @@ def localx():
 def enclosingx():
     # comment or decomment to change x scope
     # x = 'enclosing x'
-    printx(x, 'enclosingx')
+    printx(x, 'function enclosingx')
 
     def enclosedx():
         # decomment only if x is defined in enclosingx()
         # nonlocal x
         # comment or decomment to change x scope
         # x = 'enclosed x'
-        printx(x, 'enclosedx')
+        printx(x, 'function enclosedx')
 
     enclosedx()
-    printx(x, 'enclosingx')
+    printx(x, 'function enclosingx')
 
 
 globalx()
