@@ -30,11 +30,14 @@ def enclosingx():
     printx(x, 'enclosingx')
 
     def enclosedx():
+        # decomment only if x is defined in enclosingx()
+        # nonlocal x
         # comment or decomment to change x scope
         # x = 'enclosed x'
         printx(x, 'enclosedx')
 
     enclosedx()
+    printx(x, 'enclosingx')
 
 
 globalx()
