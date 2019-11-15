@@ -86,9 +86,31 @@ print("\ngenerate a dictionary of civilian names of superheroes, for loop:")
 print(f'{"my_dict":<10} = {my_dict}')
 # dictionary comprehension version
 my_dict = {name: hero for name, hero in zip(names, heroes)}
-print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes)}")
+print(
+    "\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes)}")
 print(f'{"my_dict":<10} = {my_dict}')
 # conditional dictionary comprehension version
 my_dict = {name: hero for name, hero in zip(names, heroes) if name != 'peter'}
-print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes) if name != 'peter'}")
+print(
+    "\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes) if name != 'peter'}")
 print(f'{"my_dict":<10} = {my_dict}')
+"""
+generate a set 
+"""
+print("#" * 80)
+nums = [1, 2, 3, 1, 3, 4, 3, 4, 5, 5, 6, 7, 8, 7, 9, 9]
+print(f'{"nums":<10} = {nums}')
+# for loop version
+my_set = set()
+for n in nums:
+    my_set.add(n)
+print("\ngenerate a set of unique numbers from a list, for loop:")
+print(f'{"my_set":<10} = {my_set}')
+# set comprehension version
+my_set = {n for n in nums}
+print("\ngenerate a set of unique numbers from a list, set comprehension: {n for n in nums}")
+print(f'{"my_set":<10} = {my_set}')
+# # conditional dictionary comprehension version
+# my_dict = {name: hero for name, hero in zip(names, heroes) if name != 'peter'}
+# print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes) if name != 'peter'}")
+# print(f'{"my_dict":<10} = {my_dict}')
