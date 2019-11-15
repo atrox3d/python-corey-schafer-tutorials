@@ -47,7 +47,7 @@ for n in nums:
 print("\ngenerate sublist of even elements from nums to my_list, for loop:")
 print(f'{"my_list":<10} = {my_list}')
 # list comprehension version
-my_list = [n for n in nums if not n%2]
+my_list = [n for n in nums if not n % 2]
 print("\ngenerate sublist of even elements from nums to my_list, list comprehension: [n for n in nums if not n%2]")
 print(f'{"my_list":<10} = {my_list}')
 # map + lambda version
@@ -67,5 +67,24 @@ print("\ngenerate a list of letter, num pairs for each element of abcd 0123, for
 print(f'{"my_list":<10} = {my_list}')
 # list comprehension version
 my_list = [(letter, num) for letter in 'abcd' for num in range(4)]
-print("\ngenerate a list of letter, num pairs for each element of abcd 0123, list comprehension: [n for n in nums if not n%2]")
+print(
+    "\ngenerate a list of letter, num pairs for each element of abcd 0123, list comprehension: [n for n in nums if not n%2]")
 print(f'{"my_list":<10} = {my_list}')
+"""
+generate a dictionary of civilian names of superheroes 
+"""
+print("#" * 80)
+names = ['bruce', 'clark', 'peter', 'logan', 'wade']
+heroes = ['batman', 'superman', 'spiderman', 'wolverine', 'deadpool']
+print(f'{"names":<10} = {names}')
+print(f'{"heroes":<10} = {heroes}')
+# for loop version
+my_dict = {}
+for name, hero in zip(names, heroes):
+    my_dict[name] = hero
+print("\ngenerate a dictionary of civilian names of superheroes, for loop:")
+print(f'{"my_dict":<10} = {my_dict}')
+# # list comprehension version
+my_dict = {name: hero for name, hero in zip(names, heroes)}
+print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes)}")
+print(f'{"my_dict":<10} = {my_dict}')
