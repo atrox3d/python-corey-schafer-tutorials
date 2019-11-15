@@ -54,3 +54,18 @@ print(f'{"my_list":<10} = {my_list}')
 my_list = list(filter(lambda n: n % 2 == 0, nums))
 print("\ngenerate list of squares of nums in my_list, filter + lambda: filter(lambda n: n % 2 == 0, nums)")
 print(f'{"my_list":<10} = {my_list}')
+"""
+generate a list of letter, num pairs for each element of abcd 0123
+"""
+print("#" * 80)
+# for loop version
+my_list = []
+for letter in 'abcd':
+    for num in range(4):
+        my_list.append((letter, num))
+print("\ngenerate a list of letter, num pairs for each element of abcd 0123, for loop:")
+print(f'{"my_list":<10} = {my_list}')
+# list comprehension version
+my_list = [(letter, num) for letter in 'abcd' for num in range(4)]
+print("\ngenerate a list of letter, num pairs for each element of abcd 0123, list comprehension: [n for n in nums if not n%2]")
+print(f'{"my_list":<10} = {my_list}')
