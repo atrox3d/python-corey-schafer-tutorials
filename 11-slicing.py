@@ -52,3 +52,19 @@ for start, end in zip(positive_indexes, negative_indexes):
         for x in my_list[start:end]:
             print(f'{x:>3},', end='')
     print()
+#################################################################################
+print('#' * 80)
+#################################################################################
+print( 'my_list : ', end='')
+for x in range(0, len(my_list)):
+    print(f'{my_list[x]:>3},', end='')
+print()
+
+for start in range(0, len(my_list)):
+    for end in range(0, len(my_list)):
+        print(f'range[{start}:{end}] : ', end= '')
+        print(f'{my_list[start:end]},', end='')
+        print()
+    print()
+print()
+
