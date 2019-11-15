@@ -110,7 +110,26 @@ print(f'{"my_set":<10} = {my_set}')
 my_set = {n for n in nums}
 print("\ngenerate a set of unique numbers from a list, set comprehension: {n for n in nums}")
 print(f'{"my_set":<10} = {my_set}')
-# # conditional dictionary comprehension version
-# my_dict = {name: hero for name, hero in zip(names, heroes) if name != 'peter'}
-# print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes) if name != 'peter'}")
-# print(f'{"my_dict":<10} = {my_dict}')
+"""
+generator expressions 
+"""
+print("#" * 80)
+print("# generator expressions")
+print("#" * 80)
+
+
+def gen_func(nums):
+    for n in nums:
+        yield n * n
+
+
+my_gen = gen_func(nums)
+print("use a generator function to obtain an iterable of square numbers")
+for n in my_gen:
+    print(n)
+
+print("use a generator expression to obtain an iterable of square numbers, (n * n for n in nums)")
+my_gen = (n * n for n in nums)
+for n in my_gen:
+    print(n)
+
