@@ -84,7 +84,11 @@ for name, hero in zip(names, heroes):
     my_dict[name] = hero
 print("\ngenerate a dictionary of civilian names of superheroes, for loop:")
 print(f'{"my_dict":<10} = {my_dict}')
-# # list comprehension version
+# dictionary comprehension version
 my_dict = {name: hero for name, hero in zip(names, heroes)}
 print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes)}")
+print(f'{"my_dict":<10} = {my_dict}')
+# conditional dictionary comprehension version
+my_dict = {name: hero for name, hero in zip(names, heroes) if name != 'peter'}
+print("\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes) if name != 'peter'}")
 print(f'{"my_dict":<10} = {my_dict}')
