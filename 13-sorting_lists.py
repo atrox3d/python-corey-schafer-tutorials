@@ -27,7 +27,7 @@ li = [9, 1, 8, 2, 7, 3, 6, 4, 5]
 """
 
 
-simple string sorting
+simple list sorting
 
 
 """
@@ -51,3 +51,17 @@ print_sortedlist('reverse sorting non in-place', li, reverse_li)
 original_list = li.copy()
 li.sort(reverse=True)
 print_list_sort("reverse sorting in-place", original_list, li)
+"""
+
+
+complex list sorting
+
+
+"""
+nums = [-6, -5, -4, 1, 2, 3]
+
+sorted_nums = sorted(nums)
+print_sortedlist("sort signed integers", nums, sorted_nums)
+
+sorted_abs = sorted(nums, key=abs)
+print_sortedlist("sort absolute values of signed integers", nums, sorted_abs)
