@@ -34,4 +34,18 @@ print_sortedlist('sorting non in-place', li, sorted_li)
 #
 original_list = li.copy()
 li.sort()
-print_list_sort("sorting non in-place", original_list, li)
+print_list_sort("sorting in-place", original_list, li)
+"""
+
+
+reverse string sort
+
+
+"""
+li = original_list
+reverse_li = sorted(li, reverse=True)
+print_sortedlist('reverse sorting non in-place', li, reverse_li)
+#
+original_list = li.copy()
+li.sort(reverse=True)
+print_list_sort("reverse sorting in-place", original_list, li)
