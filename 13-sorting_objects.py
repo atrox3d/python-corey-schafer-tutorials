@@ -120,3 +120,10 @@ print_sortedobj('sort class employee by salary, reversed', employees, sorted_emp
 #
 sorted_employees = sorted(employees, key=lambda emp: emp.age, reverse=True)
 print_sortedobj('sort class employee by age, reversed, using lambda', employees, sorted_employees)
+#
+# using attrgetter
+#
+from operator import attrgetter
+
+sorted_employees = sorted(employees, key=attrgetter('salary'), reverse=True)
+print_sortedobj('sort class employee by salary, reversed, using attrgetter', employees, sorted_employees)
