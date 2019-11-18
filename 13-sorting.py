@@ -2,24 +2,36 @@
 # https://www.youtube.com/watch?v=D3JvDWO-BY4
 #
 #################################################################################
+
+
+def print_sortedlist(banner_title, original_list, sorted_list):
+    print("#" * 80)
+    print(banner_title)
+    print("#" * 80)
+    print(f'original list id({id(original_list)}) : {original_list}')
+    print(f'sorted() list id({id(sorted_list)}) : {sorted_list}')
+    print(f'----> ids are {"" if original_list is sorted_list else "not"} the same')
+    print()
+
+
+def print_list_sort(banner_title, original_list, sorted_list):
+    print("#" * 80)
+    print(banner_title)
+    print("#" * 80)
+    print(f'original list : {original_list}')
+    print(f'.sort()  list : {sorted_list}')
+    print()
+
+
 li = [9, 1, 8, 2, 7, 3, 6, 4, 5]
-sorted_li = sorted(li)
 """
 
 simple string sorting
 
 """
-print("#" * 80)
-print('sorting non in-place')
-print("#" * 80)
-print(f'original list id({id(li)}) : {li}')
-print(f'sorted() list id({id(sorted_li)}) : {sorted_li}')
-print(f'----> ids are {"" if li is sorted_li else "not"} the same')
-print()
-print("#" * 80)
-print('sorting in-place')
-print("#" * 80)
-print(f'original list  : {li}')
+sorted_li = sorted(li)
+print_sortedlist('sorting non in-place', li, sorted_li)
+#
+original_list = li.copy()
 li.sort()
-print(f'.sort() list   : {li}')
-print("----> same variable")
+print_list_sort("sorting non in-place", original_list, li)
