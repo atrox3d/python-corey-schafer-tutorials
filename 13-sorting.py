@@ -3,14 +3,18 @@
 #
 #################################################################################
 li = [9, 1, 8, 2, 7, 3, 6, 4, 5]
-s_li = sorted(li)
+sorted_li = sorted(li)
+"""
 
+simple string sorting
+
+"""
 print("#" * 80)
 print('sorting non in-place')
 print("#" * 80)
 print(f'original list id({id(li)}) : {li}')
-print(f'sorted() list id({id(s_li)}) : {s_li}')
-print(f'----> ids are {"" if li is s_li else "not"} the same')
+print(f'sorted() list id({id(sorted_li)}) : {sorted_li}')
+print(f'----> ids are {"" if li is sorted_li else "not"} the same')
 print()
 print("#" * 80)
 print('sorting in-place')
