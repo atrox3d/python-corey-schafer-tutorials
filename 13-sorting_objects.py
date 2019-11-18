@@ -115,3 +115,8 @@ def employee_sortkey(employee):
 
 sorted_employees = sorted(employees, key=employee_sortkey, reverse=True)
 print_sortedobj('sort class employee by salary, reversed', employees, sorted_employees)
+#
+# using lambdas
+#
+sorted_employees = sorted(employees, key=lambda emp: emp.age, reverse=True)
+print_sortedobj('sort class employee by age, reversed, using lambda', employees, sorted_employees)
