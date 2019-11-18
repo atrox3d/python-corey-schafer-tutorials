@@ -51,4 +51,56 @@ except AttributeError as ae:
 
 sorted_di = sorted(di)
 print_sortedobj("sorted dict", di, sorted_di)
+"""
 
+
+user defined classes
+
+
+"""
+
+
+class Employee():
+    def __init__(self, name, age, salary):
+        self.name = name
+        self.age = age
+        self.salary = salary
+
+    def __repr__(self):
+        return '({},{},${})'.format(self.name, self.age, self.salary)
+
+
+e1 = Employee('carl', 37, 70000)
+e2 = Employee('sarah', 29, 80000)
+e3 = Employee('john', 43, 90000)
+
+employees = [e1, e2, e3]
+#
+#   python does not know how to order employee class
+#
+try:
+    sorted_employees = sorted(employees)
+except TypeError as te:
+    print('cannot sort class :', te)
+
+
+#
+#   define a key function to use with sorted()
+#
+def employee_sortkey(employee):
+    return employee.name
+
+
+sorted_employees = sorted(employees, key=employee_sortkey)
+print_sortedobj('sort class employee by name', employees, sorted_employees)
+
+
+#
+#   define a key function to use with sorted()
+#
+def employee_sortkey(employee):
+    return employee.age
+
+
+sorted_employees = sorted(employees, key=employee_sortkey)
+print_sortedobj('sort class employee by age', employees, sorted_employees)
