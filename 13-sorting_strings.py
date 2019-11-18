@@ -26,7 +26,9 @@ def print_list_sort(banner_title, original_list, sorted_list):
 li = [9, 1, 8, 2, 7, 3, 6, 4, 5]
 """
 
+
 simple string sorting
+
 
 """
 sorted_li = sorted(li)
