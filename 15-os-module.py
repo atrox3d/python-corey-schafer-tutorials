@@ -12,7 +12,11 @@ def hashline(width=80):
 hashline(160)
 print(dir(os))
 hashline(160)
+"""
 
+change directory
+
+"""
 # where are we
 print('current dir: ', os.getcwd())
 # get user homedirectory, system independent
@@ -21,3 +25,16 @@ homedirectory = os.path.expanduser('~')
 desktop = os.path.join(homedirectory, 'desktop')
 os.chdir(desktop)
 print('current dir: ', os.getcwd())
+"""
+
+list directory contents
+
+"""
+hashline(160)
+print(os.listdir())
+"""
+
+create directories
+
+"""
+
