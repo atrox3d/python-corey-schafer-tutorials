@@ -79,3 +79,16 @@ except FileNotFoundError as fnfe:
     os.removedirs('test')
 hashline(char='-')
 print(os.listdir())
+"""
+
+rename files
+
+"""
+banner('os.rename')
+# create test file
+open('test.txt', 'a').close()
+os.rename('test.txt', 'demo.txt')
+print(os.listdir())
+os.rename('demo.txt', 'test.txt')
+hashline(char='-')
+print(os.listdir())
