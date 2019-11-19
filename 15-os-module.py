@@ -15,12 +15,9 @@ hashline(160)
 
 # where are we
 print('current dir: ', os.getcwd())
-# expand windows %userprofile% variable
-homedirectory = os.path.expandvars('%userprofile%')
-# add desktop
-os.chdir(homedirectory + '\\desktop')
+# get user homedirectory, system independent
+homedirectory = os.path.expanduser('~')
+# add desktop to home, system independent
+desktop = os.path.join(homedirectory, 'desktop')
+os.chdir(desktop)
 print('current dir: ', os.getcwd())
-
-
-
-
