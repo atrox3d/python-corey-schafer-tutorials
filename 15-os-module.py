@@ -9,14 +9,25 @@ def hashline(width=160, char='#'):
     print(char * width)
 
 
-hashline()
+def banner(text, height=3, width=160, char='#'):
+    hashline(width, char)
+    spacing = height // 2 + 1
+    for spaceline in range(1, spacing):
+        print(char)
+    print(f'{char} {text}')
+    for spaceline in range(1, spacing):
+        print(char)
+    hashline(width, char)
+
+
+banner("dir(os)")
 print(dir(os))
-hashline()
 """
 
 change directory
 
 """
+banner("os.getcwd")
 # where are we
 print('current dir: ', os.getcwd())
 # get user homedirectory, os independent
@@ -30,13 +41,14 @@ print('current dir: ', os.getcwd())
 list directory contents
 
 """
-hashline()
+banner("os.listdir")
 print(os.listdir())
 """
 
 create directories
 
 """
+banner("create dirs")
 try:
     # create os independent path
     test_sub = os.path.join('test','sub')
@@ -50,7 +62,6 @@ except FileExistsError as fee:
 
 # create multiple level path, ignore existing
 os.makedirs(test_sub, exist_ok=True)
-hashline()
 print(os.listdir())
 
-hashline(char='-')
+
