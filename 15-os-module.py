@@ -5,13 +5,13 @@
 import os
 
 
-def hashline(width=80, char='#'):
+def hashline(width=160, char='#'):
     print(char * width)
 
 
-hashline(160)
+hashline()
 print(dir(os))
-hashline(160)
+hashline()
 """
 
 change directory
@@ -30,7 +30,7 @@ print('current dir: ', os.getcwd())
 list directory contents
 
 """
-hashline(160)
+hashline()
 print(os.listdir())
 """
 
@@ -50,7 +50,7 @@ except FileExistsError as fee:
 
 # create multiple level path, ignore existing
 os.makedirs(test_sub, exist_ok=True)
-hashline(160)
+hashline()
 print(os.listdir())
 
-
+hashline(char='-')
