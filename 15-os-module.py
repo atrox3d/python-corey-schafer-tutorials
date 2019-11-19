@@ -63,5 +63,19 @@ except FileExistsError as fee:
 # create multiple level path, ignore existing
 os.makedirs(test_sub, exist_ok=True)
 print(os.listdir())
+"""
 
+delete directories
 
+"""
+banner('delete dirs')
+# this deletes only the last folder in the path
+os.rmdir(test_sub)
+try:
+    # this will fail, due to the rmdir
+    os.removedirs(test_sub)
+except FileNotFoundError as fnfe:
+    print(f'cannot delete {test_sub}: {fnfe}')
+    os.removedirs('test')
+hashline(char='-')
+print(os.listdir())
