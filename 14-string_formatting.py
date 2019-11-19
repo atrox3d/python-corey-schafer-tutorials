@@ -94,6 +94,8 @@ print(sentence)
 #
 #   datetime formatting
 #
+#   https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+#
 import datetime
 
 mydate = datetime.datetime(2019, 11, 18, 15, 30, 00)
