@@ -131,3 +131,28 @@ hashline()
 print(os.environ)
 hashline()
 print(os.environ.get('HOME', 'no HOME variable defined'))
+
+banner('os.path')
+temptxt = os.path.join(desktop, 'temp.txt')
+print('full path: ', temptxt)
+print('basename : ', os.path.basename(temptxt))
+print('dirname  : ', os.path.dirname(temptxt))
+print('split    : ', os.path.split(temptxt))
+dirname, filename = os.path.split(temptxt)
+print(dirname, filename)
+print('split ext: ', os.path.splitext(temptxt))
+filepath, fileext = os.path.splitext(temptxt)
+print(filepath, fileext)
+# finally
+dirname, filename = os.path.split(temptxt)
+filename, fileext = os.path.splitext(os.path.basename(temptxt))
+print(dirname, filename, fileext)
+hashline(char='-')
+
+print(temptxt, "" if os.path.exists(temptxt) else "doesn't", "exists")
+print(desktop, "is" if os.path.isdir(desktop) else "is not", "a directory")
+print(desktop, "is" if os.path.isfile(desktop) else "is not", "a file")
+
+
+
+
