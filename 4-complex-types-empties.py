@@ -11,6 +11,10 @@ el = list()
 et = ()
 et = tuple()
 
+# empty dictionaries
+ed = {}
+ed = dict()
+
 # empty sets
 es = {} # no, this is an empty dictionary
 es = set()
