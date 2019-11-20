@@ -152,7 +152,3 @@ hashline(char='-')
 print(temptxt, "" if os.path.exists(temptxt) else "doesn't", "exists")
 print(desktop, "is" if os.path.isdir(desktop) else "is not", "a directory")
 print(desktop, "is" if os.path.isfile(desktop) else "is not", "a file")
-
-
-
-
