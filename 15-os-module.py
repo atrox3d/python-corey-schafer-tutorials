@@ -109,5 +109,16 @@ from datetime import datetime
 modification_time =  os.stat('test.txt').st_mtime
 print('modification time : ', datetime.fromtimestamp(modification_time))
 
+banner("os.walk")
+os.chdir(desktop)
+print(os.getcwd())
+
+for dirpath, dirnames, filenames in os.walk(desktop):
+    print('current path: ', dirpath)
+    print('directories : ', dirnames)
+    print('files       : ', filenames)
+    print()
+
+
 
 
