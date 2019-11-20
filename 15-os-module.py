@@ -119,6 +119,15 @@ for dirpath, dirnames, filenames in os.walk(desktop):
     print('files       : ', filenames)
     print()
 
+banner('environment variables')
+print(type(os.environ))
+for k, v in os.environ.items():
+    # if not isinstance(v, str):
+    #     print(f'element {v} is not string: {str(type(v))}')
+    #     break
+    print(f'{k:<30} |{str(type(v))} : {v}')
 
-
-
+hashline()
+print(os.environ)
+hashline()
+print(os.environ.get('HOME', 'no HOME variable defined'))
