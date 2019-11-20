@@ -51,7 +51,7 @@ create directories
 banner("create dirs")
 try:
     # create os independent path
-    test_sub = os.path.join('test','sub')
+    test_sub = os.path.join('test', 'sub')
     # try to create path, will fail.
     os.mkdir(test_sub)
 except FileNotFoundError as fnfe:
@@ -92,3 +92,22 @@ print(os.listdir())
 os.rename('demo.txt', 'test.txt')
 hashline(char='-')
 print(os.listdir())
+"""
+
+file info
+
+"""
+banner('os.stat')
+stats = os.stat('test.txt')
+print(type(stats))
+
+# vars(stats) does not work
+for k, v in {name: getattr(stats, name) for name in dir(stats) if name.startswith('st_')}.items():
+    print(f'{k:<20}|{str(type(v)):<20}:{v:>20}')
+
+from datetime import datetime
+modification_time =  os.stat('test.txt').st_mtime
+print('modification time : ', datetime.fromtimestamp(modification_time))
+
+
+
