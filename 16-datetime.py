@@ -2,6 +2,7 @@
 #   https://www.youtube.com/watch?v=eirjjyP2qcQ
 #
 #################################################################################
+import datetime
 
 
 def hashline(width=160, char='#'):
@@ -19,7 +20,30 @@ def banner(text, height=3, width=160, char='#'):
     hashline(width, char)
 
 
-import datetime
+def get_dict_from_obj(obj):
+    return {name: getattr(obj, name) for name in dir(obj) if not name.startswith('__')}.items()
+
+
+def print_object_details(obj, name, properties=True, innerclasses=True, functions=True):
+    items = get_dict_from_obj(obj)
+
+    if properties:
+        banner(f'properties of {name}')
+        for k, v in items:
+            if isinstance(v, int):
+                print(f'{k:<20}|{str(type(v)):<20}:{v:>10}')
+
+    if innerclasses:
+        banner(f'inner classes of {name}')
+        for k, v in items:
+            if "function" in str(type(v)):
+                print(f'{k:<20}|{str(type(v))}')
+
+    if functions:
+        banner(f'functions of {name}')
+        if "function" not in str(type(v)) and not isinstance(v, int):
+            print(f'{k:<20}|{str(type(v)):<20}')
+
 
 """
 
@@ -33,23 +57,7 @@ print(d)
 
 today = datetime.date.today()
 print(today)
-
-items = {name: getattr(today, name) for name in dir(today) if not name.startswith('__')}.items()
-
-banner('integer properties of today')
-for k, v in items:
-    if isinstance(v, int):
-        print(f'{k:<20}|{str(type(v)):<20}:{v:>10}')
-
-banner('methods of today')
-for k, v in items:
-    if "function" in str(type(v)):
-        print(f'{k:<20}|{str(type(v))}')
-
-banner('inner classes of today')
-for k, v in items:
-    if "function" not in str(type(v)) and not isinstance(v, int):
-        print(f'{k:<20}|{str(type(v)):<20}')
+print_object_details(today, 'today')
 
 banner('today functions')
 print(f'weekday     : {today.weekday()}')
@@ -64,24 +72,13 @@ print(f'today - 7 days : {today - delta}')
 bday = datetime.date(2020, 7, 13)
 till_bday = bday - today
 print(f'\ndays until my birthday : {till_bday}')
-items = {name: getattr(till_bday, name) for name in dir(till_bday) if not name.startswith('__')}.items()
-
-banner('integer properties of timedelta')
-for k, v in items:
-    if isinstance(v, int):
-        print(f'{k:<20}|{str(type(v)):<20}:{v:>10}')
-
-banner('methods of timedelta')
-for k, v in items:
-    if "function" in str(type(v)):
-        print(f'{k:<20}|{str(type(v))}')
-
-banner('inner classes of today')
-for k, v in items:
-    if "function" not in str(type(v)) and not isinstance(v, int):
-        print(f'{k:<20}|{str(type(v)):<20}')
+print_object_details(till_bday, 'timedelta')
 
 banner('timedelta functions')
 print(f'weekday     : {today.weekday()}')
 print(f'iso weekday : {today.isoweekday()}')
 
+banner('time')
+t = datetime.time(9, 30, 45, 100000)
+print(f'time : {t}')
+print_object_details(t, 'time')
