@@ -54,7 +54,11 @@ NAIVE date times
 banner("NAIVE date times")
 d = datetime.datetime(2019, 11, 20)
 print(d)
-
+#
+#
+#   datetime.date
+#
+#
 today = datetime.date.today()
 print(today)
 print_object_details(today, 'today')
@@ -62,7 +66,11 @@ print_object_details(today, 'today')
 banner('today functions')
 print(f'weekday     : {today.weekday()}')
 print(f'iso weekday : {today.isoweekday()}')
-
+#
+#
+#   datetime.timedelta
+#
+#
 banner('time deltas')
 delta = datetime.timedelta(days=7)
 print(f'today          : {today}')
@@ -77,8 +85,25 @@ print_object_details(till_bday, 'timedelta')
 banner('timedelta functions')
 print(f'weekday     : {today.weekday()}')
 print(f'iso weekday : {today.isoweekday()}')
-
+#
+#
+#   datetime.time
+#
+#
 banner('time')
 t = datetime.time(9, 30, 45, 100000)
 print(f'time : {t}')
 print_object_details(t, 'time')
+#
+#
+#   datetime.datetime
+#
+#
+dt = datetime.datetime(2019, 11, 21, 10, 15, 30, 100000)
+print('datetime.datetime(2019, 11, 21, 10, 15, 30, 100000) : ', dt)
+dt_today = datetime.datetime.today()
+print('datetime.datetime.today()                           : ', dt_today)
+dt_now = datetime.datetime.now()
+print('datetime.datetime.now()                             : ', dt_now)
+dt_utcnow = datetime.datetime.utcnow()
+print('datetime.datetime.utcnow()                          : ', dt_utcnow)
