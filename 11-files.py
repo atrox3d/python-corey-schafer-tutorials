@@ -5,6 +5,11 @@
 import utils
 
 utils.banner('basic file open with builtin open()')
+"""
+- opens file in bssic mode and print some infos
+- closes the file
+- deletes the file variable
+"""
 f = open('test.txt', 'r')
 print(f'file name : {f.name}')
 print(f'file mode : {f.mode}')
@@ -13,6 +18,9 @@ f.close()
 print(f'file {f.name} is {"closed" if f.closed else "open"}')
 del f
 
+"""
+same as before but using context manager
+"""
 utils.banner('file open with context manager')
 with open('test.txt', 'r') as f:
     print(f'file name : {f.name}')
@@ -21,44 +29,52 @@ with open('test.txt', 'r') as f:
 # the f variable is still available
 print(f'file {f.name} is {"closed" if f.closed else "open"}')
 
-utils.banner('print file contents loading all the file in memory')
+"""
+loads entire file in memory and print its contents with read() method
+* not advisable with large files *
+"""
+utils.banner('print file contents loading all the file in memory with .read()')
 with open('test.txt', 'r') as f:
     f_content = f.read()
     print(f_content)
 
-utils.banner('print file contents loading all the file in memory')
+"""
+loads entire file in memory and print its contents with .readlines() method
+* not advisable with large files *
+"""
+utils.banner('print file contents loading all the file in memory with .readlines()')
 with open('test.txt', 'r') as f:
     f_content = f.readlines()
     print(f_content)
 
-utils.banner('print file contents loading one line at a time with readline')
+"""
+loads a single line \\n terminated
+the file pointer is consistent across multiple calls
+"""
+utils.banner('print file contents loading one line at a time with .readline()')
 with open('test.txt', 'r') as f:
-    """
-    loads a single line \\n terminated
-    the file pointer is consistent across multiple calls
-    """
     f_content = f.readline()
     print(f_content)
 
     f_content = f.readline()
     print(f_content)
 
+"""
+loads a single line \\n terminated
+the file pointer is consistent across multiple calls
+"""
 utils.banner('print file contents loading one line at a time with iterator')
 with open('test.txt', 'r') as f:
-    """
-    loads a single line \\n terminated
-    the file pointer is consistent across multiple calls
-    """
     for line in f:
         print(line)
 
-utils.banner('print file contents loading chunks of data')
+"""
+reads data chunks of <size>
+prints the resulting text
+adds a symbol '*' to highlight the chunks
+"""
+utils.banner('print file contents loading chunks of data, using .read(size)')
 with open('test.txt', 'r') as f:
-    """
-    reads data chunks of <size>
-    prints the resulting text
-    adds a symbol '*' to highlight the chunks
-    """
     size = 10
     f_content = f.read(size)
 
@@ -68,13 +84,13 @@ with open('test.txt', 'r') as f:
         print(f_content, end='*')
         f_content = f.read(size)
 
+"""
+moves the file pointer and prints:
+current file pointer offset
+data read at the offset
+"""
 utils.banner('print file contents changing file pointer position')
 with open('test.txt', 'r') as f:
-    """
-    moves the file pointer and prints:
-    current file pointer offset
-    data read at the offset
-    """
     size = 10
     for offset in range(1, size+1):
         print(f'current file pointer position: {f.tell()}')
