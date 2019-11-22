@@ -107,3 +107,23 @@ dt_now = datetime.datetime.now()
 print('datetime.datetime.now()                             : ', dt_now)
 dt_utcnow = datetime.datetime.utcnow()
 print('datetime.datetime.utcnow()                          : ', dt_utcnow)
+#
+#   strftime, strptime
+#
+banner('strftime, strptime')
+datetimeformat = "%d/%m/%Y %H:%M"
+# 22/11/2019 10:45
+datetimeobj = datetime.datetime.today()
+fwidth = 30
+print(f'{"datetimeobj":<{fwidth}}: {datetimeobj}')
+datetostring = datetimeobj.strftime(datetimeformat)
+print(f'{"datetostring":<{fwidth}}: {datetostring}')
+# stringtodate = datetime.datetime.strptime("22/11/2019 10:45", datetimeformat)
+stringtodate = datetime.datetime.strptime(datetostring, datetimeformat)
+print(f'{"stringtodate":<{fwidth}}: {stringtodate}')
+stringtodate_fmt = stringtodate.strftime(datetimeformat)
+print(f'{"stringtodate formatted":<{fwidth}}: {stringtodate_fmt}')
+
+
+
+
