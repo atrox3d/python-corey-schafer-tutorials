@@ -57,7 +57,7 @@ with open('test.txt', 'r') as f:
     """
     reads data chunks of <size>
     prints the resulting text
-    adds a symbol 
+    adds a symbol '*' to highlight the chunks
     """
     size = 10
     f_content = f.read(size)
@@ -71,12 +71,15 @@ with open('test.txt', 'r') as f:
 utils.banner('print file contents changing file pointer position')
 with open('test.txt', 'r') as f:
     """
+    moves the file pointer and prints:
+    current file pointer offset
+    data read at the offset
     """
     size = 10
-    f_content = f.read(size)
-    print(f.tell())
-    print(f_content, end='')
-    f.seek(0)
-    print(f_content, end='')
+    for offset in range(1, size+1):
+        print(f'current file pointer position: {f.tell()}')
+        f_content = f.read(size)
+        print(f_content)
+        f.seek(offset)
 
 
