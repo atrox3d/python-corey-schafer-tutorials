@@ -7,9 +7,9 @@ import io
 import datetime
 
 """
-try to write on an open for reading file
+try to copy binary file in text mode
 """
-utils.banner('copy files')
+utils.banner('try to copy binary file in text mode')
 try:
     #
     #   open source file for reading
@@ -19,6 +19,24 @@ try:
         #   open dest file for writing
         #
         with open('bronx.copy.jpg', 'w') as wf:
+            for line in rf:
+                wf.write(line)
+except UnicodeDecodeError as ude:
+    print(f'cannot read binary file : {ude}')
+
+"""
+try to copy binary file in binary mode
+"""
+utils.banner('try to copy binary file in binary mode')
+try:
+    #
+    #   open source file for reading
+    #
+    with open('bronx.jpg', 'rb') as rf:
+        #
+        #   open dest file for writing
+        #
+        with open('bronx.copy.jpg', 'wb') as wf:
             for line in rf:
                 wf.write(line)
 except UnicodeDecodeError as ude:
