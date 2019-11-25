@@ -95,21 +95,28 @@ print('splitmaplist: ', splitmaplist)
 #
 #   generator of list of splitted filenames
 #
-splitgen = (f for f, e in splitmaplist)
-print('splitgen', splitgen)
+splitgentuple = (str(f) for f in splitmaplist)
+print('splitgentuple', splitgentuple)
+splitgenfilename = (f for f, e in splitmaplist)
+print('splitgenfilename', splitgenfilename)
 #
 #   cast generator to list
 #
-splitgenlist = list(splitgen)
-print('splitgenlist', splitgenlist)
+splitgentuplelist = list(splitgentuple)
+print('splitgenlist', splitgentuplelist)
+splitgenfilenamelist = list(splitgenfilename)
+print('splitgenfilenamelist', splitgenfilenamelist)
 #
 #   find longest string in splitgenlist and calculate length
 #
-longest = max(splitgenlist, key=len)
-width = len(longest) + 20
-print(longest, width)
-
+longesttuple = max(splitgentuplelist, key=len)
+tuplewidth = len(longesttuple) + 5
+print(f'longest element: {longesttuple}({tuplewidth})')
+longeststring = max(splitgenfilenamelist, key=len)
+stringwidth = len(longeststring) + 5
+print(f'longest element: {longeststring}({stringwidth})')
+utils.hashline(char='-')
 for file in os.listdir():
     filesplit = os.path.splitext(file)
     filename, filext = filesplit
-    print(f'{str(filesplit):<{width}} -> {filename}, {filext}')
+    print(f'{str(filesplit):<{tuplewidth}} -> {filename:<{stringwidth}} {filext}')
