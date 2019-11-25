@@ -76,75 +76,35 @@ print('current directory: ', os.getcwd())
 utils.hashline(char='-')
 for file in os.listdir():
     print(file)
-utils.hashline(char='-')
 #
 #   start parsing the filenames
 #
 ##########################################################################################################
 #
-#   apply os.path.splitext to each file in current directory
-#   return a map
+#   get max length of string representation of tuples
 #
-# splitmap = map(os.path.splitext, os.listdir())
-# print('splitmap: ', splitmap)
-# #
-# #   cast map to list
-# #
-# splitmaplist = list(splitmap)
-# print('splitmaplist: ', splitmaplist)
-# #
-# #   generator of list of splitted filenames
-# #
-# splitgentuple = (str(f) for f in splitmaplist)
-# print('splitgentuple', splitgentuple)
-# splitgenfilename = (f for f, e in splitmaplist)
-# print('splitgenfilename', splitgenfilename)
-# #
-# #   cast generator to list
-# #
-# splitgentuplelist = list(splitgentuple)
-# print('splitgenlist', splitgentuplelist)
-# splitgenfilenamelist = list(splitgenfilename)
-# print('splitgenfilenamelist', splitgenfilenamelist)
-# #
-# #   find longest string in splitgenlist and calculate length
-# #
-# longesttuple = max(splitgentuplelist, key=len)
-# tuplewidth = len(longesttuple) + 5
-# print(f'longest element: {longesttuple}({tuplewidth})')
-
-
-#splitmaplist = list(map(os.path.splitext, os.listdir()))
-maxtuplelen = len(
-            max(
-                    list(
-                            (
-                                    str(f) for f in list(
-                                                            map(os.path.splitext, os.listdir()
-                                                        )
-                            )
-                    )
-            ), key=len)
+maxtuplelen = max(
+    # returns a map of lengths
+    map(
+        # return the length of the string representation of the tuple
+        lambda afile: len(str(os.path.splitext(afile))),
+        os.listdir()
     )
-print(f'longest tuple: {maxtuplelen}')
-maxfilenamelen = len(
-            max(
-                    list(
-                            (
-                                    f for f, e in list(
-                                                            map(os.path.splitext, os.listdir()
-                                                        )
-                            )
-                    )
-            ), key=len)
+)
+#
+#   get max length of first string of tuples
+#
+maxfilenamelen = max(
+    # returns a map of lengths
+    map(
+        # return the length of the first string of the tuple
+        lambda afile: len(os.path.splitext(afile)[0]),
+        os.listdir()
     )
-print(f'longest file name: {maxfilenamelen}')
+)
 
-
-# longeststring = max(splitgenfilenamelist, key=len)
-# stringwidth = len(longeststring) + 5
-# print(f'longest element: {longeststring}({stringwidth})')
 utils.hashline(char='-')
+
 for file in os.listdir():
     filesplit = os.path.splitext(file)
     filename, filext = filesplit
