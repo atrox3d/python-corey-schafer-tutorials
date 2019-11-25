@@ -7,20 +7,32 @@ import os
 
 
 def remove_examplefiles(dirname):
+    """
+    delete existing example files
+    :param dirname: example files directory
+    :return:
+    """
+    utils.banner('DELETE EXISTING EXAMPLE FILES')
     files = os.listdir(dirname)
     for f in files:
         f = os.path.join(dirname, f)
-        isfile = os.path.isfile(f)
-        if isfile:
+        if os.path.isfile(f):
             print(f'deleting {f}')
             os.remove(f)
 
 
 def create_examplefiles(dirname='multifile', maxfile=10):
+    """
+    create example files
+    :param dirname:
+    :param maxfile:
+    :return:
+    """
     if os.path.exists(dirname):
         remove_examplefiles(dirname)
         os.removedirs(dirname)
 
+    utils.banner('CREATE EXAMPLE FILES')
     os.makedirs(dirname)
     # create random ordered list
     planets = {
@@ -39,7 +51,7 @@ def create_examplefiles(dirname='multifile', maxfile=10):
     for planet in planets:
         filename = f'{planet} - our solar system - # {planetnum}.mp4'
         filepath = os.path.join(dirname, filename)
-        print(f'creating : {filepath})')
+        print(f'creating : {filepath}')
         with open(filepath, 'w') as file:
             pass
         planetnum += 1
@@ -47,6 +59,8 @@ def create_examplefiles(dirname='multifile', maxfile=10):
 
 
 """
-    start
+
+    start by creating the files
+    
 """
 create_examplefiles()
