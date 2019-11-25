@@ -35,17 +35,18 @@ def create_examplefiles(dirname='multifile', maxfile=10):
         'venus',
     }
 
-    lplanets = list(planets)
-
-    for num in range(0, len(lplanets)):
-        planet = lplanets[num]
-        filename = f'{planet} - our solar system - # {num}.mp4'
+    planetnum = 0
+    for planet in planets:
+        filename = f'{planet} - our solar system - # {planetnum}.mp4'
         filepath = os.path.join(dirname, filename)
         print(f'creating : {filepath})')
         with open(filepath, 'w') as file:
             pass
-
+        planetnum += 1
     os.listdir(dirname)
 
 
+"""
+    start
+"""
 create_examplefiles()
