@@ -66,4 +66,14 @@ def create_examplefiles(dirname):
 exampledir = 'multifile'
 create_examplefiles(exampledir)
 
+utils.banner(f'changing to {exampledir} directory and listing contents')
+print('current directory: ', os.getcwd())
+os.chdir(os.path.join(os.getcwd(), exampledir))
+print('current directory: ', os.getcwd())
+
+utils.hashline(char='-')
+for filename in os.listdir():
+    print(filename)
+utils.hashline(char='-')
+
 
