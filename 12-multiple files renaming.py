@@ -115,7 +115,7 @@ utils.hashline(char='-')
 
 
 #splitmaplist = list(map(os.path.splitext, os.listdir()))
-longesttuple = len(
+maxtuplelen = len(
             max(
                     list(
                             (
@@ -126,8 +126,8 @@ longesttuple = len(
                     )
             ), key=len)
     )
-print(f'longest tuple: {longesttuple}')
-longestfilename = len(
+print(f'longest tuple: {maxtuplelen}')
+maxfilenamelen = len(
             max(
                     list(
                             (
@@ -138,16 +138,14 @@ longestfilename = len(
                     )
             ), key=len)
     )
-print(f'longest file name: {longestfilename}')
-exit()
+print(f'longest file name: {maxfilenamelen}')
 
 
-
-longeststring = max(splitgenfilenamelist, key=len)
-stringwidth = len(longeststring) + 5
-print(f'longest element: {longeststring}({stringwidth})')
+# longeststring = max(splitgenfilenamelist, key=len)
+# stringwidth = len(longeststring) + 5
+# print(f'longest element: {longeststring}({stringwidth})')
 utils.hashline(char='-')
 for file in os.listdir():
     filesplit = os.path.splitext(file)
     filename, filext = filesplit
-    print(f'{str(filesplit):<{tuplewidth}} -> {filename:<{stringwidth}} {filext}')
+    print(f'{str(filesplit):<{maxtuplelen + 5}} -> {filename:<{maxfilenamelen + 5}} {filext}')
