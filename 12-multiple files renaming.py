@@ -21,7 +21,7 @@ def remove_examplefiles(dirname):
             os.remove(f)
 
 
-def create_examplefiles(dirname='multifile', maxfile=10):
+def create_examplefiles(dirname):
     """
     create example files
     :param dirname:
@@ -63,4 +63,7 @@ def create_examplefiles(dirname='multifile', maxfile=10):
     start by creating the files
     
 """
-create_examplefiles()
+exampledir = 'multifile'
+create_examplefiles(exampledir)
+
+
