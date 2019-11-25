@@ -85,33 +85,64 @@ utils.hashline(char='-')
 #   apply os.path.splitext to each file in current directory
 #   return a map
 #
-splitmap = map(os.path.splitext, os.listdir())
-print('splitmap: ', splitmap)
-#
-#   cast map to list
-#
-splitmaplist = list(splitmap)
-print('splitmaplist: ', splitmaplist)
-#
-#   generator of list of splitted filenames
-#
-splitgentuple = (str(f) for f in splitmaplist)
-print('splitgentuple', splitgentuple)
-splitgenfilename = (f for f, e in splitmaplist)
-print('splitgenfilename', splitgenfilename)
-#
-#   cast generator to list
-#
-splitgentuplelist = list(splitgentuple)
-print('splitgenlist', splitgentuplelist)
-splitgenfilenamelist = list(splitgenfilename)
-print('splitgenfilenamelist', splitgenfilenamelist)
-#
-#   find longest string in splitgenlist and calculate length
-#
-longesttuple = max(splitgentuplelist, key=len)
-tuplewidth = len(longesttuple) + 5
-print(f'longest element: {longesttuple}({tuplewidth})')
+# splitmap = map(os.path.splitext, os.listdir())
+# print('splitmap: ', splitmap)
+# #
+# #   cast map to list
+# #
+# splitmaplist = list(splitmap)
+# print('splitmaplist: ', splitmaplist)
+# #
+# #   generator of list of splitted filenames
+# #
+# splitgentuple = (str(f) for f in splitmaplist)
+# print('splitgentuple', splitgentuple)
+# splitgenfilename = (f for f, e in splitmaplist)
+# print('splitgenfilename', splitgenfilename)
+# #
+# #   cast generator to list
+# #
+# splitgentuplelist = list(splitgentuple)
+# print('splitgenlist', splitgentuplelist)
+# splitgenfilenamelist = list(splitgenfilename)
+# print('splitgenfilenamelist', splitgenfilenamelist)
+# #
+# #   find longest string in splitgenlist and calculate length
+# #
+# longesttuple = max(splitgentuplelist, key=len)
+# tuplewidth = len(longesttuple) + 5
+# print(f'longest element: {longesttuple}({tuplewidth})')
+
+
+#splitmaplist = list(map(os.path.splitext, os.listdir()))
+longesttuple = len(
+            max(
+                    list(
+                            (
+                                    str(f) for f in list(
+                                                            map(os.path.splitext, os.listdir()
+                                                        )
+                            )
+                    )
+            ), key=len)
+    )
+print(f'longest tuple: {longesttuple}')
+longestfilename = len(
+            max(
+                    list(
+                            (
+                                    f for f, e in list(
+                                                            map(os.path.splitext, os.listdir()
+                                                        )
+                            )
+                    )
+            ), key=len)
+    )
+print(f'longest file name: {longestfilename}')
+exit()
+
+
+
 longeststring = max(splitgenfilenamelist, key=len)
 stringwidth = len(longeststring) + 5
 print(f'longest element: {longeststring}({stringwidth})')
