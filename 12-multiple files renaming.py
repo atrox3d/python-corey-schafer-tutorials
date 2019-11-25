@@ -65,15 +65,51 @@ def create_examplefiles(dirname):
 """
 exampledir = 'multifile'
 create_examplefiles(exampledir)
-
+#
+#   check our new files
+#
 utils.banner(f'changing to {exampledir} directory and listing contents')
 print('current directory: ', os.getcwd())
 os.chdir(os.path.join(os.getcwd(), exampledir))
 print('current directory: ', os.getcwd())
 
 utils.hashline(char='-')
-for filename in os.listdir():
-    print(filename)
+for file in os.listdir():
+    print(file)
 utils.hashline(char='-')
+#
+#   start parsing the filenames
+#
+##########################################################################################################
+#
+#   apply os.path.splitext to each file in current directory
+#   return a map
+#
+splitmap = map(os.path.splitext, os.listdir())
+print('splitmap: ', splitmap)
+#
+#   cast map to list
+#
+splitmaplist = list(splitmap)
+print('splitmaplist: ', splitmaplist)
+#
+#   generator of list of splitted filenames
+#
+splitgen = (f for f, e in splitmaplist)
+print('splitgen', splitgen)
+#
+#   cast generator to list
+#
+splitgenlist = list(splitgen)
+print('splitgenlist', splitgenlist)
+#
+#   find longest string in splitgenlist and calculate length
+#
+longest = max(splitgenlist, key=len)
+width = len(longest) + 20
+print(longest, width)
 
-
+for file in os.listdir():
+    filesplit = os.path.splitext(file)
+    filename, filext = filesplit
+    print(f'{str(filesplit):<{width}} -> {filename}, {filext}')
