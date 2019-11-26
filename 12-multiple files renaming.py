@@ -103,42 +103,46 @@ maxfilenamelen = max(
     )
 )
 
-utils.hashline(char='-')
+utils.banner("parse filenames")
 #
 #   1) filename, extension
 #
-srcfiles = []
-destfiles = []
 for file in os.listdir():
-    srcfiles.append(file)
+    #
+    #   split file in filename, extension
+    #
     filesplit = os.path.splitext(file)
+    #
+    #   assign filename and extension to variables
+    #
     filename, filext = filesplit
-    destfiles.append({'name': filename, 'ext': filext})
-    print(f'{str(filesplit):<{maxtuplelen + 5}} -> {filename:<{maxfilenamelen + 5}} {filext}')
+    #print(f'{str(filesplit):<{maxtuplelen + 5}} -> {filename:<{maxfilenamelen + 5}} {filext}')
+    #print(f'filename: {filename:<{maxfilenamelen + 5}}, filext: {filext}')
 
-print(destfiles)
-utils.hashline(char='-')
-#
-#   2) filename parts
-#
-for file in destfiles:
-    name, ext = [x for x in file.values()]
+    # name, ext = [x for x in file.values()]
     print(
-            'name={:<{maxfilenamelen}}, ext={}'.format(
-                                                            name,
-                                                            ext,
+            'filename={:<{maxfilenamelen}}, filext={}'.format(
+                                                            f'"{filename}"',
+                                                            f'"{filext}"',
                                                             maxfilenamelen=maxfilenamelen+5
                                                 )
     )
 
-    title, course, number = name.split('-')
+    title, course, number = filename.split('-')
 
     title = title.strip()
     course = course.strip()
     number = number.strip()[1:].zfill(2)
 
     print('title: "{}", course: "{}", number: {}'.format(title, course, number))
-    newname = "{}-{}-{}{}".format(number, course, title, ext)
-    print(file, newname)
+    newname = "{}-{}-{}{}".format(number, course, title, filext)
+    print(f'file = {file}')
+    print(f'newname = {newname}')
+    os.rename(file, newname)
+    print('.')
+
+utils.banner('final result')
+for file in os.listdir():
+    print(file)
 
 
