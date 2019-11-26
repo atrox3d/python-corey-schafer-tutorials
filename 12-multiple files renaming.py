@@ -49,7 +49,7 @@ def create_examplefiles(dirname):
 
     planetnum = 0
     for planet in planets:
-        filename = f'{planet} - our solar system - # {planetnum}.mp4'
+        filename = f'{planet} - our solar system - #{planetnum}.mp4'
         filepath = os.path.join(dirname, filename)
         print(f'creating : {filepath}')
         with open(filepath, 'w') as file:
@@ -104,8 +104,41 @@ maxfilenamelen = max(
 )
 
 utils.hashline(char='-')
-
+#
+#   1) filename, extension
+#
+srcfiles = []
+destfiles = []
 for file in os.listdir():
+    srcfiles.append(file)
     filesplit = os.path.splitext(file)
     filename, filext = filesplit
+    destfiles.append({'name': filename, 'ext': filext})
     print(f'{str(filesplit):<{maxtuplelen + 5}} -> {filename:<{maxfilenamelen + 5}} {filext}')
+
+print(destfiles)
+utils.hashline(char='-')
+#
+#   2) filename parts
+#
+for file in destfiles:
+    name, ext = [x for x in file.values()]
+    print(
+            'name={:<{maxfilenamelen}}, ext={}'.format(
+                                                            name,
+                                                            ext,
+                                                            maxfilenamelen=maxfilenamelen+5
+                                                )
+    )
+
+    title, course, number = name.split('-')
+
+    title = title.strip()
+    course = course.strip()
+    number = number.strip()[1:].zfill(2)
+
+    print('title: "{}", course: "{}", number: {}'.format(title, course, number))
+    newname = "{}-{}-{}{}".format(number, course, title, ext)
+    print(file, newname)
+
+
