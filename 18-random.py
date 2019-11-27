@@ -17,4 +17,16 @@ utils.banner("get integer betweem two values with .randint")
 for i in range(1, 10):
     print(random.randint(1, i))
 
+utils.banner("get list item with .choice")
+greetings = [
+    "hello",
+    "hi",
+    "hey",
+    "howdy",
+    "hola"
+]
+for i in range(1, 10):
+    print(random.choice(greetings))
+
+
 
