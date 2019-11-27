@@ -20,5 +20,12 @@ with open(csvpath, 'r') as csvfile:
     for line in csvreader:
         print(line)
 
+utils.banner('create new csv from current')
+newcsvpath = os.path.join(os.getcwd(), 'data', 'newnames.csv')
+with open(csvpath, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
 
-
+    with open(newcsvpath, 'w') as newcsvfile:
+        csvwriter = csv.writer(newcsvfile, delimiter='-')
+        for line in csvreader:
+            csvwriter.writerow(line)
