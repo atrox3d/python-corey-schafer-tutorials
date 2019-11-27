@@ -47,3 +47,7 @@ print(cards)
 utils.banner('get a list of unique elements with .sample')
 hand = random.sample(cards, k=5)
 print(hand)
+
+# TODO: wait for csv tutorial to complete
+
+
