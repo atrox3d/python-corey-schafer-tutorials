@@ -26,6 +26,14 @@ with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
 
     with open(newcsvpath, 'w', newline='') as newcsvfile:
-        csvwriter = csv.writer(newcsvfile, delimiter='-')
+        csvwriter = csv.writer(newcsvfile, delimiter='\t')
         for line in csvreader:
             csvwriter.writerow(line)
+
+
+with open(newcsvpath, 'r') as newcsvfile:
+    newcsvreader = csv.reader(newcsvfile, delimiter='\t')
+    for line in newcsvreader:
+        print(line)
+
+
