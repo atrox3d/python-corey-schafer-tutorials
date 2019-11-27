@@ -17,3 +17,4 @@ utils.banner("get integer betweem two values with .randint")
 for i in range(1, 10):
     print(random.randint(1, i))
 
+
