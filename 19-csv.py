@@ -16,34 +16,49 @@ import os
 #
 #################################################################################
 utils.banner('open data/names.csv and list its content')
+# get file path
 csvpath = os.path.join(os.getcwd(), 'data', 'names.csv')
 print(csvpath)
 utils.hashline(char='-')
+#
+#   open file and list its contents
+#
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
-
     print(csvreader)
+
     # skip firt line of generator
     next(csvreader)
 
     for line in csvreader:
         print(line)
 
+
 utils.banner('create new csv from current')
+# get new file path
 newcsvpath = os.path.join(os.getcwd(), 'data', 'newnames.csv')
+#
+#   open source csv file and read its contents
+#
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
-
+    #
+    #   open dest csv file for writing
+    #
     with open(newcsvpath, 'w', newline='') as newcsvfile:
+        #
+        #   using normal csv writer tab delimited
+        #
         csvwriter = csv.writer(newcsvfile, delimiter='\t')
         for line in csvreader:
             csvwriter.writerow(line)
-
+#
+#   open new file and list its contents
+#
 with open(newcsvpath, 'r') as newcsvfile:
     newcsvreader = csv.reader(newcsvfile, delimiter='\t')
     for line in newcsvreader:
         print(line)
-
 #################################################################################
 #
 #
@@ -54,7 +69,13 @@ with open(newcsvpath, 'r') as newcsvfile:
 #
 #################################################################################
 utils.banner('read csv with dict reader')
+#
+#   open file and list its contents
+#
 with open(csvpath, 'r') as csvfile:
+    #
+    #   using dictreader for input
+    #
     dictreader = csv.DictReader(csvfile)
 
     for line in dictreader:
@@ -62,20 +83,33 @@ with open(csvpath, 'r') as csvfile:
         print('dictionary field: ', line.get('email'))
 
 utils.banner('write csv with dict writer')
+#
+#   open file and read only the first line to save fields list
+#
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
     fieldnames = next(csvreader)
     print('field names:', fieldnames)
-
+#
+#   open source csv file and read its contents
+#
 with open(csvpath, 'r') as csvfile:
     dictreader = csv.DictReader(csvfile)
-
+    #
+    #   open dest csv file for writing
+    #
     with open(newcsvpath, 'w', newline='') as newcsvfile:
+        #
+        #   using dictwriter for output, tab delimited
+        #
         dictwriter = csv.DictWriter(newcsvfile, fieldnames, delimiter='\t')
         for line in dictreader:
             dictwriter.writerow(line)
 
 utils.banner('read new csv with dict reader')
+#
+#   open dest csv file and list its contents
+#
 with open(newcsvpath, 'r') as newcsvfile:
     dictreader = csv.DictReader(newcsvfile)
 
