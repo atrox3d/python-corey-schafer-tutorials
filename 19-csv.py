@@ -25,7 +25,7 @@ newcsvpath = os.path.join(os.getcwd(), 'data', 'newnames.csv')
 with open(csvpath, 'r') as csvfile:
     csvreader = csv.reader(csvfile)
 
-    with open(newcsvpath, 'w') as newcsvfile:
+    with open(newcsvpath, 'w', newline='') as newcsvfile:
         csvwriter = csv.writer(newcsvfile, delimiter='-')
         for line in csvreader:
             csvwriter.writerow(line)
