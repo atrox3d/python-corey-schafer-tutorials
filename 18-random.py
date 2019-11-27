@@ -36,3 +36,11 @@ colors = [
 ]
 for i in random.choices(colors, weights=[18, 18, 2], k=10):
     print(i)
+
+utils.banner('shuffle a list with .shuffle')
+cards = list(range(1, 53))
+print(cards)
+print("shuffling...")
+random.shuffle(cards)
+print(cards)
+
