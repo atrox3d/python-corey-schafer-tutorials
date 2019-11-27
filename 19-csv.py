@@ -33,7 +33,6 @@ with open(csvpath, 'r') as csvfile:
     for line in csvreader:
         print(line)
 
-
 utils.banner('create new csv from current')
 # get new file path
 newcsvpath = os.path.join(os.getcwd(), 'data', 'newnames.csv')
@@ -103,15 +102,31 @@ with open(csvpath, 'r') as csvfile:
         #   using dictwriter for output, tab delimited
         #
         dictwriter = csv.DictWriter(newcsvfile, fieldnames, delimiter='\t')
+        #
+        #   write header fields
+        #
+        dictwriter.writeheader()
+
         for line in dictreader:
             dictwriter.writerow(line)
+
+        #
+        #   write custom record
+        #
+        dictwriter.writerow(
+            dict(
+                first_name="my",
+                last_name="custom",
+                email="record",
+            )
+        )
 
 utils.banner('read new csv with dict reader')
 #
 #   open dest csv file and list its contents
 #
 with open(newcsvpath, 'r') as newcsvfile:
-    dictreader = csv.DictReader(newcsvfile)
+    dictreader = csv.DictReader(newcsvfile, delimiter='\t')
 
     for line in dictreader:
         print('dictionary line: ', line)
