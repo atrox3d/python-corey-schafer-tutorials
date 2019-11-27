@@ -28,5 +28,11 @@ greetings = [
 for i in range(1, 10):
     print(random.choice(greetings))
 
-
-
+utils.banner("get multiple list items with .choices")
+colors = [
+    'red',
+    'black',
+    'green',
+]
+for i in random.choices(colors, weights=[18, 18, 2], k=10):
+    print(i)
