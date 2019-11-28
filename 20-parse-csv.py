@@ -11,5 +11,29 @@ names = []
 cwd = os.getcwd()
 filepath = os.path.join(cwd, 'data', 'patrons.csv')
 
-print(f'data file: {filepath}, {"ok" if os.path.exists(filepath) else "doesnt exist"}')
+print(f'data file: {filepath}')
+if not os.path.exists(filepath):
+    print(f'data file "{filepath}" missing\nexiting')
+    exit(1)
 
+with open(filepath, 'r') as datafile:
+    csvdata = csv.reader(datafile)
+
+    # we dont want header or first line of bad data
+    next(csvdata)
+    next(csvdata)
+
+    for line in csvdata:
+        if line[0].lower() == "no reward":
+            break
+        names.append(f'{line[0]} {line[1]}')
+
+html += f'<p>current number of contributors : {len(names)}<p>'
+html += '\n<ul>'
+
+for name in names:
+    html += f'\n\t<li>{name}</li>'
+
+html += '\n</ul>'
+
+print(html)
