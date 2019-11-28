@@ -17,16 +17,17 @@ if not os.path.exists(filepath):
     exit(1)
 
 with open(filepath, 'r') as datafile:
-    csvdata = csv.reader(datafile)
+    csvdata = csv.DictReader(datafile)
 
+    # header line is consumed by the dictreader as keys
+    # next(csvdata)
     # we dont want header or first line of bad data
-    next(csvdata)
     next(csvdata)
 
     for line in csvdata:
-        if line[0].lower() == "no reward":
+        if line['FirstName'].lower() == "no reward":
             break
-        names.append(f'{line[0]} {line[1]}')
+        names.append(f'{line["FirstName"]} {line["LastName"]}')
 
 html += f'<p>current number of contributors : {len(names)}<p>'
 html += '\n<ul>'
