@@ -4,6 +4,7 @@
 #################################################################################
 import utils
 import re
+from collections import namedtuple
 
 text_to_search = '''
 abcdefghijklmnopqurtuvwxyz
@@ -59,6 +60,10 @@ for regex in [
             description='actual dot'
     ),
     dict(
+            expression=r'.',
+            description='any character'
+    ),
+    dict(
             expression=r'coreyms\.com',
             description='url'
     ),
@@ -70,20 +75,38 @@ for regex in [
             expression=r'\D',
             description='non digit'
     ),
+    dict(
+            expression=r'\w',
+            description='word character'
+    ),
+    dict(
+            expression=r'\W',
+            description='non word character'
+    ),
+    dict(
+            expression=r'\s',
+            description='whitespace'
+    ),
+    dict(
+            expression=r'\S',
+            description='non whitespace'
+    ),
 ]:
     #
     # compile regexp pattern into a regexp object
     #
     # print(regex, type(regex));exit()
-    expression = regex['expression']
-    description = regex['description']
-    pattern = re.compile(expression)
+    regex = namedtuple('regex', regex.keys())(**regex)
+    # expression = regex['expression']
+    # description = regex['description']
+    pattern = re.compile(regex.expression)
     #
     # get a search results iterator
     #
     count = len(pattern.findall(text_to_search))
     matches = pattern.finditer(text_to_search)
-    print(f'results for {expression:<20} ({description:<20}): ({count})')
+    def quote(s): return f'"{s}"'
+    print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
     utils.hashline(char='-')
     # for match in matches:
     #     # <re.Match object; span=(1, 4), match='abc'>
