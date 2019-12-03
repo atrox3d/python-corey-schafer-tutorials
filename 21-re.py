@@ -5,20 +5,28 @@
 import utils
 import re
 from collections import namedtuple
+import os
 
 text_to_search = '''
 abcdefghijklmnopqurtuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
 1234567890
+
 Ha HaHa
+
 MetaCharacters (Need to be escaped):
+
 . ^ $ * + ? { } [ ] \ | ( )
+
 coreyms.com
+
 321-555-4321
 123.555.1234
 123*555*1234
 800-555-1234
 900-555-1234
+
 Mr. Schafer
 Mr Smith
 Ms Davis
@@ -41,10 +49,10 @@ print('raw strings: prepending an r to the quotes r\'\' the \\t at the beginnig 
 print(r'\tTab')
 ###############################################################################################
 #
-#   regular expressions
+#   simple regular expressions
 #
 ###############################################################################################
-utils.banner('regular expressions')
+utils.banner('simple regular expressions')
 print("text to search:")
 utils.hashline(char='-')
 print(text_to_search, end='')
@@ -91,6 +99,18 @@ for regex in [
             expression=r'\S',
             description='non whitespace'
     ),
+    dict(
+            expression=r'\bHa',
+            description='word bounbary before'
+    ),
+    dict(
+            expression=r'\BHa',
+            description='no word bounbary before'
+    ),
+    dict(
+            expression=r'\bHa\b',
+            description='word bounbaries'
+    ),
 ]:
     #
     # compile regexp pattern into a regexp object
@@ -119,3 +139,71 @@ for regex in [
     #                                                 )
     #          )
     # utils.hashline(char='-')
+
+
+print("text to search:")
+utils.hashline(char='-')
+print(sentence)
+utils.hashline(char='-')
+
+for regex in [
+    dict(
+            expression=r'^Start',
+            description='^anchor'
+    ),
+    dict(
+            expression=r'end$',
+            description='anchor$'
+    ),
+]:
+    #
+    # compile regexp pattern into a regexp object
+    #
+    regex = namedtuple('regex', regex.keys())(**regex)
+    pattern = re.compile(regex.expression)
+    #
+    # get a search results iterator
+    #
+    count = len(pattern.findall(sentence))
+    matches = pattern.finditer(sentence)
+    def quote(s): return f'"{s}"'
+    print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
+    utils.hashline(char='-')
+
+###############################################################################################
+#
+#   easy regular expressions
+#
+###############################################################################################
+utils.banner('easy regular expressions')
+print("text to search:")
+utils.hashline(char='-')
+print(text_to_search, end='')
+utils.hashline(char='-')
+
+expression = r'\d\d\d.\d\d\d.\d\d\d\d'
+description = 'phone number'
+pattern = re.compile(expression)
+#
+# get a search results iterator
+#
+count = len(pattern.findall(text_to_search))
+matches = pattern.finditer(text_to_search)
+def quote(s): return f'"{s}"'
+print(f'results for {quote(expression):<20} ({description:<20}): ({count})')
+utils.hashline(char='-')
+for match in matches:
+    print(match)
+utils.hashline(char='-')
+#
+#
+#
+utils.banner('search inside file')
+datafilepath = os.path.join(os.getcwd(), 'data', 'data.txt')
+
+with open(datafilepath, 'r') as datafile:
+    contents = datafile.read()
+    matches = pattern.finditer(contents)
+
+    for match in matches:
+        print(match)
