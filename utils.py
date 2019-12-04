@@ -7,7 +7,7 @@ little utilities library
 """
 
 
-def hashline(width=160, char='#'):
+def hashline(width=120, char='#'):
     """
     prints a separation line on terminal
 
@@ -21,7 +21,7 @@ def hashline(width=160, char='#'):
     print(char * width)
 
 
-def banner(text, height=3, width=160, char='#'):
+def banner(text, height=3, width=120, char='#'):
     """
     prints a separation banner on terminal
 
