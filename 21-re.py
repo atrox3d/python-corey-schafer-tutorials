@@ -256,3 +256,31 @@ with open(datafilepath, 'r') as datafile:
     utils.hashline(char='-')
     for match in matches:
         print(match)
+
+###############################################################################################
+#
+#
+#
+#
+#   sets, quantifiers and groups
+#
+#
+#
+#
+###############################################################################################
+utils.banner('sets, quantifiers and groups')
+
+expression = r'(Mr|MS|Mrs)'     # group
+expression += r'\.?'            # quantifier
+expression += r'\s'             # space
+expression += r'[A-Z]'          # set
+expression += r'\w*'            # quantifier
+
+expression = r'(Mr|MS|Mrs)\.?\s[A-Z]\w*'
+description = 'sets, quantifiers and groups'
+
+regex, count, matches = findregex(expression, description, text=text_to_search)
+printresults(regex.expression, regex.description, count)
+utils.hashline(char='-')
+for match in matches:
+    print(match)
