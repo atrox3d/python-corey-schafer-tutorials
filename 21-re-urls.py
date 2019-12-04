@@ -14,7 +14,6 @@ http://coreyms.com
 https://youtube.com
 https://www.nasa.gov
 '''
-
 #
 #   3 groups:
 #       - optional www
@@ -23,7 +22,14 @@ https://www.nasa.gov
 #
 topleveldomain = r'https?://(www\.)?(\w+)(\.\w+)'
 pattern = re.compile(topleveldomain)
-
+###############################################################################################
+#
+#
+#   find groups
+#
+#
+###############################################################################################
+utils.banner('find groups')
 matches = pattern.finditer(urls)
 #
 # loop over matches
@@ -48,4 +54,15 @@ for match in matches:
     #
     line += ", ".join(groups)
     print(line)
+###############################################################################################
+#
+#
+#   replace groups
+#
+#
+###############################################################################################
+utils.banner(r'replace groups: replace each url with \2\3')
+
+subbedurls = pattern.sub(r'\2\3', urls)
+print(subbedurls)
 
