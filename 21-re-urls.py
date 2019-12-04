@@ -102,3 +102,16 @@ sentence = "hello just trying match method"
 pattern = re.compile(r'hello')
 match = pattern.match(sentence)
 printfvar('match', match)
+###############################################################################################
+#
+#
+#   search string
+#
+#
+###############################################################################################
+utils.banner(r'search string')
+
+sentence = "hello just trying search method"
+pattern = re.compile(r'search')
+search = pattern.search(sentence)
+printfvar('search', search)
