@@ -7,6 +7,25 @@ import re
 from collections import namedtuple
 import os
 
+
+def quote(s): return f'"{s}"'
+
+
+def findregex(expression, description, text):
+    regexd = dict(expression=expression, description=description)
+    regex = namedtuple('regex', regexd.keys())(**regexd)
+    # print(expression, description)
+    pattern = re.compile(regex.expression)
+    #
+    # get a search results iterator
+    #
+    count = len(pattern.findall(text_to_search))
+    matches = pattern.finditer(text_to_search)
+    # def quote(s): return f'"{s}"'
+    # print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
+    return regex, count, matches
+
+
 text_to_search = '''
 abcdefghijklmnopqurtuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -60,73 +79,62 @@ utils.hashline(char='-')
 
 for regex in [
     dict(
-            expression=r'abc',
-            description='normal text'
+        expression=r'abc',
+        description='normal text'
     ),
     dict(
-            expression=r'\.',
-            description='actual dot'
+        expression=r'\.',
+        description='actual dot'
     ),
     dict(
-            expression=r'.',
-            description='any character'
+        expression=r'.',
+        description='any character'
     ),
     dict(
-            expression=r'coreyms\.com',
-            description='url'
+        expression=r'coreyms\.com',
+        description='url'
     ),
     dict(
-            expression=r'\d',
-            description='digit'
+        expression=r'\d',
+        description='digit'
     ),
     dict(
-            expression=r'\D',
-            description='non digit'
+        expression=r'\D',
+        description='non digit'
     ),
     dict(
-            expression=r'\w',
-            description='word character'
+        expression=r'\w',
+        description='word character'
     ),
     dict(
-            expression=r'\W',
-            description='non word character'
+        expression=r'\W',
+        description='non word character'
     ),
     dict(
-            expression=r'\s',
-            description='whitespace'
+        expression=r'\s',
+        description='whitespace'
     ),
     dict(
-            expression=r'\S',
-            description='non whitespace'
+        expression=r'\S',
+        description='non whitespace'
     ),
     dict(
-            expression=r'\bHa',
-            description='word bounbary before'
+        expression=r'\bHa',
+        description='word bounbary before'
     ),
     dict(
-            expression=r'\BHa',
-            description='no word bounbary before'
+        expression=r'\BHa',
+        description='no word bounbary before'
     ),
     dict(
-            expression=r'\bHa\b',
-            description='word bounbaries'
+        expression=r'\bHa\b',
+        description='word bounbaries'
     ),
 ]:
-    #
-    # compile regexp pattern into a regexp object
-    #
-    # print(regex, type(regex));exit()
-    regex = namedtuple('regex', regex.keys())(**regex)
-    # expression = regex['expression']
-    # description = regex['description']
-    pattern = re.compile(regex.expression)
-    #
-    # get a search results iterator
-    #
-    count = len(pattern.findall(text_to_search))
-    matches = pattern.finditer(text_to_search)
-    def quote(s): return f'"{s}"'
+    regex, count, matches = findregex(**regex, text=text_to_search)
+
     print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
+
     utils.hashline(char='-')
     # for match in matches:
     #     # <re.Match object; span=(1, 4), match='abc'>
@@ -140,7 +148,7 @@ for regex in [
     #          )
     # utils.hashline(char='-')
 
-
+utils.banner('search with anchors')
 print("text to search:")
 utils.hashline(char='-')
 print(sentence)
@@ -148,25 +156,15 @@ utils.hashline(char='-')
 
 for regex in [
     dict(
-            expression=r'^Start',
-            description='^anchor'
+        expression=r'^Start',
+        description='^anchor'
     ),
     dict(
-            expression=r'end$',
-            description='anchor$'
+        expression=r'end$',
+        description='anchor$'
     ),
 ]:
-    #
-    # compile regexp pattern into a regexp object
-    #
-    regex = namedtuple('regex', regex.keys())(**regex)
-    pattern = re.compile(regex.expression)
-    #
-    # get a search results iterator
-    #
-    count = len(pattern.findall(sentence))
-    matches = pattern.finditer(sentence)
-    def quote(s): return f'"{s}"'
+    regex, count, matches = findregex(**regex, text=sentence)
     print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
     utils.hashline(char='-')
 
@@ -189,8 +187,9 @@ pattern = re.compile(expression)
 #
 count = len(pattern.findall(text_to_search))
 matches = pattern.finditer(text_to_search)
-def quote(s): return f'"{s}"'
+
 print(f'results for {quote(expression):<20} ({description:<20}): ({count})')
+
 utils.hashline(char='-')
 for match in matches:
     print(match)
