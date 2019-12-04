@@ -3,15 +3,13 @@
 #
 #################################################################################
 # normal import
-import module
+from modules import module, module as m
 # rename module
-import module as m
 # import some symbol
-from module import find_index, test
 # import and rename symbols
-from module import find_index as fi, test
+from modules.module import find_index as fi
 # import everything
-from module import *
+from modules.module import *
 
 import sys
 
