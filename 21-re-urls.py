@@ -76,7 +76,6 @@ utils.banner(r'replace groups: replace each url with \2\3')
 
 subbedurls = pattern.sub(r'\2\3', urls)
 printfvar('subbedurls', subbedurls)
-
 ###############################################################################################
 #
 #
@@ -90,3 +89,16 @@ findall = pattern.findall(urls)
 printfvar('findall', findall)
 for found in findall:
     printfvar('found', found)
+###############################################################################################
+#
+#
+#   match (start of string)
+#
+#
+###############################################################################################
+utils.banner(r'match (start of string)')
+
+sentence = "hello just trying match method"
+pattern = re.compile(r'hello')
+match = pattern.match(sentence)
+printfvar('match', match)
