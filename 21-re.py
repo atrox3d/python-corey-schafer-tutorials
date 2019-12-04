@@ -8,10 +8,25 @@ from collections import namedtuple
 import os
 
 
-def quote(s): return f'"{s}"'
+def printresults(expression, description, count):
+    """
+    prints a formatted line with the search results stats
+    """
+
+    # helper, quotes string
+    def quote(s): return f'"{s}"'
+
+    print(f'results for {quote(expression):<20} ({description:<20}): ({count})')
 
 
 def findregex(expression, description, text):
+    """
+    search for the expression inside text
+    returns:
+        - a namedtuple containing expression and description
+        - match count
+        - match object
+    """
     regexd = dict(expression=expression, description=description)
     regex = namedtuple('regex', regexd.keys())(**regexd)
     # print(expression, description)
@@ -19,8 +34,8 @@ def findregex(expression, description, text):
     #
     # get a search results iterator
     #
-    count = len(pattern.findall(text_to_search))
-    matches = pattern.finditer(text_to_search)
+    count = len(pattern.findall(text))
+    matches = pattern.finditer(text)
     # def quote(s): return f'"{s}"'
     # print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
     return regex, count, matches
@@ -57,7 +72,13 @@ sentence = 'Start a sentence and then bring it to an end'
 
 ###############################################################################################
 #
+#
+#
+#
 #   understanding raw strings
+#
+#
+#
 #
 ###############################################################################################
 utils.banner('understanding raw strings')
@@ -68,7 +89,13 @@ print('raw strings: prepending an r to the quotes r\'\' the \\t at the beginnig 
 print(r'\tTab')
 ###############################################################################################
 #
+#
+#
+#
 #   simple regular expressions
+#
+#
+#
 #
 ###############################################################################################
 utils.banner('simple regular expressions')
@@ -133,7 +160,7 @@ for regex in [
 ]:
     regex, count, matches = findregex(**regex, text=text_to_search)
 
-    print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
+    printresults(regex.expression, regex.description, count)
 
     utils.hashline(char='-')
     # for match in matches:
@@ -165,12 +192,19 @@ for regex in [
     ),
 ]:
     regex, count, matches = findregex(**regex, text=sentence)
-    print(f'results for {quote(regex.expression):<20} ({regex.description:<20}): ({count})')
+    printresults(regex.expression, regex.description,count)
+
     utils.hashline(char='-')
 
 ###############################################################################################
 #
+#
+#
+#
 #   easy regular expressions
+#
+#
+#
 #
 ###############################################################################################
 utils.banner('easy regular expressions')
@@ -179,30 +213,46 @@ utils.hashline(char='-')
 print(text_to_search, end='')
 utils.hashline(char='-')
 
-expression = r'\d\d\d.\d\d\d.\d\d\d\d'
-description = 'phone number'
-pattern = re.compile(expression)
+regex = dict(
+                expression = r'\d\d\d.\d\d\d.\d\d\d\d',
+                description = 'phone number',
+)
+# pattern = re.compile(expression)
 #
 # get a search results iterator
 #
-count = len(pattern.findall(text_to_search))
-matches = pattern.finditer(text_to_search)
+# count = len(pattern.findall(text_to_search))
+# matches = pattern.finditer(text_to_search)
+regex, count, matches = findregex(**regex, text=text_to_search)
 
-print(f'results for {quote(expression):<20} ({description:<20}): ({count})')
+printresults(regex.expression, regex.description, count)
 
 utils.hashline(char='-')
 for match in matches:
     print(match)
 utils.hashline(char='-')
+###############################################################################################
 #
 #
 #
+#
+#   search inside file
+#
+#
+#
+#
+###############################################################################################
 utils.banner('search inside file')
 datafilepath = os.path.join(os.getcwd(), 'data', 'data.txt')
 
 with open(datafilepath, 'r') as datafile:
+    expression = r'\d\d\d.\d\d\d.\d\d\d\d'
+    description = 'phone number'
     contents = datafile.read()
-    matches = pattern.finditer(contents)
+    regex, count, matches = findregex(expression, description, text=contents)
 
+    printresults(regex.expression, regex.description, count)
+
+    utils.hashline(char='-')
     for match in matches:
         print(match)
