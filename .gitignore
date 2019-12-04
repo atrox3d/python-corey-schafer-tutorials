@@ -1,10 +1,10 @@
 /venv/
 /.idea/
 /__pycache__/
-/bronx.copy.jpg
-/test.copy.txt
-/test2.txt
-/bronx.copy.chunk.jpg
+/data/bronx.copy.jpg
+/data/test.copy.txt
+/data/test2.txt
+/data/bronx.copy.chunk.jpg
 /multifile/
 /data/newnames.csv
 

@@ -13,7 +13,7 @@ utils.banner('copy files')
 #
 #   open source file for reading
 #
-with open('test.txt', 'r' ) as rf:
+with open('data/test.txt', 'r') as rf:
     #
     #   show source file contents
     #
@@ -27,14 +27,14 @@ with open('test.txt', 'r' ) as rf:
     #
     #   open dest file for writing
     #
-    with open('test.copy.txt', 'w') as wf:
+    with open('data/test.copy.txt', 'w') as wf:
         for line in rf:
             wf.write(line)
 
     #
     #   open dest file for reading
     #
-    with open('test.copy.txt', 'r') as wf:
+    with open('data/test.copy.txt', 'r') as wf:
         print(f'dump of {wf.name}')
         utils.hashline(char='-')
         for line in wf:
