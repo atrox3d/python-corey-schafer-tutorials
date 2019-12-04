@@ -115,3 +115,18 @@ sentence = "hello just trying search method"
 pattern = re.compile(r'search')
 search = pattern.search(sentence)
 printfvar('search', search)
+###############################################################################################
+#
+#
+#   re.flags
+#
+#
+###############################################################################################
+utils.banner(r're.flags')
+
+sentence = "hello just trying search flags"
+pattern = re.compile(r'search', re.IGNORECASE)
+# same
+pattern = re.compile(r'search', re.I)
+search = pattern.search(sentence)
+printfvar('search', search)
