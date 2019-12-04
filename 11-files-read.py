@@ -2,7 +2,7 @@
 #   https://www.youtube.com/watch?v=eirjjyP2qcQ
 #
 #################################################################################
-import utils
+from modules import utils
 
 utils.banner('basic file open with builtin open()')
 """

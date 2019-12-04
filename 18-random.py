@@ -2,7 +2,7 @@
 #   https://www.youtube.com/watch?v=KzqSDvzOFNA
 #
 #################################################################################
-import utils
+from modules import utils
 import random
 
 utils.banner("get float betweem 0 and 1 with .random")

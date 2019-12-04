@@ -2,9 +2,7 @@
 #   https://www.youtube.com/watch?v=eirjjyP2qcQ
 #
 #################################################################################
-import utils
-import io
-import datetime
+from modules import utils
 
 """
 try to write on an open for reading file
