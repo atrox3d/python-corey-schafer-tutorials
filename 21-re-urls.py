@@ -8,6 +8,12 @@ from collections import namedtuple
 import os
 
 
+def printfvar(varname, var):
+    varname = f'{varname},'
+    vartype = f'{str(type(var))},'
+    print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
+
+
 urls = '''
 https://www.google.com
 http://coreyms.com
@@ -30,16 +36,21 @@ pattern = re.compile(topleveldomain)
 #
 ###############################################################################################
 utils.banner('find groups')
-matches = pattern.finditer(urls)
+finditer = pattern.finditer(urls)
+
+printfvar('finditer', finditer)
 #
-# loop over matches
+# loop over finditer
 #
-for match in matches:
+for match in finditer:
+    printfvar('match', match)
     #
     #   loop over groups inside every match
     #
     groups = []
+    printfvar('match.groups', match.groups())
     for group in match.groups():
+        printfvar('group', group)
         #
         # format every group
         #
@@ -64,5 +75,18 @@ for match in matches:
 utils.banner(r'replace groups: replace each url with \2\3')
 
 subbedurls = pattern.sub(r'\2\3', urls)
-print(subbedurls)
+printfvar('subbedurls', subbedurls)
 
+###############################################################################################
+#
+#
+#   findall
+#
+#
+###############################################################################################
+utils.banner(r'findall')
+
+findall = pattern.findall(urls)
+printfvar('findall', findall)
+for found in findall:
+    printfvar('found', found)
