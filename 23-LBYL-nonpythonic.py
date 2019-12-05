@@ -18,7 +18,7 @@ from modules.person import Person
 utils.banner('ducktyping | non pythonic | LBYL: look before you leap')
 
 
-def quackandfly(thing):
+def quackandfly_ifclass(thing):
     # LBYL
     # non pythonic
     # not duck-typed
@@ -31,8 +31,25 @@ def quackandfly(thing):
     print()
 
 
-duck = Duck()
-quackandfly(duck)
+def quackandfly_ifmethod(thing):
+    # LBYL
+    # non pythonic
+    # not duck-typed
+    if hasattr(thing, 'quack'):
+        if callable(thing.quack):
+            thing.quack()
 
+    if hasattr(thing, 'fly'):
+        if callable(thing.fly):
+            thing.fly()
+    print()
+
+
+duck = Duck()
 person = Person()
-quackandfly(person)
+
+quackandfly_ifclass(duck)
+quackandfly_ifclass(person)
+
+quackandfly_ifmethod(duck)
+quackandfly_ifmethod(person)

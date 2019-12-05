@@ -15,3 +15,24 @@ from modules.person import Person
 #
 #################################################################################
 utils.banner('ducktyping | pythonic | EAFP: easier ask forgiveness than permission')
+
+
+def quackandfly(thing):
+    # EAFP
+    # pythonic
+    # duck-typed
+    try:
+        thing.quack()
+        thing.fly()
+        thing.bark()
+    except AttributeError as ae:
+        print(ae)
+
+    print()
+
+
+duck = Duck()
+quackandfly(duck)
+
+person = Person()
+quackandfly(person)
