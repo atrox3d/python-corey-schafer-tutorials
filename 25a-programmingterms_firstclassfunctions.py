@@ -28,7 +28,7 @@ utils.printfvar('f', f)
 utils.printfvar('f(5)', f(5))
 
 #################################################################################
-utils.banner('high-order functions')
+utils.banner('high-order functions: pass a function as an argument')
 
 
 #
@@ -68,3 +68,48 @@ print()
 #
 cubes = mymap(cube, [1, 2, 3, 4, 5])
 utils.printfvar('cubes', cubes)
+
+#################################################################################
+utils.banner('first-class functions: return a function from another function')
+
+
+def logger(msg):
+    #
+    #   closure: the value of msg will be remembered from by log_message()
+    #
+    def log_message():
+        print(f'Log: {msg}')
+
+    return log_message
+
+
+#
+#   logger initializes log_message with msg = "Hi!"
+#
+loghi = logger('Hi!')
+#
+#   loghi() remembers the value of msg when called
+#
+loghi()
+
+
+#
+#   parametric closure
+#
+def html(tag):
+    print(f'creating wrap(): <{tag}>{{msg}}</{tag}>')
+
+    def wrap(msg):
+        print(f'<{tag}>{msg}</{tag}>')
+
+    return wrap
+
+
+#
+#   test our closure
+#
+h1 = html('H1')
+p = html('P')
+
+h1('headline')
+p('paragraph')
