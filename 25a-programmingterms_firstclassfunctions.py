@@ -45,6 +45,7 @@ def mymap(func, arglist):
     utils.printfvar('arglist', arglist)
     result = []
     for i in arglist:
+        print(f'applying {func.__name__} to {i}')
         result.append(func(i))
     utils.printfvar('result', result)
     return result
