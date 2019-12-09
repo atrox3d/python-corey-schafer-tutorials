@@ -30,3 +30,5 @@ utils.banner('generator functions as list')
 utils.printfvar('gen', gen)
 for g in gen:
     utils.printfvar('g', g)
+########################################################################################################################
+#def subgen
