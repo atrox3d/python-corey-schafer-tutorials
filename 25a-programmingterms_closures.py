@@ -70,3 +70,38 @@ utils.printfvar(my_func.__name__, my_func)
 my_func()
 my_func()
 my_func()
+#################################################################################
+utils.banner('closures: return the inner function without calling it and passing a parameter during creation')
+
+
+#
+#   redefine outer_func
+#   this time we pass an argument during the creation of inner_func
+#
+def outer_func(msg):
+    #
+    #   free variable
+    #
+    message = msg
+
+    #
+    #   define an inner function
+    #
+    def inner_func():
+        print(f'inner_func, accessing outer message argument value: {message}')
+
+    #
+    #   returns None, after executing inner_func
+    #
+    return inner_func
+
+
+#
+#   test this form of closure
+#
+print()
+hi = outer_func('hi')
+hello = outer_func('hello')
+hi()
+hello()
+
