@@ -104,4 +104,28 @@ hi = outer_func('hi')
 hello = outer_func('hello')
 hi()
 hello()
+#################################################################################
+utils.banner(
+    'closures: return the inner function without calling it and passing a parameter during creation and at call time')
 
+
+#
+#   parametric closure
+#
+def html(tag):
+    print(f'creating wrap(): <{tag}>{{msg}}</{tag}>')
+
+    def wrap(msg):
+        print(f'<{tag}>{msg}</{tag}>')
+
+    return wrap
+
+
+#
+#   test our closure
+#
+h1 = html('H1')
+p = html('P')
+
+h1('headline')
+p('paragraph')
