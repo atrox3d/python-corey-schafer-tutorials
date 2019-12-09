@@ -16,3 +16,15 @@ logging.basicConfig(
 )
 
 
+def logger(func):
+    #
+    #   create logfunc
+    #   will remeber func and args
+    #   will run func(*args) after logging the call
+    #
+    def logfunc(*args):
+        logging.info('running "{}" with arguments {}'.format(func.__name__, args))
+        print(func(*args))
+
+    return logfunc
+
