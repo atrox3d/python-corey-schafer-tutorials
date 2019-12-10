@@ -40,3 +40,21 @@ def displayinfo(name, age):
 
 # display()
 displayinfo('john', 25)
+
+#################################################################################
+utils.banner('decorator practical examples: timer')
+
+
+def mytimer(func):
+    import time
+
+    def wrapper(*args, **kwargs):
+        t1 = time.time()
+        result = func(*args, **kwargs)
+        t2 = time.time()
+        t = t2 - t1
+        print(f'{func.__name__} ran in {t} secs')
+        return result
+
+    return wrapper
+
