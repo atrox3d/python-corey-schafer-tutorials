@@ -7,6 +7,4 @@
 /data/bronx.copy.chunk.jpg
 /multifile/
 /data/newnames.csv
-/data/example.log
-/data/display.log
-/data/displayinfo.log
+/data/*.log
