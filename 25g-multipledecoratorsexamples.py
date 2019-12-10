@@ -22,6 +22,7 @@ def mylogger(func):
     print(f'logfile: {filename}')
     logging.basicConfig(filename=filename, level=logging.INFO)
 
+    @wraps(func)
     def wrapper(*args, **kwargs):
         logging.info(
             # 'ran with args: {} and kwargs: {}'.format(args, kwargs)
@@ -39,6 +40,7 @@ utils.banner('decorator practical examples: timer')
 def mytimer(func):
     import time
 
+    @wraps(func)
     def wrapper(*args, **kwargs):
         t1 = time.time()
         result = func(*args, **kwargs)
