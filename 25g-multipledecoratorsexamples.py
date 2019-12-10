@@ -3,7 +3,10 @@
 #
 #################################################################################
 from modules import utils
-
+#
+#   necessary to preserve original function with multiple decorators
+#
+from functools import wraps
 
 #################################################################################
 utils.banner('decorator practical examples: logger')
@@ -29,19 +32,6 @@ def mylogger(func):
     return wrapper
 
 
-# @mylogger
-# def display():
-#     print('display function ran')
-
-
-@mylogger
-def displayinfo(name, age):
-    print(f'displayinfo ran with arguments ({name}, {age})')
-
-
-# display()
-displayinfo('john', 25)
-
 #################################################################################
 utils.banner('decorator practical examples: timer')
 
@@ -63,6 +53,14 @@ def mytimer(func):
 import time
 
 
+#
+#   without wraps this creates wrapper log, because it would be equal to :
+#
+#   displayinfo = mylogger(mytimer(displayinfo))
+#
+#   and mylogger would receive as argument the wrap inner function of mytimer
+#
+@mylogger
 @mytimer
 def displayinfo(name, age):
     time.sleep(1)
