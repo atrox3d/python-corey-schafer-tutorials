@@ -58,3 +58,14 @@ def mytimer(func):
 
     return wrapper
 
+
+import time
+
+
+@mytimer
+def displayinfo(name, age):
+    time.sleep(1)
+    print(f'displayinfo ran with arguments ({name}, {age})')
+
+
+displayinfo('john', 25)
