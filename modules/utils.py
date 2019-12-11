@@ -21,7 +21,7 @@ def hashline(width=120, char='#'):
     print(char * width)
 
 
-def banner(text, height=3, width=120, char='#'):
+def banner(*lines, height=3, width=120, char='#'):
     """
     prints a separation banner on terminal
 
@@ -35,13 +35,31 @@ def banner(text, height=3, width=120, char='#'):
     :return:        nothing
         :rtype: None
     """
+    #
+    #   first hashline
+    #
     hashline(width, char)
     spacing = height // 2 + 1
+    #
+    #   upper single hashtags
+    #
     for spaceline in range(1, spacing):
         print(char)
-    print(f'{char} {text}')
+    #
+    #   prints the message
+    #
+    # print(type(lines))
+    # print(len(lines))
+    for line in lines:
+        print(f'{char} {line}')
+    #
+    #   lower single hashtags
+    #
     for spaceline in range(1, spacing):
         print(char)
+    #
+    #   last hashline
+    #
     hashline(width, char)
 
 
@@ -99,3 +117,8 @@ def printfvar(varname, var):
     varname = f'{varname},'
     vartype = f'{str(type(var))},'
     print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
+
+
+if __name__ == "__main__":
+    banner("hello")
+    banner("hello", "there")
