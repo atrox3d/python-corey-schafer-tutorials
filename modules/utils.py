@@ -122,3 +122,6 @@ def printfvar(varname, var):
 if __name__ == "__main__":
     banner("hello")
     banner("hello", "there")
+    banner("hello", "there", char='*', height=10, width=20)
+    banner("hello", "there", char='*')
+    banner("hello", "there", char='*', height=10)
