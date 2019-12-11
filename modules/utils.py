@@ -51,7 +51,9 @@ def banner(*lines, height=3, width=120, char='#'):
     # print(type(lines))
     # print(len(lines))
     for line in lines:
-        print(f'{char} {line}')
+        sublines = line.split('\n')
+        for subline in sublines:
+            print(f'{char} {subline}')
     #
     #   lower single hashtags
     #
