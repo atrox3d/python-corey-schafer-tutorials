@@ -42,14 +42,15 @@ def hello3():
     print('hello3')
 
 
-hello2 = repeat(5)(hello2)
+hello()
+print()
+
+hello2 = repeat(2)(hello2)
 hello2()
 print()
 
-repeater = repeat(5)
+repeater = repeat(3)
 repeated = repeater(hello3)
 
 repeated()
 print()
-
-hello()
