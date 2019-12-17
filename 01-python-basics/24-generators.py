@@ -20,15 +20,15 @@ def get_simplegenerator(n=10):
 gen = get_simplegenerator()
 
 utils.banner('generator functions')
-utils.printfvar('gen', gen)
+utils.printfvar(gen, 'gen')
 for g in gen:
-    utils.printfvar('g', g)
+    utils.printfvar(g, 'g')
 
 gen = list(get_simplegenerator())
 
 utils.banner('generator functions as list')
-utils.printfvar('gen', gen)
+utils.printfvar(gen, 'gen')
 for g in gen:
-    utils.printfvar('g', g)
+    utils.printfvar(g, 'g')
 ########################################################################################################################
 #def subgen

@@ -110,7 +110,7 @@ def print_object_details(obj, name, properties=True, innerclasses=True, function
             print(f'{k:<20}|{str(type(v)):<20}')
 
 
-def printfvar(varname, var):
+def printfvar(var, varname):
     """
     prints varname, var type and value formatted
     :param varname:

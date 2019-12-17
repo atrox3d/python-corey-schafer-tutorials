@@ -18,7 +18,7 @@ def outer_function():
 
 
 func_assign = outer_function()
-utils.printfvar('func_assign', func_assign)
+utils.printfvar(func_assign, 'func_assign')
 
 ########################################################################################################################
 utils.banner("""

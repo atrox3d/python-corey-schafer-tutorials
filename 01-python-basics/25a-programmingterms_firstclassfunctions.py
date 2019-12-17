@@ -12,20 +12,20 @@ def square(x):
     return x * x
 
 
-utils.printfvar('square', square)
+utils.printfvar(square, 'square')
 #
 # assign return value to variable
 #
 f = square(5)
-utils.printfvar('f', f)
+utils.printfvar(f, 'f')
 
 print()
 #
 # assign function to variable
 #
 f = square
-utils.printfvar('f', f)
-utils.printfvar('f(5)', f(5))
+utils.printfvar(f, 'f')
+utils.printfvar(f(5), 'f(5)')
 
 #################################################################################
 utils.banner('high-order functions: pass a function as an argument')
@@ -41,13 +41,13 @@ def mymap(func, arglist):
     :param func: a function that accepts a value
     :param arglist: a list of values to apply the func to
     """
-    utils.printfvar(func.__name__, func)
-    utils.printfvar('arglist', arglist)
+    utils.printfvar(func, func.__name__)
+    utils.printfvar(arglist, 'arglist')
     result = []
     for i in arglist:
         print(f'applying {func.__name__} to {i}')
         result.append(func(i))
-    utils.printfvar('result', result)
+    utils.printfvar(result, 'result')
     return result
 
 
@@ -55,7 +55,7 @@ def mymap(func, arglist):
 #   apply square function to list
 #
 squares = mymap(square, [1, 2, 3, 4, 5])
-utils.printfvar('squares', squares)
+utils.printfvar(squares, 'squares')
 
 
 def cube(x):
@@ -67,7 +67,7 @@ print()
 #   apply cube function to list
 #
 cubes = mymap(cube, [1, 2, 3, 4, 5])
-utils.printfvar('cubes', cubes)
+utils.printfvar(cubes, 'cubes')
 
 #################################################################################
 utils.banner('first-class functions: return a function from another function')

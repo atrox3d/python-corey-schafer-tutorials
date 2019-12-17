@@ -30,7 +30,7 @@ def outer_func():
 #   test this form of closure
 #
 x = outer_func()
-utils.printfvar('x', x)
+utils.printfvar(x, 'x')
 
 #################################################################################
 utils.banner('closures: return the inner function without calling it')
@@ -63,7 +63,7 @@ def outer_func():
 #
 print()
 my_func = outer_func()
-utils.printfvar(my_func.__name__, my_func)
+utils.printfvar(my_func, my_func.__name__)
 #
 #   execute inner_func
 #
