@@ -63,7 +63,7 @@ def create_examplefiles(dirname):
     start by creating the files
     
 """
-exampledir = 'multifile'
+exampledir = '../multifile'
 create_examplefiles(exampledir)
 #
 #   check our new files
