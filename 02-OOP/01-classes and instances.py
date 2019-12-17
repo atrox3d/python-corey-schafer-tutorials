@@ -2,14 +2,18 @@ from modules import utils
 
 
 class Employee:
-    pass
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.pay = pay
+        self.email = f'{first}.{last}@company.com'
+
+    def fullname(self):
+        return f'{self.first}, {self.last}'
 
 
-emp1 = Employee()
-emp2 = Employee()
+emp1 = Employee('bob', 'red', 5000)
+emp2 = Employee('kate', 'blue', 5500)
 
-utils.printfvar(emp1, 'emp1')
-utils.printfvar(emp2, 'emp2')
-
-emp1.name = 'bob'
-print(emp1.name)
+print(emp1.fullname())
+print(Employee.fullname(emp1))
