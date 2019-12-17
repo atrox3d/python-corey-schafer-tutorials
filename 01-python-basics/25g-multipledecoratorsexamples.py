@@ -18,7 +18,7 @@ def mylogger(func):
     #
     #   create logfile path and configure logger
     #
-    filename = os.path.join(os.getcwd(), 'data', f'{func.__name__}.log')
+    filename = os.path.join(os.getcwd(), '..', 'data', f'{func.__name__}.log')
     print(f'logfile: {filename}')
     logging.basicConfig(filename=filename, level=logging.INFO)
 
