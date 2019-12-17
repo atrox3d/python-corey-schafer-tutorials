@@ -1,4 +1,11 @@
 import functools
+from modules import utils
+
+########################################################################################################################
+utils.banner(
+    'https://realpython.com/primer-on-python-decorators/#decorators-with-arguments',
+    'decorator with arguments'
+)
 
 
 def repeat(num_times):
