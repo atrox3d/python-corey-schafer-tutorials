@@ -4,9 +4,9 @@
 #################################################################################
 import os
 
-corruptfilepath = os.path.join(os.getcwd(), 'data', 'corrupt_file.txt')
-datafilepath = os.path.join(os.getcwd(), 'data', 'test_file.txt')
-wrongdatafilepath = os.path.join(os.getcwd(), 'data', 'testfile.txt')
+corruptfilepath = os.path.join(os.getcwd(), '..', 'data', 'corrupt_file.txt')
+datafilepath = os.path.join(os.getcwd(), '..', 'data', 'test_file.txt')
+wrongdatafilepath = os.path.join(os.getcwd(), '..', 'data', 'testfile.txt')
 
 try:
     f = open(corruptfilepath)
