@@ -4,11 +4,12 @@
 #################################################################################
 import csv
 import os
+from modules import utils
 
 html = ''
 names = []
 cwd = os.getcwd()
-filepath = os.path.join(cwd, '..', 'data', 'patrons.csv')
+filepath = os.path.join(utils.PROJECT_PATH, 'data', 'patrons.csv')
 
 print(f'data file: {filepath}')
 if not os.path.exists(filepath):
