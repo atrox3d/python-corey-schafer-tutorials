@@ -4,13 +4,13 @@ import functools
 def repeat(num_times):
     """
     sets num_times in the closure\n
-    defines decorator_repeat\n
+    defines decorator_repeat(func)\n
     returns decorator_repeat
     """
 
     def decorator_repeat(func):
         """
-        defines wrapper_repeat\n
+        defines wrapper_repeat(*args, **kwargs)\n
         returns wrapper_repeat
         """
 
