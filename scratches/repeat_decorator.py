@@ -3,22 +3,26 @@ import functools
 
 def repeat(num_times):
     """
-    sets num_times in the closure\n
-    defines decorator_repeat(func)\n
-    returns decorator_repeat
+    sets num_times in the closure
+
+    defines decorator_repeat(func)
+
+    :return: decorator_repeat
     """
 
     def decorator_repeat(func):
         """
-        defines wrapper_repeat(*args, **kwargs)\n
-        returns wrapper_repeat
+        defines wrapper_repeat(*args, **kwargs)
+
+        :returns: wrapper_repeat
         """
 
         @functools.wraps(func)
         def wrapper_repeat(*args, **kwargs):
             """
-            runs func num_times\n
-            returns last return value
+            func(*args, **kwargs) num_times
+
+            :return:    last return value
             """
             for _ in range(num_times):
                 value = func(*args, **kwargs)
