@@ -17,7 +17,7 @@ import os
 #################################################################################
 utils.banner('open data/names.csv and list its content')
 # get file path
-csvpath = os.path.join(os.getcwd(), '..', 'data', 'names.csv')
+csvpath = os.path.join(utils.PROJECT_PATH, 'data', 'names.csv')
 print(csvpath)
 utils.hashline(char='-')
 #
@@ -35,7 +35,7 @@ with open(csvpath, 'r') as csvfile:
 
 utils.banner('create new csv from current')
 # get new file path
-newcsvpath = os.path.join(os.getcwd(), 'data', 'newnames.csv')
+newcsvpath = os.path.join(utils.PROJECT_PATH, 'data', 'newnames.csv')
 #
 #   open source csv file and read its contents
 #
