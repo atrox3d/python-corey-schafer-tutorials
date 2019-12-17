@@ -17,7 +17,7 @@ import os
 #################################################################################
 utils.banner('open data/names.csv and list its content')
 # get file path
-csvpath = os.path.join(os.getcwd(), 'data', 'names.csv')
+csvpath = os.path.join(os.getcwd(), '..', 'data', 'names.csv')
 print(csvpath)
 utils.hashline(char='-')
 #
