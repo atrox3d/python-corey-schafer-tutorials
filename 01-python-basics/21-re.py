@@ -243,7 +243,7 @@ utils.hashline(char='-')
 #
 ###############################################################################################
 utils.banner('search inside file')
-datafilepath = os.path.join(os.getcwd(), 'data', 'data.txt')
+datafilepath = os.path.join(os.getcwd(), '..', 'data', 'data.txt')
 
 with open(datafilepath, 'r') as datafile:
     expression = r'\d\d\d.\d\d\d.\d\d\d\d'
