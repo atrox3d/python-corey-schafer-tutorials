@@ -5,6 +5,7 @@ little utilities library
 
 
 """
+import os
 
 
 def hashline(width=120, char='#'):
@@ -127,3 +128,19 @@ if __name__ == "__main__":
     banner("hello", "there", char='*', height=10, width=20)
     banner("hello", "there", char='*')
     banner("hello", "there", char='*', height=10)
+
+
+def getprojectpath():
+    debug = False
+    module_path = __file__
+    module_dir = os.path.dirname(__file__)
+    project_dir_rel = os.path.join(module_dir, '..')
+    project_dir_abs = os.path.abspath(project_dir_rel)
+    if debug:
+        print(project_dir_rel)
+        print(project_dir_abs)
+
+    return project_dir_abs
+
+
+PROJECT_PATH = getprojectpath()
