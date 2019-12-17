@@ -14,11 +14,11 @@ try:
     #
     #   open source file for reading
     #
-    with open('data/bronx.jpg', 'r') as rf:
+    with open('../data/bronx.jpg', 'r') as rf:
         #
         #   open dest file for writing
         #
-        with open('data/bronx.copy.jpg', 'w') as wf:
+        with open('../data/bronx.copy.jpg', 'w') as wf:
             for line in rf:
                 wf.write(line)
 except UnicodeDecodeError as ude:
@@ -32,11 +32,11 @@ try:
     #
     #   open source file for reading
     #
-    with open('data/bronx.jpg', 'rb') as rf:
+    with open('../data/bronx.jpg', 'rb') as rf:
         #
         #   open dest file for writing
         #
-        with open('data/bronx.copy.jpg', 'wb') as wf:
+        with open('../data/bronx.copy.jpg', 'wb') as wf:
             for line in rf:
                 wf.write(line)
 except UnicodeDecodeError as ude:
@@ -49,11 +49,11 @@ utils.banner('try to copy binary file in binary mode chunk by chunk')
 #
 #   open source file for reading
 #
-with open('data/bronx.jpg', 'rb') as rf:
+with open('../data/bronx.jpg', 'rb') as rf:
     #
     #   open dest file for writing
     #
-    with open('data/bronx.copy.chunk.jpg', 'wb') as wf:
+    with open('../data/bronx.copy.chunk.jpg', 'wb') as wf:
         chunk_size = 4096
         rf_chunk = rf.read(chunk_size)
         # check if we read something

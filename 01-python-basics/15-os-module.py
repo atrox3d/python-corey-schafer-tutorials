@@ -86,10 +86,10 @@ rename files
 """
 banner('os.rename')
 # create test file
-open('data/test.txt', 'a').close()
-os.rename('data/test.txt', 'demo.txt')
+open('../data/test.txt', 'a').close()
+os.rename('../data/test.txt', 'demo.txt')
 print(os.listdir())
-os.rename('demo.txt', 'data/test.txt')
+os.rename('demo.txt', '../data/test.txt')
 hashline(char='-')
 print(os.listdir())
 """
@@ -98,7 +98,7 @@ file info
 
 """
 banner('os.stat')
-stats = os.stat('data/test.txt')
+stats = os.stat('../data/test.txt')
 print(type(stats))
 
 # vars(stats) does not work
@@ -106,7 +106,7 @@ for k, v in {name: getattr(stats, name) for name in dir(stats) if name.startswit
     print(f'{k:<20}|{str(type(v)):<20}:{v:>20}')
 
 from datetime import datetime
-modification_time =  os.stat('data/test.txt').st_mtime
+modification_time =  os.stat('../data/test.txt').st_mtime
 print('modification time : ', datetime.fromtimestamp(modification_time))
 
 banner("os.walk")

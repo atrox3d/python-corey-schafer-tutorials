@@ -10,7 +10,7 @@ utils.banner('basic file open with builtin open()')
 - closes the file
 - deletes the file variable
 """
-f = open('data/test.txt', 'r')
+f = open('../data/test.txt', 'r')
 print(f'file name : {f.name}')
 print(f'file mode : {f.mode}')
 print(f'file {f.name} is {"closed" if f.closed else "open"}')
@@ -22,7 +22,7 @@ del f
 same as before but using context manager
 """
 utils.banner('file open with context manager')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     print(f'file name : {f.name}')
     print(f'file mode : {f.mode}')
 
@@ -34,7 +34,7 @@ loads entire file in memory and print its contents with read() method
 * not advisable with large files *
 """
 utils.banner('print file contents loading all the file in memory with .read()')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     f_content = f.read()
     print(f_content)
 
@@ -43,7 +43,7 @@ loads entire file in memory and print its contents with .readlines() method
 * not advisable with large files *
 """
 utils.banner('print file contents loading all the file in memory with .readlines()')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     f_content = f.readlines()
     print(f_content)
 
@@ -52,7 +52,7 @@ loads a single line \\n terminated
 the file pointer is consistent across multiple calls
 """
 utils.banner('print file contents loading one line at a time with .readline()')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     f_content = f.readline()
     print(f_content)
 
@@ -64,7 +64,7 @@ loads a single line \\n terminated
 the file pointer is consistent across multiple calls
 """
 utils.banner('print file contents loading one line at a time with iterator')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     for line in f:
         print(line)
 
@@ -74,7 +74,7 @@ prints the resulting text
 adds a symbol '*' to highlight the chunks
 """
 utils.banner('print file contents loading chunks of data, using .read(size)')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     size = 10
     f_content = f.read(size)
 
@@ -90,7 +90,7 @@ current file pointer offset
 data read at the offset
 """
 utils.banner('print file contents changing file pointer position')
-with open('data/test.txt', 'r') as f:
+with open('../data/test.txt', 'r') as f:
     size = 10
     for offset in range(1, size+1):
         print(f'current file pointer position: {f.tell()}')
