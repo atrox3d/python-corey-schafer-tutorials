@@ -110,16 +110,20 @@ def print_object_details(obj, name, properties=True, innerclasses=True, function
             print(f'{k:<20}|{str(type(v)):<20}')
 
 
-def printfvar(var, varname):
+def printfvar(var, varname=None):
     """
     prints varname, var type and value formatted
     :param varname:
     :param var:
     :return:
     """
+    if varname is None:
+        varname = getattr(var, '__name__', f'{{{var.__class__.__name__}}}')
+
     varname = f'{varname},'
     vartype = f'{str(type(var))},'
-    print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
+    #print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
+    print(f'{varname:<20} type: {vartype:<30} value: {repr(var)}')
 
 
 if __name__ == "__main__":
