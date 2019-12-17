@@ -9,7 +9,7 @@ import os
 #################################################################################
 utils.banner('closures: setup logging')
 
-logfile = os.path.join(os.getcwd(), 'data', 'example.log')
+logfile = os.path.join(os.getcwd(), '..', 'data', 'example.log')
 logging.basicConfig(
     filename=logfile,
     level=logging.INFO
