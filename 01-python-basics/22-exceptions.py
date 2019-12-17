@@ -3,10 +3,12 @@
 #
 #################################################################################
 import os
+from modules import utils
 
-corruptfilepath = os.path.join(os.getcwd(), '..', 'data', 'corrupt_file.txt')
-datafilepath = os.path.join(os.getcwd(), '..', 'data', 'test_file.txt')
-wrongdatafilepath = os.path.join(os.getcwd(), '..', 'data', 'testfile.txt')
+
+corruptfilepath = os.path.join(utils.PROJECT_PATH, 'data', 'corrupt_file.txt')
+datafilepath = os.path.join(utils.PROJECT_PATH, 'data', 'test_file.txt')
+wrongdatafilepath = os.path.join(utils.PROJECT_PATH, 'data', 'testfile.txt')
 
 try:
     f = open(corruptfilepath)
