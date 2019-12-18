@@ -42,8 +42,6 @@ class Employee:
 utils.banner('get number of employees')
 print(f'number of employees: {Employee.count}')
 
-
-
 emp1 = Employee('bob', 'red', 5000)
 emp2 = Employee('kate', 'blue', 5500)
 utils.banner('print salaries')
