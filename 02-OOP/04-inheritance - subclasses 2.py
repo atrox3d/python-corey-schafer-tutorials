@@ -81,3 +81,18 @@ mgr1.print_employees()
 utils.banner('print manager\'s employees')
 mgr1.remove_employee(dev1)
 mgr1.print_employees()
+
+utils.banner('isinstance()')
+print(f'                          {"Employee":<20}{"Developer":<20}{"Manager":<20}')
+obj = emp1
+cls = Employee
+print(f'employee |isinsstance     {isinstance(obj, Employee)!s:<20}{isinstance(obj, Developer)!s:<20}{isinstance(obj, Manager)!s:<20}')
+print(f'Employee |issubclass      {issubclass(cls, Employee)!s:<20}{issubclass(cls, Developer)!s:<20}{issubclass(cls, Manager)!s:<20}')
+obj = dev1
+cls = Developer
+print(f'developer|isinsstance     {isinstance(obj, Employee)!s:<20}{isinstance(obj, Developer)!s:<20}{isinstance(obj, Manager)!s:<20}')
+print(f'developer|issubclass      {issubclass(cls, Employee)!s:<20}{issubclass(cls, Developer)!s:<20}{issubclass(cls, Manager)!s:<20}')
+obj = mgr1
+cls = Manager
+print(f'manager  |isinsstance     {isinstance(obj, Employee)!s:<20}{isinstance(obj, Developer)!s:<20}{isinstance(obj, Manager)!s:<20}')
+print(f'manager  |issubclass      {issubclass(cls, Employee)!s:<20}{issubclass(cls, Developer)!s:<20}{issubclass(cls, Manager)!s:<20}')
