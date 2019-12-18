@@ -21,9 +21,9 @@ class Employee:
 
     def print_salary(self):
         print(
-                f'{self.__class__.__name__:<10} | '
-                f'{self.fullname():<10}: pay={self.pay}, raise amount={self.raise_amount!s:>4} | '
-                f'dict= {self.__dict__}'
+            f'{self.__class__.__name__:<10} | '
+            f'{self.fullname():<10}: pay={self.pay}, raise amount={self.raise_amount!s:>4} | '
+            f'dict= {self.__dict__}'
         )
 
     @classmethod
@@ -39,9 +39,45 @@ class Developer(Employee):
     #
     raise_amount = 1.10
 
+    def __init__(self, first, last, pay, language):
+        # initializes underlying Employee instance
+        super().__init__(first, last, pay)  # same as Employee.__init__(first, last, pay)
+        self.language = language
 
-emp1 = Employee.from_string('bob;red;5000')
-dev1 = Developer.from_string('kate;blue;5500')
 
+class Manager(Employee):
+
+    def __init__(self, first, last, pay, employees=None):
+        # initializes underlying Employee instance
+        super().__init__(first, last, pay)  # same as Employee.__init__(first, last, pay)
+        self.employees = [] if employees is None else employees
+
+    def add_employee(self, employee):
+        if employee not in self.employees:
+            self.employees.append(employee)
+
+    def remove_employee(self, employee):
+        if employee in self.employees:
+            self.employees.remove(employee)
+
+    def print_employees(self):
+        for employee in self.employees:
+            print(f'-->{employee.fullname()}')
+
+
+emp1 = Employee('bob', 'red', 5000)
+dev1 = Developer('kate', 'blue', 5500, 'python')
+mgr1 = Manager('sue', 'smith', 90000, [dev1])
+
+utils.banner('print salaries')
 emp1.print_salary()
 dev1.print_salary()
+mgr1.print_salary()
+
+utils.banner('print manager\'s employees')
+mgr1.add_employee(emp1)
+mgr1.print_employees()
+
+utils.banner('print manager\'s employees')
+mgr1.remove_employee(dev1)
+mgr1.print_employees()
