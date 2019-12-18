@@ -41,6 +41,15 @@ class Employee:
     def __str__(self):
         return f'{self.fullname()}, {self.email}'
 
+    # synonim
+    __STR__ = __str__
+
+    def __add__(self, other):
+        return self.pay + other.pay
+
+    def __len__(self):
+        return len(self.fullname())
+
 
 utils.banner('magic methods')
 emp1 = Employee('bob', 'red', 5000)
@@ -55,3 +64,5 @@ print('int.__add__ 2, 2: ', int.__add__(2, 2))
 print()
 print("'a' + 'b'           : ", 'a' + 'b')
 print("str.__add__ 'a', 'b': ", str.__add__('a', 'b'))
+
+print(emp1.__STR__())
