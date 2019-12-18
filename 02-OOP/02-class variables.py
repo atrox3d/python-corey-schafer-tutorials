@@ -14,11 +14,15 @@ class Employee:
     #
     raise_amount = 1.04
 
+    count = 0
+
     def __init__(self, first, last, pay):
         self.first = first
         self.last = last
         self.pay = pay
         self.email = f'{first}.{last}@company.com'
+
+        Employee.count += 1
 
     def fullname(self):
         return f'{self.first}, {self.last}'
@@ -32,7 +36,12 @@ class Employee:
         self.pay = int(self.pay * self.raise_amount)
 
     def print_salary(self):
-        print(f'{self.fullname()}: pay={self.pay}, raise amount={self.raise_amount}')
+        print(f'{self.fullname()}: pay={self.pay}, raise amount={self.raise_amount} | dict= {self.__dict__}')
+
+
+utils.banner('get number of employees')
+print(f'number of employees: {Employee.count}')
+
 
 
 emp1 = Employee('bob', 'red', 5000)
@@ -67,3 +76,6 @@ Employee.raise_amount = 2
 emp1.print_salary()
 emp2.print_salary()
 print()
+
+utils.banner('get number of employees')
+print(f'number of employees: {Employee.count}')
