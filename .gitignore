@@ -1,6 +1,6 @@
 /venv/
 /.idea/
-/__pycache__/
+__pycache__/
 /data/bronx.copy.jpg
 /data/test.copy.txt
 /data/test2.txt
