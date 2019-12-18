@@ -16,7 +16,8 @@ def printresults(expression, description, count):
     # helper, quotes string
     def quote(s): return f'"{s}"'
 
-    print(f'results for {quote(expression):<20} ({description:<20}): ({count})')
+    # print(f'results for {quote(expression):<20} ({description:<20}): ({count})')
+    print(f'results for {expression!r:<20} ({description:<20}): ({count})')
 
 
 def findregex(expression, description, text):
