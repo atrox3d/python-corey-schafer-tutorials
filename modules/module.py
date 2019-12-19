@@ -14,3 +14,11 @@ def find_index(to_search, target):
             return i
 
     return -1
+
+
+def double(n):
+    """
+    >>> double(2)
+    4
+    """
+    return n * 2
