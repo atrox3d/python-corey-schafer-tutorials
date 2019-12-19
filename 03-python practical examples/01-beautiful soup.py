@@ -1,4 +1,5 @@
 from modules import utils
+import os.path
 from bs4 import BeautifulSoup
 import requests
 
@@ -9,3 +10,10 @@ utils.banner(
     f'PROJECTDATA_PATH: {utils.PROJECTDATA_PATH}',
 )
 
+html_path = os.path.join(utils.PROJECTDATA_PATH, 'simple.html')
+# with open(html_path, 'r'):    # read is the default
+with open(html_path) as html_file:
+    print('HTML CONTENT:')
+    utils.hashline(char='-')
+    print(html_file.read())
+    utils.hashline(char='-')
