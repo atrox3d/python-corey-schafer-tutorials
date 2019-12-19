@@ -13,9 +13,11 @@ class Employee:
 
         Employee.count += 1
 
+    @property
     def fullname(self):
         return f'{self.first} {self.last}'
 
+    @property
     def email(self):
         """
         initializing the email in the constructor causes the email
@@ -40,5 +42,4 @@ emp1.first = 'Jim'
 
 print(emp1.first)
 print(emp1.email)
-print(emp1.fullname())
-
+print(emp1.fullname)
