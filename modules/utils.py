@@ -122,9 +122,29 @@ def printfvar(var, varname=None):
 
     varname = f'{varname},'
     vartype = f'{str(type(var))},'
-    #print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
+    # print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
     print(f'{varname:<20} type: {vartype:<30} value: {repr(var)}')
 
+
+def getprojectpath(subfolder=None):
+    debug = False
+    module_path = __file__
+    module_dir = os.path.dirname(__file__)
+    project_dir_rel = os.path.join(module_dir, '..')
+    project_dir_abs = os.path.abspath(project_dir_rel)
+
+    if debug:
+        print(project_dir_rel)
+        print(project_dir_abs)
+
+    if subfolder is not None:
+        return os.path.join(project_dir_abs, subfolder)
+    return project_dir_abs
+
+
+PROJECT_PATH = getprojectpath()
+PROJECTDATA_PATH = getprojectpath('data')
+PROJECTMODULES_PATH = getprojectpath('modules')
 
 if __name__ == "__main__":
     banner("hello")
@@ -133,18 +153,7 @@ if __name__ == "__main__":
     banner("hello", "there", char='*')
     banner("hello", "there", char='*', height=10)
 
+    print('PROJECT_PATH:', PROJECT_PATH)
+    print('PROJECTDATA_PATH:', PROJECTDATA_PATH)
+    print('PROJECTMODULES_PATH:', PROJECTMODULES_PATH)
 
-def getprojectpath():
-    debug = False
-    module_path = __file__
-    module_dir = os.path.dirname(__file__)
-    project_dir_rel = os.path.join(module_dir, '..')
-    project_dir_abs = os.path.abspath(project_dir_rel)
-    if debug:
-        print(project_dir_rel)
-        print(project_dir_abs)
-
-    return project_dir_abs
-
-
-PROJECT_PATH = getprojectpath()
