@@ -11,9 +11,15 @@ utils.banner(
 )
 
 html_path = os.path.join(utils.PROJECTDATA_PATH, 'simple.html')
-# with open(html_path, 'r'):    # read is the default
-with open(html_path) as html_file:
-    print('HTML CONTENT:')
-    utils.hashline(char='-')
+
+print('HTML FILE DUMP:')
+utils.hashline(char='-')
+with open(html_path) as html_file:              #
     print(html_file.read())
-    utils.hashline(char='-')
+
+with open(html_path) as html_file:
+    soup = BeautifulSoup(html_file, 'lxml')
+
+utils.banner('HTML SOUP DUMP (prettified):')
+print(soup.prettify())
+
