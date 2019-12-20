@@ -22,6 +22,10 @@ def hashline(width=120, char='#'):
     print(char * width)
 
 
+def dashline(width=120):
+    hashline(char='-')
+
+
 def banner(*lines, height=3, width=120, char='#'):
     """
     prints a separation banner on terminal
