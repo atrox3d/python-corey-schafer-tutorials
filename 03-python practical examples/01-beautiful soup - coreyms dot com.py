@@ -34,3 +34,26 @@ utils.banner(
 
 article = soup.find('article')
 print(article.prettify())
+
+########################################################################################################################
+utils.banner(
+                'parse source with BeautifulSoup',
+                '2) get headline'
+)
+
+headline = article.h2.a.text
+headline2 = article.a.text
+print(f'article.h2.a.text: {headline!r}')
+print(f'article.a.text   : {headline2!r}')
+
+
+########################################################################################################################
+utils.banner(
+                'parse source with BeautifulSoup',
+                '3) get summary'
+)
+
+summary = article.find('div', class_='entry-content')
+# print(f'{summary.text!r}')
+print(f'{summary.p.text!r}')
+
