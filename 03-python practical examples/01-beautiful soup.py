@@ -76,3 +76,20 @@ utils.hashline(char='-')
 summary = article.p.text
 print(summary)
 
+########################################################################################################################
+utils.banner('find_all')
+
+articles = soup.find_all('div', class_='article')
+print(f'all articles: ({len(articles)})')
+utils.hashline(char='-')
+print(str(articles).replace('\n', ''))
+
+########################################################################################################################
+utils.banner('iterate over find_all')
+
+for article in articles:
+    headline = article.h2.a.text
+    summary = article.p.text
+    print(f'headline : {headline!r}')
+    print(f'summary  : {summary!r}')
+    print()
