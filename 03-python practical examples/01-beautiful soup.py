@@ -55,3 +55,24 @@ utils.hashline(char='-')
 print(f'find div/footer:')
 utils.hashline(char='-')
 print(f'{find_divfooter}')
+
+########################################################################################################################
+utils.banner('find article and subtags')
+
+article = soup.find('div', class_='article')
+print('article div:')
+utils.hashline(char='-')
+print(article)
+
+headline = article.h2.a.text
+utils.hashline(char='-')
+print('article anchor text:')
+utils.hashline(char='-')
+print(headline)
+
+utils.hashline(char='-')
+print('article paragraph:')
+utils.hashline(char='-')
+summary = article.p.text
+print(summary)
+
