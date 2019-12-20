@@ -57,3 +57,26 @@ summary = article.find('div', class_='entry-content')
 # print(f'{summary.text!r}')
 print(f'{summary.p.text!r}')
 
+########################################################################################################################
+utils.banner(
+                'parse source with BeautifulSoup',
+                '4) get video link'
+)
+
+# video_source = article.find('iframe', class_='youtube-player')    # there is no more class in html
+video = article.find('iframe')
+print(video)
+utils.dashline()
+
+print(video.__dict__)
+utils.dashline()
+
+utils.banner('video tag attrs:')
+for k, v in video.attrs.items():
+    print(f'{k:<20} = {v}')
+utils.dashline()
+
+
+
+video_src = video['src']
+print(video_src)
