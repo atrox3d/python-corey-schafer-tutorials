@@ -15,11 +15,14 @@ def print_partial_html(text, maxlines=10):
 
     if maxlines is not None:
         text = text.split('\n')
-        for _ in range(0, maxlines):
-            print(text[_])
-        print('...')
-        print('...')
-        print('...')
+        if len(text) > maxlines:
+            for _ in range(0, maxlines):
+                print(text[_])
+            print('...')
+            print('...')
+            print('...')
+        else:
+            print(text)
     else:
         print(text)
 
@@ -44,10 +47,7 @@ print_partial_html(source)
 utils.banner('parse source with BeautifulSoup (prettify)')
 
 soup = BeautifulSoup(source, 'lxml')
-#print(soup.prettify())
 print_partial_html(soup.prettify())
-exit()
-
 ########################################################################################################################
 utils.banner(
     'parse source with BeautifulSoup',
@@ -55,7 +55,8 @@ utils.banner(
 )
 
 article = soup.find('article')
-print(article.prettify())
+print_partial_html(article.prettify())
+exit()
 
 ########################################################################################################################
 utils.banner(
