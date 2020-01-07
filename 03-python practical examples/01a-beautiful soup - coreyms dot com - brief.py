@@ -4,32 +4,6 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def print_partial_html(text, maxlines=10):
-    """
-    print partial html to get cleaner output
-    :param text:
-    :param maxlines:
-    :return:
-    """
-
-    utils.dashline()
-
-    if maxlines is not None:                                    # if we have maxline arguments process it
-        text = text.split('\n')                                 # make sure that we have a list of lines (\n)
-        if len(text) > maxlines:                                # if the number of lines is greater than maxlines
-            for _ in range(0, maxlines):                        # print only until maxlines
-                print(text[_])
-            print('...')                                        # make it clear that the text is longer
-            print('...')
-            print('...')
-        else:
-            print(text)                                         # the text is less longer than maxline, print all
-    else:
-        print(text)                                             # no maxlines, print all
-
-    utils.dashline()
-
-
 ########################################################################################################################
 utils.banner(
     'https://www.youtube.com/watch?v=ng2o98k983k',
