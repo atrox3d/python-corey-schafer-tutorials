@@ -109,3 +109,12 @@ print('video url w/o query parameters: ', video_url)
 videourl_parts = video_url.split('/')
 video_id = videourl_parts[-1]
 print('video ID: ', video_id)
+########################################################################################################################
+utils.banner(
+    'parse source with BeautifulSoup',
+    '6) create youtube link'
+)
+
+yt_link = f'https://youtube.com/watch?v={video_id}'
+print('video link: ', yt_link)
+
