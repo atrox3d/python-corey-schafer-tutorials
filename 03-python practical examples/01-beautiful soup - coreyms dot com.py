@@ -86,13 +86,13 @@ video = article.find('iframe')                                      # get iframe
 print(video)
 utils.dashline()
 
-print(video.__dict__)
+print(video.__dict__)                                               # display video obj dictionary
 utils.dashline()
 
 utils.banner('video tag attrs:')
-for k, v in video.attrs.items():
+for k, v in video.attrs.items():                                    # display tag attributes
     print(f'{k:<20} = {v}')
 utils.dashline()
 
-video_src = video['src']
-print(video_src)
+video_src = video['src']                                            # display video src
+print('video.src: ', video_src)
