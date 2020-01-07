@@ -32,12 +32,12 @@ for article in soup.find_all('article'):                                # find t
 
     if video is not None:
         video_src = video['src']                                        # display video src
-        video_url = video_src.split('?')[0]
+        video_url = video_src.split('?')[0]                             # get left part of url before ?
 
-        videourl_parts = video_url.split('/')
-        video_id = videourl_parts[-1]
+        videourl_parts = video_url.split('/')                           # get url tokens split by /
+        video_id = videourl_parts[-1]                                   # finally, get id
 
-        yt_link = f'https://youtube.com/watch?v={video_id}'
+        yt_link = f'https://youtube.com/watch?v={video_id}'             # create link
         print(yt_link)
 
     print()
