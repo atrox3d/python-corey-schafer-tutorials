@@ -4,17 +4,25 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def print_partial_html(text, maxlines=None):
+def print_partial_html(text, maxlines=10):
+    """
+    print partial html to get cleaner output
+    :param text:
+    :param maxlines:
+    :return:
+    """
     utils.dashline()
 
     if maxlines is not None:
         text = text.split('\n')
         for _ in range(0, maxlines):
             print(text[_])
+        print('...')
+        print('...')
+        print('...')
     else:
         print(text)
 
-    print('...')
     utils.dashline()
 
 
@@ -30,14 +38,15 @@ print(f'request to http://coreyms.com: {request}')  # print request http status
 
 source = request.text  # extract request text (html)
 print(f'request html source: ')
-print_partial_html(source, 10)
-exit()
+print_partial_html(source)
 
 ########################################################################################################################
-utils.banner('parse source with BeautifulSoup')
+utils.banner('parse source with BeautifulSoup (prettify)')
 
 soup = BeautifulSoup(source, 'lxml')
-print(soup.prettify())
+#print(soup.prettify())
+print_partial_html(soup.prettify())
+exit()
 
 ########################################################################################################################
 utils.banner(
