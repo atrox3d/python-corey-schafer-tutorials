@@ -5,22 +5,24 @@ from modules import utils
 from urllib.request import urlopen
 from urllib.error import URLError
 
+# APIURL = 'https://jsonplaceholder.typicode.com/photos'
+JSON_NAME='users'
+APIURL = 'https://jsonplaceholder.typicode.com/' + JSON_NAME
 #######################################################################################################
 utils.banner(
     'download JSON from online public API:',
-    'https://jsonplaceholder.typicode.com/photos'
+    APIURL
 )
 #######################################################################################################
-APIURL = 'https://jsonplaceholder.typicode.com/photos'
 try:
     with urlopen(APIURL) as response:
         print(f'response status: {response.status}')
         source = response.read()
 except URLError as ue:
     print(ue)
-    print('falling back to: ', utils.getdatafilepath('photos.json'))
+    print('falling back to: ', utils.getdatafilepath(JSON_NAME))
     try:
-        with open(utils.getdatafilepath('photos.json')) as photos:
+        with open(utils.getdatafilepath(JSON_NAME)) as photos:
             source = photos.read()
     except FileNotFoundError as fnfe:
         print(fnfe)
