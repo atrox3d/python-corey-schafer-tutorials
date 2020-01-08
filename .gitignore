@@ -8,3 +8,4 @@ __pycache__/
 /multifile/
 /data/newnames.csv
 /data/*.log
+/data/new_states.json
