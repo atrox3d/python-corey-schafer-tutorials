@@ -1,5 +1,7 @@
 ''' JavaScript Object Notation '''
+
 import json
+from modules import utils
 
 people_string = '''
 {
@@ -24,17 +26,22 @@ people_string = '''
 '''
 
 json_data = json.loads(people_string)
+
+utils.banner('json_data raw dump')
 print(json_data)
 print()
 
+utils.banner('json_data print each person')
 for person in json_data['people']:
     print(f'{person}')
 print()
 
+utils.banner('json_data print each person name')
 for person in json_data['people']:
     print(f'{person["name"]!r}')
 print()
 
+utils.banner('json_data delete each person phone and dump prettified')
 for person in json_data['people']:
     del person['phone']
 
