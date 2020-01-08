@@ -150,6 +150,11 @@ PROJECT_PATH = getprojectpath()
 PROJECTDATA_PATH = getprojectpath('data')
 PROJECTMODULES_PATH = getprojectpath('modules')
 
+
+def getdatafilepath(filename):
+    return os.path.join(PROJECTDATA_PATH, filename)
+
+
 if __name__ == "__main__":
     banner("hello")
     banner("hello", "there")
