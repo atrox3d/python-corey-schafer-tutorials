@@ -1,3 +1,4 @@
+from contextlib import contextmanager
 from modules import utils
 
 
@@ -28,6 +29,23 @@ class OpenFile:
 
 
 with OpenFile(utils.getdatafilepath('sample.txt'), 'w') as f:
-    f.write('testing contex manager')
+    f.write('testing contex manager class')
+
+print(f.closed)
+
+
+@contextmanager
+def openfile(file, mode='r'):
+    print(f'opening file: {file} with mode: {mode}')
+    f = open(file, mode)
+    print(f'yielding file: {file}')
+    yield f
+    print(f'closing file: {file}')
+    f.close()
+
+
+with openfile(utils.getdatafilepath('sample.txt'), 'r+') as f:
+    f.seek(0, 2)
+    f.write('\ntesting contex manager function')
 
 print(f.closed)
