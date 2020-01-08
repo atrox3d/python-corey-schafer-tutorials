@@ -7,7 +7,7 @@ from urllib.error import URLError
 
 #######################################################################################################
 utils.banner(
-    'load json from online public API:',
+    'download JSON from online public API:',
     'https://jsonplaceholder.typicode.com/photos'
 )
 #######################################################################################################
@@ -32,3 +32,14 @@ print(f'dumping first {maxchars} chars:')
 utils.dashline()
 print(source[0:400])
 utils.dashline()
+#######################################################################################################
+utils.banner(
+    'converto to JSON',
+)
+#######################################################################################################
+data = json.loads(source)
+data_pretty = json.dumps(data, indent=2)
+data_prettylist = data_pretty.split('\n')
+for line in range(0, 20):
+    print(data_prettylist[line])
+print('------X----------X---------X-------')
