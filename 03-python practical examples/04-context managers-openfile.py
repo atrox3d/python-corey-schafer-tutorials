@@ -14,3 +14,8 @@ class OpenFile:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.file.close()
 
+
+with OpenFile(utils.getdatafilepath('sample.txt'), 'w') as f:
+    f.write('testing contex manager')
+
+print(f.closed)
