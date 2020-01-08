@@ -61,3 +61,14 @@ utils.banner(
 )
 #######################################################################################################
 print(json.dumps(data[0], indent=2))
+#######################################################################################################
+utils.banner(
+    'extract nested values',
+)
+#######################################################################################################
+for user in data:
+    street = user['address']['street']
+    lat = user['address']['geo']['lat']
+    lng = user['address']['geo']['lng']
+    catchphrase = user['company']['catchPhrase']
+    print(f'{street:<20}({lat:<10}, {lng:<10}): {catchphrase})')
