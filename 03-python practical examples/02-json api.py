@@ -31,7 +31,6 @@ maxchars = 400
 print(f'dumping first {maxchars} chars:')
 utils.dashline()
 print(source[0:400])
-utils.dashline()
 #######################################################################################################
 utils.banner(
     'converto to JSON',
@@ -43,3 +42,20 @@ data_prettylist = data_pretty.split('\n')
 for line in range(0, 20):
     print(data_prettylist[line])
 print('------X----------X---------X-------')
+print('type of data    | ', type(data))
+print('length of data  |', len(data))
+print('data[0]         | ', data[0])
+print('type of data[0] | ', type(data[0]))
+#######################################################################################################
+utils.banner(
+    'list some records of JSON obj',
+)
+#######################################################################################################
+for photo in range(0, 10):
+    print(data[photo])
+#######################################################################################################
+utils.banner(
+    'pretty print one record',
+)
+#######################################################################################################
+print(json.dumps(data[0], indent=2))
