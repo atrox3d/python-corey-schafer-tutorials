@@ -9,3 +9,4 @@ __pycache__/
 /data/newnames.csv
 /data/*.log
 /data/new_states.json
+/data/sample.txt
