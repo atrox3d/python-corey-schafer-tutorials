@@ -38,6 +38,44 @@ cursor.execute(
         'schafer',
         50000
     )
-    """)
+    """
+)
+conn.commit()
+cursor.execute(
+    """
+    INSERT INTO employees 
+    VALUES(
+        'mary',
+        'schafer',
+        50000
+    )
+    """
+)
+conn.commit()
+
+cursor.execute("SELECT COUNT (*) FROM employees")
+count = cursor.fetchone()
+print(*count)
+
+cursor.execute(
+    """
+    SELECT * FROM employees
+    WHERE last= 'schafer'
+    """
+)
+record = cursor.fetchone()
+print(record)
+print(*record)
+
+cursor.execute(
+    """
+    SELECT * FROM employees
+    WHERE last= 'schafer'
+    """
+)
+records = cursor.fetchall()
+print(records)
+print(*records)
+
 conn.commit()
 conn.close()
