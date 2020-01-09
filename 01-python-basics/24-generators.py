@@ -13,8 +13,17 @@ from modules import utils
 #
 #################################################################################
 def get_simplegenerator(n=10):
+    print('-----------------------------------------------------------------------')
+    print('entering generator loop')
+    print('-----------------------------------------------------------------------')
     for x in range(1, n):
+        print(f'{"yielding":>20} | x={x}')
         yield x
+        print(f'{"after single yield":>20} | x={x}')
+    print(f'{"after yield block":>20} | x={x}')
+    print('-----------------------------------------------------------------------')
+    print('exiting generator loop')
+    print('-----------------------------------------------------------------------')
 
 
 gen = get_simplegenerator()
