@@ -3,30 +3,36 @@ from contextlib import contextmanager
 from modules import utils
 
 
-# def logmethod(fn):
-#     def wrapped(*args, **kwargs):
-#         print(f'entering {fn.__name__}')
-#         value = fn(*args, **kwargs)
-#         print(f'exiting {fn.__name__}')
-#         return value
-#
-#     return wrapped
-#
-#
-# class OpenFile:
-#     @logmethod
-#     def __init__(self, filename, mode='r'):
-#         self.filename = filename
-#         self.mode = mode
-#
-#     @logmethod
-#     def __enter__(self):
-#         self.file = open(self.filename, self.mode)
-#         return self.file
-#
-#     @logmethod
-#     def __exit__(self, exc_type, exc_val, exc_tb):
-#         self.file.close()
+def logmethod(fn):
+    def wrapped(*args, **kwargs):
+        print(f'entering {fn.__name__}')
+        value = fn(*args, **kwargs)
+        print(f'exiting {fn.__name__}')
+        return value
+
+    return wrapped
+
+
+class Chdir:
+    @logmethod
+    def __init__(self, destination):
+        self.width = 30
+        self.destination = destination
+        self.cwd = os.getcwd()
+        print(f'{"saving current dir":<{self.width}}: {self.cwd}')
+
+    @logmethod
+    def __enter__(self):
+        print(f'{"changing current dir to":<{self.width}}: {self.destination}')
+        os.chdir(self.destination)
+        self.newcwd = os.getcwd()
+
+    @logmethod
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f'{"changing back to dir":<{self.width}}: {self.cwd}')
+        os.chdir(self.cwd)
+
+
 #
 #
 # with OpenFile(utils.getdatafilepath('sample.txt'), 'w') as f:
@@ -51,4 +57,8 @@ def chdir(destination):
 
 
 with chdir(utils.PROJECT_PATH) as cd:
-    print(os.listdir())
+    print(os.listdir(cd))
+
+with Chdir(utils.PROJECT_PATH) as cd:
+    print(os.listdir(cd))
+
