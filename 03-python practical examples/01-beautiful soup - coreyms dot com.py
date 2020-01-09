@@ -1,7 +1,22 @@
 from modules import utils
 import os.path
-from bs4 import BeautifulSoup
-import requests
+
+try:
+    from bs4 import BeautifulSoup
+except ModuleNotFoundError as mnfe:
+    utils.banner(
+        'pip install beautifulsoup4',
+        'pip install lxml'
+    )
+    exit()
+
+try:
+    import requests
+except ModuleNotFoundError as mnfe:
+    utils.banner(
+        'pip install requests',
+    )
+    exit()
 
 
 def print_partial_html(text, maxlines=10):
