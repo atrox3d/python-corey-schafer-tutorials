@@ -1,5 +1,6 @@
 import sqlite3
 from modules import utils
+from modules.employee import Employee
 
 DBNAME = 'employee.db'
 # conn = sqlite3.connect(':memory:')
@@ -29,6 +30,11 @@ except sqlite3.OperationalError as oe:
 # print(type(count))
 # print(*count)
 # exit()
+
+emp1 = Employee('john', 'doe', 80000)
+emp2 = Employee('jane', 'doe', 90000)
+
+print(emp1.fullname)
 
 cursor.execute(
     """
