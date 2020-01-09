@@ -2,10 +2,17 @@ import sqlite3
 from modules import utils
 from modules.employee import Employee
 
-DBNAME = 'employee.db'
-# conn = sqlite3.connect(':memory:')
-conn = sqlite3.connect(utils.getdatafilepath(DBNAME))
 
+DBMEMORY = True
+
+if DBMEMORY:
+    DBNAME = ':memory:'
+    DBPATH = ':memory:'
+else:
+    DBNAME = 'employee.db'
+    DBPATH = utils.getdatafilepath(DBNAME)
+
+conn = sqlite3.connect(DBPATH)
 cursor = conn.cursor()
 
 try:
