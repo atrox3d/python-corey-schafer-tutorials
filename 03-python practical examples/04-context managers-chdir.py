@@ -35,15 +35,20 @@ from modules import utils
 
 @contextmanager
 def chdir(destination):
+    width = 30
+    cwd = os.getcwd()
+    print(f'{"saving current dir":<{width}}: {cwd}')
+
     try:
-        cwd = os.getcwd()
-        print(f'changing current directory to {destination}')
+        print(f'{"changing current dir to":<{width}}: {destination}')
         os.chdir(destination)
         newcwd = os.getcwd()
-        print(f'yielding newcwd: {newcwd}')
+        print(f'{"yielding newcwd":<{width}}: {newcwd}')
         yield newcwd
     finally:
-        print(f'changing back to {cwd} direcory')
+        print(f'{"changing back to dir":<{width}}: {cwd}')
         os.chdir(cwd)
 
 
+with chdir(utils.PROJECT_PATH) as cd:
+    print(os.listdir())
