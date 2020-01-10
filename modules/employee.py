@@ -115,10 +115,10 @@ class EmployeeDAO:
             """
 
         return self.query(
-                            sql,
-                            first=emp.first,
-                            last=emp.last,
-                            pay=emp.pay
+            sql,
+            first=emp.first,
+            last=emp.last,
+            pay=emp.pay
         )
 
     def update(self, emp, pay=None):
@@ -132,10 +132,10 @@ class EmployeeDAO:
             pay = emp.pay
 
         return self.query(
-                            sql,
-                            first=emp.first,
-                            last=emp.last,
-                            pay=pay
+            sql,
+            first=emp.first,
+            last=emp.last,
+            pay=pay
         )
 
     def delete(self, emp):
@@ -145,41 +145,35 @@ class EmployeeDAO:
             """
 
         return self.query(
-                            sql,
-                            first=emp.first,
-                            last=emp.last
+            sql,
+            first=emp.first,
+            last=emp.last
         )
 
     def get(self, emp):
         pass
 
+    def list(self):
+        sql = "SELECT * FROM employees"
+        return self.query(sql)
+
 
 if __name__ == '__main__':
     print('main')
     dao = EmployeeDAO()
-
     emp1 = Employee('rob', 'lomb', 2000)
-    dao.save(emp1)
 
-    query = "select * from employees"
-    print(query)
-    print(dao.query(query).fetchall())
+    dao.save(emp1)
+    print(dao.list().fetchall())
 
     dao.update(emp1, 5000000)
-
-    query = "select * from employees"
-    print(query)
-    print(dao.query(query).fetchall())
+    print(dao.list().fetchall())
 
     emp1.pay = 1
     dao.update(emp1)
-    query = "select * from employees"
-    print(query)
-    print(dao.query(query).fetchall())
+    print(dao.list().fetchall())
 
     dao.delete(emp1)
-    query = "select * from employees"
-    print(query)
-    print(dao.query(query).fetchall())
+    print(dao.list().fetchall())
 
     dao.close()
