@@ -24,6 +24,8 @@ class Employee:
 class EmployeeDAO:
     def __init__(self, dbname=':memory:'):
         self.dbname = dbname
+        self.conn = None
+        self.cursor = None
 
     def isopen(self):
         try:
@@ -36,7 +38,12 @@ class EmployeeDAO:
             return False
 
     def open(self):
-        pass
+        try:
+            print(f'connecting to db {self.dbname}...')
+            self.conn = sqlite3.connect(self.dbname)
+            self.cursor = self.conn.cursor()
+        except sqlite3.OperationalError as oe:
+            print(oe)
 
     def close(self):
         pass
