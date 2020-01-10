@@ -149,6 +149,8 @@ print('unpacked records list: ', *records)
 
 print('closing connection')
 conn.close()
+conn.close()
+conn.close()
 
 print()
 try:
