@@ -157,6 +157,11 @@ class EmployeeDAO:
         sql = "SELECT * FROM employees"
         return self.query(sql)
 
+    def count(self):
+        sql = "SELECT COUNT(*) FROM employees"
+        count = self.query(sql).fetchone()
+        return count[0]
+
 
 if __name__ == '__main__':
     print('main')
@@ -177,7 +182,11 @@ if __name__ == '__main__':
     dao.save(emp2)
     print(dao.list().fetchall())
 
+    print(dao.count())
+
     dao.delete(emp1)
     print(dao.list().fetchall())
+
+    print(dao.count())
 
     dao.close()
