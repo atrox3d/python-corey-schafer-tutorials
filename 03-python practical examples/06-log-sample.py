@@ -3,6 +3,7 @@
 #
 #########################################################################################################
 import logging
+from modules import utils
 
 # DEBUG: Detailed information, typically of interest only when diagnosing problems.
 
@@ -15,9 +16,13 @@ import logging
 
 # CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
 
+logfile = utils.getdatafilepath(__file__ + '.log')
+print(logfile)
 
 logging.basicConfig(
-    level=logging.DEBUG
+    level=logging.DEBUG,
+    filename=logfile,
+    format='%(asctime)s:%(levelname)s:%(message)s'
 )
 
 
