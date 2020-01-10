@@ -152,7 +152,8 @@ PROJECTMODULES_PATH = getprojectpath('modules')
 
 
 def getdatafilepath(filename):
-    return os.path.join(PROJECTDATA_PATH, filename)
+    filepath = os.path.join(PROJECTDATA_PATH, os.path.basename(filename))
+    return filepath
 
 
 if __name__ == "__main__":
