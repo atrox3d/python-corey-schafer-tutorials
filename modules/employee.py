@@ -173,6 +173,10 @@ if __name__ == '__main__':
     dao.update(emp1)
     print(dao.list().fetchall())
 
+    emp2 = Employee('pask', 'sin', 2000)
+    dao.save(emp2)
+    print(dao.list().fetchall())
+
     dao.delete(emp1)
     print(dao.list().fetchall())
 
