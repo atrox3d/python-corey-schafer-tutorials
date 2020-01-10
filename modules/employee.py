@@ -121,8 +121,19 @@ class EmployeeDAO:
                             pay=emp.pay
         )
 
-    def update(self, emp):
-        pass
+    def update(self, emp, pay):
+        sql = """
+            UPDATE employees
+            SET pay = :pay
+            WHERE first = :first AND last = :last
+            """
+
+        return self.query(
+                            sql,
+                            first=emp.first,
+                            last=emp.last,
+                            pay=pay
+        )
 
     def delete(self, emp):
         pass
@@ -134,9 +145,18 @@ class EmployeeDAO:
 if __name__ == '__main__':
     print('main')
     dao = EmployeeDAO()
+
     emp1 = Employee('rob', 'lomb', 2000)
     dao.save(emp1)
+
     query = "select * from employees"
     print(query)
     print(dao.query(query).fetchall())
+
+    dao.update(emp1, 5000000)
+
+    query = "select * from employees"
+    print(query)
+    print(dao.query(query).fetchall())
+
     dao.close()
