@@ -22,7 +22,10 @@ class Employee:
 
 
 class EmployeeDAO:
+    """a sample DAO"""
+
     def __init__(self, dbname=':memory:'):
+        """construct DAO obj and creates db"""
         self.dbname = dbname
         self.conn = None
         self.cursor = None
@@ -31,6 +34,7 @@ class EmployeeDAO:
         self._setup()
 
     def _setup(self):
+        """creates db"""
         if self.query(
                 """
                 CREATE TABLE IF NOT EXISTS employees
@@ -46,6 +50,7 @@ class EmployeeDAO:
             return False
 
     def isopen(self):
+        """checks if connection is open"""
         if self.conn is not None:
             try:
                 print('connection status...', end='')
@@ -59,6 +64,7 @@ class EmployeeDAO:
             return False
 
     def open(self):
+        """opens connection"""
         try:
             print(f'{"open":<20}| connecting to db: {self.dbname}...', end='')
             self.conn = sqlite3.connect(self.dbname)
@@ -70,10 +76,12 @@ class EmployeeDAO:
             return False
 
     def close(self):
+        """closes connection"""
         print(f'{"close":<20}| closing connection')
         self.conn.close()
 
     def query(self, sql, **kwargs):
+        """generalized query"""
         print(f'{"query":<20}| isopen...', end='')
         if not self.isopen():
             print('closed')
@@ -105,6 +113,7 @@ class EmployeeDAO:
         return result
 
     def save(self, emp):
+        """saves Employee on db"""
         sql = """
             INSERT INTO employees 
             VALUES(
@@ -122,6 +131,7 @@ class EmployeeDAO:
         )
 
     def update(self, emp, pay=None):
+        """updates pay of Employee"""
         sql = """
             UPDATE employees
             SET pay = :pay
@@ -139,6 +149,7 @@ class EmployeeDAO:
         )
 
     def delete(self, emp):
+        """deletes Employee from db"""
         sql = """
             DELETE from employees
             WHERE first = :first AND last = :last
@@ -150,14 +161,13 @@ class EmployeeDAO:
             last=emp.last
         )
 
-    def get(self, emp):
-        pass
-
     def list(self):
+        """lists all Employees"""
         sql = "SELECT * FROM employees"
         return self.query(sql)
 
     def count(self):
+        """counts all Employees"""
         sql = "SELECT COUNT(*) FROM employees"
         count = self.query(sql).fetchone()
         return count[0]
