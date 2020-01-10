@@ -32,14 +32,14 @@ class EmployeeDAO:
 
     def _setup(self):
         if self.query(
-            """
-            CREATE TABLE IF NOT EXISTS employees
-            (
-                first text,
-                last text,
-                pay integer
-            )
-            """
+                """
+                CREATE TABLE IF NOT EXISTS employees
+                (
+                    first text,
+                    last text,
+                    pay integer
+                )
+                """
         ):
             return True
         else:
@@ -89,7 +89,7 @@ class EmployeeDAO:
                     print(f'{"query":<20}| executing: {sqlline}')
                 print(f'{"query":<20}| with args {kwargs}')
 
-                result = self.cursor.execute(sql, **kwargs)
+                result = self.cursor.execute(sql, kwargs)
             except sqlite3.OperationalError as oe:
                 # if self.memorydb:
                 #     self.close()
@@ -105,7 +105,21 @@ class EmployeeDAO:
         return result
 
     def save(self, emp):
-        pass
+        sql = """
+            INSERT INTO employees 
+            VALUES(
+                :first,
+                :last,
+                :pay
+            )
+            """
+
+        return self.query(
+                            sql,
+                            first=emp.first,
+                            last=emp.last,
+                            pay=emp.pay
+        )
 
     def update(self, emp):
         pass
@@ -120,6 +134,8 @@ class EmployeeDAO:
 if __name__ == '__main__':
     print('main')
     dao = EmployeeDAO()
+    emp1 = Employee('rob', 'lomb', 2000)
+    dao.save(emp1)
     query = "select * from employees"
     print(query)
     print(dao.query(query).fetchall())
