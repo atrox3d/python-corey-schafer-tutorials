@@ -77,6 +77,7 @@ class EmployeeDAO:
                     try:
                         print(f'executing "{query}" with args {kwargs}')
                         result = self.cursor.execute(query, **kwargs)
+                        return result
                     except sqlite3.OperationalError as oe:
                         print(oe)
 
