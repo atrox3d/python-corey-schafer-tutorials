@@ -26,7 +26,14 @@ class EmployeeDAO:
         self.dbname = dbname
 
     def isopen(self):
-        pass
+        try:
+            print('connection status...', end='')
+            resultset = self.conn.execute("SELECT 1 FROM sqlite_master LIMIT 1;")
+            print('open')
+            return True
+        except sqlite3.ProgrammingError as e:
+            print('closed')
+            return False
 
     def open(self):
         pass
