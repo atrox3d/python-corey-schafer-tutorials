@@ -54,8 +54,8 @@ class EmployeeDAO:
             except sqlite3.ProgrammingError as e:
                 print('closed')
                 return False
-
-        return False
+        else:
+            return False
 
     def open(self):
         try:
