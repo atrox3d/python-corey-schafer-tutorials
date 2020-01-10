@@ -59,27 +59,39 @@ class EmployeeDAO:
 
     def open(self):
         try:
-            print(f'connecting to db {self.dbname}...')
+            print(f'{"open":<20}| connecting to db: {self.dbname}...', end='')
             self.conn = sqlite3.connect(self.dbname)
             self.cursor = self.conn.cursor()
+            print("ok")
             return True
         except sqlite3.OperationalError as oe:
             print(oe)
             return False
 
     def close(self):
+        print(f'{"close":<20}| closing connection')
         self.conn.close()
 
     def query(self, query, **kwargs):
+        print(f'{"query":<20}| isopen...', end='')
         if not self.isopen():
+            print('ok')
+            print(f'{"query":<20}| open...')
             if self.open():
                 with self.conn:
                     try:
-                        print(f'executing "{query}" with args {kwargs}')
+                        for sqlline in query.split('\n'):
+                            print(f'{"query":<20}| executing: {sqlline}')
+                        print(f'{"query":<20}| with args {kwargs}')
+
                         result = self.cursor.execute(query, **kwargs)
-                        return result
                     except sqlite3.OperationalError as oe:
+                        self.close()
                         print(oe)
+                        return False
+
+                self.close()
+                return result
 
     def save(self, emp):
         pass
