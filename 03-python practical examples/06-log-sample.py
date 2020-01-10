@@ -4,7 +4,6 @@
 #########################################################################################################
 import logging
 
-
 # DEBUG: Detailed information, typically of interest only when diagnosing problems.
 
 # INFO: Confirmation that things are working as expected.
@@ -15,6 +14,11 @@ import logging
 # ERROR: Due to a more serious problem, the software has not been able to perform some function.
 
 # CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
+
+
+logging.basicConfig(
+    level=logging.DEBUG
+)
 
 
 def add(x, y):
@@ -41,7 +45,7 @@ num_1 = 20
 num_2 = 10
 
 add_result = add(num_1, num_2)
-logging.warning('Add: {} + {} = {}'.format(num_1, num_2, add_result))
+logging.debug('Add: {} + {} = {}'.format(num_1, num_2, add_result))
 
 sub_result = subtract(num_1, num_2)
 logging.debug('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
