@@ -73,7 +73,7 @@ class EmployeeDAO:
         print(f'{"close":<20}| closing connection')
         self.conn.close()
 
-    def query(self, query, **kwargs):
+    def query(self, sql, **kwargs):
         print(f'{"query":<20}| isopen...', end='')
         if not self.isopen():
             print('closed')
@@ -85,11 +85,11 @@ class EmployeeDAO:
 
         with self.conn:
             try:
-                for sqlline in query.split('\n'):
+                for sqlline in sql.split('\n'):
                     print(f'{"query":<20}| executing: {sqlline}')
                 print(f'{"query":<20}| with args {kwargs}')
 
-                result = self.cursor.execute(query, **kwargs)
+                result = self.cursor.execute(sql, **kwargs)
             except sqlite3.OperationalError as oe:
                 # if self.memorydb:
                 #     self.close()
