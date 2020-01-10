@@ -1,3 +1,6 @@
+import sqlite3
+
+
 class Employee:
     """A sample Employee class"""
 
@@ -16,3 +19,32 @@ class Employee:
 
     def __repr__(self):
         return "Employee('{}', '{}', {})".format(self.first, self.last, self.pay)
+
+
+class EmployeeDAO:
+    def __init__(self, dbname=':memory:'):
+        self.dbname = dbname
+
+    def isopen(self):
+        pass
+
+    def open(self):
+        pass
+
+    def close(self):
+        pass
+
+    def query(self, query):
+        pass
+
+    def save(self, emp):
+        pass
+
+    def update(self, emp):
+        pass
+
+    def delete(self, emp):
+        pass
+
+    def get(self, emp):
+        pass
