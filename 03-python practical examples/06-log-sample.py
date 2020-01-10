@@ -27,13 +27,13 @@ num_1 = 20
 num_2 = 10
 
 add_result = add(num_1, num_2)
-# print('Add: {} + {} = {}'.format(num_1, num_2, add_result))
+print('Add: {} + {} = {}'.format(num_1, num_2, add_result))
 
 sub_result = subtract(num_1, num_2)
-# print('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
+print('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
 
 mul_result = multiply(num_1, num_2)
-# print('Mul: {} * {} = {}'.format(num_1, num_2, mul_result))
+print('Mul: {} * {} = {}'.format(num_1, num_2, mul_result))
 
 div_result = divide(num_1, num_2)
-# print('Div: {} / {} = {}'.format(num_1, num_2, div_result))
+print('Div: {} / {} = {}'.format(num_1, num_2, div_result))
