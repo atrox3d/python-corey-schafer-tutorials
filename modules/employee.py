@@ -75,23 +75,27 @@ class EmployeeDAO:
     def query(self, query, **kwargs):
         print(f'{"query":<20}| isopen...', end='')
         if not self.isopen():
-            print('ok')
+            print('closed')
             print(f'{"query":<20}| open...')
-            if self.open():
-                with self.conn:
-                    try:
-                        for sqlline in query.split('\n'):
-                            print(f'{"query":<20}| executing: {sqlline}')
-                        print(f'{"query":<20}| with args {kwargs}')
+            if not self.open():
+                print(f'{"query":<20}| ERROR, cannot connect')
+        else:
+            print('ok')
 
-                        result = self.cursor.execute(query, **kwargs)
-                    except sqlite3.OperationalError as oe:
-                        self.close()
-                        print(oe)
-                        return False
+        with self.conn:
+            try:
+                for sqlline in query.split('\n'):
+                    print(f'{"query":<20}| executing: {sqlline}')
+                print(f'{"query":<20}| with args {kwargs}')
 
-                self.close()
-                return result
+                result = self.cursor.execute(query, **kwargs)
+            except sqlite3.OperationalError as oe:
+                # self.close()
+                print(f'{"query":<20}| ERROR: {oe}')
+                return False
+
+            # self.close()
+            return result
 
     def save(self, emp):
         pass
@@ -109,3 +113,7 @@ class EmployeeDAO:
 if __name__ == '__main__':
     print('main')
     dao = EmployeeDAO()
+    query = "select * from employees"
+    print(query)
+    print(dao.query(query).fetchall())
+    dao.close()
