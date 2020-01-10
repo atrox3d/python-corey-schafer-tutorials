@@ -26,6 +26,7 @@ class EmployeeDAO:
         self.dbname = dbname
         self.conn = None
         self.cursor = None
+        self.memorydb = True if dbname == ':memory:' else False
 
         self._setup()
 
@@ -90,12 +91,18 @@ class EmployeeDAO:
 
                 result = self.cursor.execute(query, **kwargs)
             except sqlite3.OperationalError as oe:
-                # self.close()
+                # if self.memorydb:
+                #     self.close()
                 print(f'{"query":<20}| ERROR: {oe}')
-                return False
+                result = False
 
-            # self.close()
-            return result
+        if not self.memorydb:
+            print(f'{"query":<20}| closing connection')
+            self.close()
+        else:
+            print(f'{"query":<20}| db is in memory, keeping connection open')
+
+        return result
 
     def save(self, emp):
         pass
