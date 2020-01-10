@@ -139,7 +139,16 @@ class EmployeeDAO:
         )
 
     def delete(self, emp):
-        pass
+        sql = """
+            DELETE from employees
+            WHERE first = :first AND last = :last
+            """
+
+        return self.query(
+                            sql,
+                            first=emp.first,
+                            last=emp.last
+        )
 
     def get(self, emp):
         pass
@@ -164,6 +173,11 @@ if __name__ == '__main__':
 
     emp1.pay = 1
     dao.update(emp1)
+    query = "select * from employees"
+    print(query)
+    print(dao.query(query).fetchall())
+
+    dao.delete(emp1)
     query = "select * from employees"
     print(query)
     print(dao.query(query).fetchall())
