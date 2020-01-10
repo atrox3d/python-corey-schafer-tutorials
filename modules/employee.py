@@ -121,12 +121,15 @@ class EmployeeDAO:
                             pay=emp.pay
         )
 
-    def update(self, emp, pay):
+    def update(self, emp, pay=None):
         sql = """
             UPDATE employees
             SET pay = :pay
             WHERE first = :first AND last = :last
             """
+
+        if pay is None:
+            pay = emp.pay
 
         return self.query(
                             sql,
@@ -155,6 +158,12 @@ if __name__ == '__main__':
 
     dao.update(emp1, 5000000)
 
+    query = "select * from employees"
+    print(query)
+    print(dao.query(query).fetchall())
+
+    emp1.pay = 1
+    dao.update(emp1)
     query = "select * from employees"
     print(query)
     print(dao.query(query).fetchall())
