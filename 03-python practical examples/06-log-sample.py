@@ -20,9 +20,9 @@ logfile = utils.getdatafilepath(__file__ + '.log')
 print(logfile)
 
 logging.basicConfig(
-    level=logging.DEBUG,
-    filename=logfile,
-    format='%(asctime)s:%(levelname)s:%(message)s'
+    level=logging.DEBUG,                                # all levels
+    filename=logfile,                                   # log on file
+    format='%(asctime)s:%(levelname)s:%(message)s'      # date time, level name, message
 )
 
 
