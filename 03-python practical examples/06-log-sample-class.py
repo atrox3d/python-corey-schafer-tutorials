@@ -16,6 +16,15 @@ from modules import utils
 
 # CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
 
+logfile = utils.getdatafilepath(__file__ + '.log')
+print(logfile)
+
+logging.basicConfig(
+    level=logging.DEBUG,                                # INFO ad above
+    filename=logfile,                                   # log on file
+    format='%(asctime)s:%(levelname)s:%(message)s'      # date time, level name, message
+)
+
 
 class Employee:
     """A sample Employee class"""
@@ -24,7 +33,7 @@ class Employee:
         self.first = first
         self.last = last
 
-        print('Created Employee: {} - {}'.format(self.fullname, self.email))
+        logging.info('Created Employee: {} - {}'.format(self.fullname, self.email))
 
     @property
     def email(self):
