@@ -6,4 +6,5 @@ import os
 import first_module
 
 print(f'{os.path.basename(__file__)}\'s name: "{__name__}"')
+first_module.main()
 
