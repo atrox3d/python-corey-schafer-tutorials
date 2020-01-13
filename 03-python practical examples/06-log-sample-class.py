@@ -20,16 +20,16 @@ logfile = utils.getdatafilepath(__file__ + '.log')
 print(logfile)
 
 logging.basicConfig(
-    level=logging.DEBUG,                                # INFO ad above
-    filename=logfile,                                   # log on file
-    format='%(asctime)s:%(levelname)s:%(message)s'      # date time, level name, message
+    level=logging.DEBUG,  # INFO ad above
+    filename=logfile,  # log on file
+    format='%(asctime)s:%(levelname)s:%(message)s'  # date time, level name, message
 )
 
 
 class Employee:
     """A sample Employee class"""
 
-    def __init__(self, first, last, pay):
+    def __init__(self, first, last):
         self.first = first
         self.last = last
 
@@ -44,4 +44,5 @@ class Employee:
         return '{} {}'.format(self.first, self.last)
 
 
+emp1 = Employee('john', 'smith')
 
