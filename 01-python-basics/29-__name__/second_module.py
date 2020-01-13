@@ -9,4 +9,6 @@ utils.banner(
     'https://youtu.be/sugvnHA7ElY',
     "if __name__ == '__main__'"
 )
-print(f'"{os.path.basename(__file__)}"\'s name: "{__name__}"')
+
+import first_module
+
