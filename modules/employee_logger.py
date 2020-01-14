@@ -1,5 +1,7 @@
 """
+########################################################################################################################
 https://www.youtube.com/watch?v=pd-0G0MigUA
+########################################################################################################################
 """
 
 # DEBUG: Detailed information, typically of interest only when diagnosing problems.
@@ -12,33 +14,43 @@ import logging
 import sqlite3
 from modules import utils
 """
+########################################################################################################################
     - SET LOGFILE PATH
     - DISPLAY IT
+########################################################################################################################
 """
 logfile = utils.getdatafilepath(__file__ + '.log')                                  # set logfile path
 print(logfile)
 """
+########################################################################################################################
     - GET LOCAL (NON-ROOT) LOGGER INSTANCE
     - SET LEVEL TO INFO (DEFAULT IS WARNING)
+########################################################################################################################
 """
 logger = logging.getLogger(__name__)                                                # get local logger
 logger.setLevel(logging.INFO)                                                       # set logger level >= INFO
 """
+########################################################################################################################
     - GET SAME FORMATTER INSTANCE FOR ALL HANDLERS
+########################################################################################################################
 """
 formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:%(message)s')     # get formatter
 """
+########################################################################################################################
     - GET FILE HANDLER INSTANCE
     - SET FORMATTER FOR FILE HANDLER INSTANCE
     - ADD HANDLER TO LOCAL LOGGER
+########################################################################################################################
 """
 file_handler = logging.FileHandler(logfile)                                         # get file handler
 file_handler.setFormatter(formatter)                                                # set formatter for file handler
 logger.addHandler(file_handler)                                                     # add file handler to logger
 """
+########################################################################################################################
     - GET CLI HANDLER INSTANCE
     - SET FORMATTER FOR CLI HANDLER INSTANCE
     - ADD HANDLER TO LOCAL LOGGER
+########################################################################################################################
 """
 cli_handler = logging.StreamHandler()                                               # get CLI handler (default=stderr)
 cli_handler.setFormatter(formatter)                                                 # set formatter for CLI handler
