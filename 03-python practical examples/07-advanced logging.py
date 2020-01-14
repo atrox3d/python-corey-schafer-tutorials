@@ -101,6 +101,7 @@ def divide(x, y):
         return x / y
     except ZeroDivisionError as zde:
         logger.error(zde)
+        logger.exception(zde)
         return zde
 
 
