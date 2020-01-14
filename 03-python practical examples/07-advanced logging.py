@@ -34,7 +34,7 @@ print(errorfile)
 ########################################################################################################################
 """
 logger = logging.getLogger(__name__)                                                # get local logger
-logger.setLevel(logging.INFO)                                                       # set logger level >= INFO
+logger.setLevel(logging.DEBUG)                                                       # set logger level >= INFO
 """
 ########################################################################################################################
     - GET SAME FORMATTER INSTANCE FOR ALL HANDLERS
@@ -109,13 +109,13 @@ num_1 = 20
 num_2 = 0
 
 add_result = add(num_1, num_2)
-logger.info('Add: {} + {} = {}'.format(num_1, num_2, add_result))
+logger.debug('Add: {} + {} = {}'.format(num_1, num_2, add_result))
 
 sub_result = subtract(num_1, num_2)
-logger.info('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
+logger.debug('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
 
 mul_result = multiply(num_1, num_2)
-logger.info('Mul: {} * {} = {}'.format(num_1, num_2, mul_result))
+logger.debug('Mul: {} * {} = {}'.format(num_1, num_2, mul_result))
 
 div_result = divide(num_1, num_2)
-logger.info('Div: {} / {} = {}'.format(num_1, num_2, div_result))
+logger.debug('Div: {} / {} = {}'.format(num_1, num_2, div_result))
