@@ -25,6 +25,8 @@ from modules import employee_logger
 """
 logfile = utils.getdatafilepath(__file__ + '.log')                                  # set logfile path
 print(logfile)
+errorfile = utils.getdatafilepath(__file__ + '.error.log')                                  # set logfile path
+print(errorfile)
 """
 ########################################################################################################################
     - GET LOCAL (NON-ROOT) LOGGER INSTANCE
@@ -49,6 +51,17 @@ formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:%(message)s') 
 file_handler = logging.FileHandler(logfile)                                         # get file handler
 file_handler.setFormatter(formatter)                                                # set formatter for file handler
 logger.addHandler(file_handler)                                                     # add file handler to logger
+"""
+########################################################################################################################
+    - GET FILE HANDLER INSTANCE
+    - SET FORMATTER FOR FILE HANDLER INSTANCE
+    - ADD HANDLER TO LOCAL LOGGER
+########################################################################################################################
+"""
+errorfile_handler = logging.FileHandler(errorfile)                                   # get file handler
+errorfile_handler.setFormatter(formatter)                                            # set formatter for file handler
+errorfile_handler.setLevel(logging.ERROR)
+logger.addHandler(errorfile_handler)                                                 # add file handler to logger
 """
 ########################################################################################################################
     - GET CLI HANDLER INSTANCE
@@ -84,11 +97,15 @@ def multiply(x, y):
 
 def divide(x, y):
     """Divide Function"""
-    return x / y
+    try:
+        return x / y
+    except ZeroDivisionError as zde:
+        logger.error(zde)
+        return zde
 
 
 num_1 = 20
-num_2 = 10
+num_2 = 0
 
 add_result = add(num_1, num_2)
 logger.info('Add: {} + {} = {}'.format(num_1, num_2, add_result))
