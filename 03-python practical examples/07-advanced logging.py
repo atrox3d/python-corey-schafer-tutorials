@@ -17,16 +17,54 @@ from modules import utils
 #
 #########################################################################################################
 from modules import employee_logger
-
-
-logfile = utils.getdatafilepath(__file__ + '.log')
+"""
+########################################################################################################################
+    - SET LOGFILE PATH
+    - DISPLAY IT
+########################################################################################################################
+"""
+logfile = utils.getdatafilepath(__file__ + '.log')                                  # set logfile path
 print(logfile)
+"""
+########################################################################################################################
+    - GET LOCAL (NON-ROOT) LOGGER INSTANCE
+    - SET LEVEL TO INFO (DEFAULT IS WARNING)
+########################################################################################################################
+"""
+logger = logging.getLogger(__name__)                                                # get local logger
+logger.setLevel(logging.INFO)                                                       # set logger level >= INFO
+"""
+########################################################################################################################
+    - GET SAME FORMATTER INSTANCE FOR ALL HANDLERS
+########################################################################################################################
+"""
+formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:%(message)s')     # get formatter
+"""
+########################################################################################################################
+    - GET FILE HANDLER INSTANCE
+    - SET FORMATTER FOR FILE HANDLER INSTANCE
+    - ADD HANDLER TO LOCAL LOGGER
+########################################################################################################################
+"""
+file_handler = logging.FileHandler(logfile)                                         # get file handler
+file_handler.setFormatter(formatter)                                                # set formatter for file handler
+logger.addHandler(file_handler)                                                     # add file handler to logger
+"""
+########################################################################################################################
+    - GET CLI HANDLER INSTANCE
+    - SET FORMATTER FOR CLI HANDLER INSTANCE
+    - ADD HANDLER TO LOCAL LOGGER
+########################################################################################################################
+"""
+cli_handler = logging.StreamHandler()                                               # get CLI handler (default=stderr)
+cli_handler.setFormatter(formatter)                                                 # set formatter for CLI handler
+logger.addHandler(cli_handler)                                                      # add CLI handler to logger
 
-logging.basicConfig(
-    level=logging.DEBUG,                                # all levels
-    filename=logfile,                                   # log on file
-    format='%(asctime)s:%(levelname)s:%(message)s'      # date time, level name, message
-)
+# logging.basicConfig(
+#     level=logging.DEBUG,  # INFO ad above
+#     filename=logfile,  # log on file
+#     format='%(asctime)s:%(levelname)s:%(name)s:%(message)s'  # date time, level name, message
+# )
 
 
 def add(x, y):
@@ -53,13 +91,13 @@ num_1 = 20
 num_2 = 10
 
 add_result = add(num_1, num_2)
-logging.info('Add: {} + {} = {}'.format(num_1, num_2, add_result))
+logger.info('Add: {} + {} = {}'.format(num_1, num_2, add_result))
 
 sub_result = subtract(num_1, num_2)
-logging.info('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
+logger.info('Sub: {} - {} = {}'.format(num_1, num_2, sub_result))
 
 mul_result = multiply(num_1, num_2)
-logging.info('Mul: {} * {} = {}'.format(num_1, num_2, mul_result))
+logger.info('Mul: {} * {} = {}'.format(num_1, num_2, mul_result))
 
 div_result = divide(num_1, num_2)
-logging.info('Div: {} / {} = {}'.format(num_1, num_2, div_result))
+logger.info('Div: {} / {} = {}'.format(num_1, num_2, div_result))
