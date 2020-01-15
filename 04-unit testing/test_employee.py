@@ -13,6 +13,14 @@ class TestEmployee(unittest.TestCase):
     def tearDown(self):
         print('tearDown\n')
 
+    @classmethod
+    def setUpClass(cls):
+        print('setupClass')
+
+    @classmethod
+    def tearDownClass(cls):
+        print('tearDownClass')
+
     def test_email(self):
         print('test_email')
 
