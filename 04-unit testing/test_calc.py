@@ -70,6 +70,11 @@ class TestCalc(unittest.TestCase):
                             calc.divide,    # function to call
                             1, 0            # function parameters
         )
+        """
+        using the context manager
+        """
+        with self.assertRaises(ValueError):
+            calc.divide(1, 0)
 
 
 if __name__ == '__main__':
