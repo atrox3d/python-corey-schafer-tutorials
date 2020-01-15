@@ -4,6 +4,15 @@
 """
 this is the test unit for module calc.py
 it is conventionally named test_*
+
+HOW TO RUN:
+    1)  without the "if __name__ == '__main__" test:
+            python -m unittest test_calc.py
+
+    2) adding the __main__ section just run
+            python test_calc.py
+
+    3) PyCharm: ALT+SHIFT+F10: select unittests in test_calc.py
 """
 import unittest  # std library
 import calc  # in pycharm: right click on folder/mark as/Sources Root
@@ -30,10 +39,10 @@ assertNotIsInstance(a, b)   |	not isinstance(a, b)
 
 
 class TestCalc(unittest.TestCase):
-    """
-    python -m unittest test_calc.py
-    """
-
     def test_add(self):
         result = calc.add(10, 5)
         self.assertEqual(result, 15)
+
+
+if __name__ == '__main__':
+    unittest.main()
