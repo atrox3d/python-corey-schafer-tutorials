@@ -15,6 +15,7 @@ HOW TO RUN:
     3) PyCharm: ALT+SHIFT+F10: select unittests in test_calc.py
 """
 import unittest  # std library
+
 import calc  # in pycharm: right click on folder/mark as/Sources Root
 
 """
@@ -40,8 +41,25 @@ assertNotIsInstance(a, b)   |	not isinstance(a, b)
 
 class TestCalc(unittest.TestCase):
     def test_add(self):
-        result = calc.add(10, 5)
-        self.assertEqual(result, 15)
+        # result = calc.add(10, 5)
+        self.assertEqual(calc.add(10, 5), 10 + 5)
+        self.assertEqual(calc.add(-1, 1), -1 + 1)
+        self.assertEqual(calc.add(-1, -1), -1 + -1)
+
+    def test_subtract(self):
+        self.assertEqual(calc.subtract(10, 5), 10 - 5)
+        self.assertEqual(calc.subtract(-1, 1), -1 - 1)
+        self.assertEqual(calc.subtract(-1, -1), -1 - -1)
+
+    def test_multiply(self):
+        self.assertEqual(calc.multiply(10, 5), 10 * 5)
+        self.assertEqual(calc.multiply(-1, +1), -1 * 1)
+        self.assertEqual(calc.multiply(-1, -1), -1 * -1)
+
+    def test_divide(self):
+        self.assertEqual(calc.divide(10, 5), 10 / 5)
+        self.assertEqual(calc.divide(-1, +1), -1 / 1)
+        self.assertEqual(calc.divide(-1, -1), -1 / -1)
 
 
 if __name__ == '__main__':
