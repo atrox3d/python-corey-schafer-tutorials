@@ -61,6 +61,15 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(calc.divide(-1, +1), -1 / 1)
         self.assertEqual(calc.divide(-1, -1), -1 / -1)
         self.assertEqual(calc.divide(5, 2), 5 / 2)
+        """
+        in order to avoid an exception during the test
+        we need not to call the function that raises the excetion
+        """
+        self.assertRaises(
+                            ValueError,     # expected exception
+                            calc.divide,    # function to call
+                            1, 0            # function parameters
+        )
 
 
 if __name__ == '__main__':
