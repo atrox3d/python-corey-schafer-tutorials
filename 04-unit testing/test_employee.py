@@ -11,7 +11,7 @@ class TestEmployee(unittest.TestCase):
         self.emp_2 = Employee('Sue', 'Smith', 60000)
 
     def tearDown(self):
-        print('tearDown')
+        print('tearDown\n')
 
     def test_email(self):
         print('test_email')
