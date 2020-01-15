@@ -19,6 +19,6 @@ def multiply(x, y):
 
 def divide(x, y):
     """Divide Function"""
-    try:
-        return x / y
-    except ZeroDivisionError as zde:
+    if y == 0:
+        raise ValueError('cannot divide by 0')
+    return x / y
