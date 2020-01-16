@@ -74,6 +74,18 @@ class TestEmployee(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    import os
+
+    _getcwd = os.getcwd
+    print(_getcwd())
+
+
+    def cwd():
+        return "ciaone"
+
+
+    os.getcwd = cwd
+
+    print(os.getcwd())
 
     unittest.main()
-
