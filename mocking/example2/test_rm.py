@@ -19,6 +19,12 @@ class RmTestCase(unittest.TestCase):
         # self.assertFalse(os.path.isfile(self.tmppfilepath), 'failed to remove the file')
         mock_os.remove.assert_called_with("any path")
 
+    def test_rm_context(self):
+        with mock.patch('mymodule.os') as mock_os:
+            rm("any path")
+            # self.assertFalse(os.path.isfile(self.tmppfilepath), 'failed to remove the file')
+            mock_os.remove.assert_called_with("any path")
+
 
 if __name__ == '__main__':
     unittest.main()
