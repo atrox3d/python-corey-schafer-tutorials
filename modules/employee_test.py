@@ -28,3 +28,6 @@ class Employee:
             return response.text
         else:
             return 'Bad Response!'
+
+    def getsomestring(self):
+        return "getsomestring"
