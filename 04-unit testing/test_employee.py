@@ -65,6 +65,15 @@ class TestEmployee(unittest.TestCase):
             mocked_get.assert_called_with('http://company.com/Schafer/May')
             self.assertEqual(schedule, 'Success')
 
+    def test_wtf(self):
+        import os
+
+        with patch('os.getcwd') as mocked_getcwd:
+            mocked_getcwd.return_value = "ciao"
+            print(os.getcwd())
+
 
 if __name__ == '__main__':
+
     unittest.main()
+
