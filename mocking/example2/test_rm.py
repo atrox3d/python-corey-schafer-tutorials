@@ -37,28 +37,26 @@ class RemovalServiceTestCase(unittest.TestCase):
     injected in the right order.    
     """
 
-    @mock.patch('mymodule.os.path')
-    @mock.patch('mymodule.os')
+    @mock.patch('mymodule.os.path')                     # second decorator
+    @mock.patch('mymodule.os')                          # first decorator
     def test_rm_decorator(self, mock_os, mock_path):
-        reference = RemovalService()
-        # setup the mock
-        mock_path.isfile.return_value = False
 
-        reference.rm("any path")
+        reference = RemovalService()                    # instantiate RemovalService
 
-        # test that the remove call was NOT called
-        self.assertFalse(
+        mock_path.isfile.return_value = False           # setup the mock: file does not exist
+
+        reference.rm("any path")                        # test object not to delete
+
+        self.assertFalse(                               # test that the remove call was NOT called
             mock_os.remove.called,
             "failed to not remove the file if not present"
         )
 
-        # make the file exist
-        mock_path.isfile.return_value = True
+        mock_path.isfile.return_value = True            # make the file exist
 
-        reference.rm("any path")
+        reference.rm("any path")                        # test again: fake delete
 
-        # self.assertFalse(os.path.isfile(self.tmppfilepath), 'failed to remove the file')
-        mock_os.remove.assert_called_with("any path")
+        mock_os.remove.assert_called_with("any path")   # check argument
 
     def test_rm_context(self):
         with mock.patch('mymodule.os') as mock_os:
