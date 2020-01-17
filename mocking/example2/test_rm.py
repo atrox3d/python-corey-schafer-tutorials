@@ -1,3 +1,6 @@
+"""
+https://www.toptal.com/python/an-introduction-to-mocking-in-python
+"""
 from mymodule import rm
 
 import os.path
