@@ -17,7 +17,7 @@ logger.setLevel(logging.DEBUG)          # set logger level >= INFO
     - GET SAME FORMATTER INSTANCE FOR ALL HANDLERS
 ########################################################################################################################
 """
-formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:RemovalService.%(funcname)s:%(message)s')  # get formatter
+formatter = logging.Formatter('%(asctime)s | %(levelname)-10s | %(name)s | RemovalService.%(funcName)s | %(message)s')  # get formatter
 """
 ########################################################################################################################
     - GET CLI HANDLER INSTANCE
@@ -34,10 +34,20 @@ class RemovalService(object):
     """A service for removing objects from the filesystem."""
 
     def rm(self, filename):
-        print(f'{__class__.__name__}.{self.rm.__name__}|check file {filename!r}')
+        # print(f'{__class__.__name__}.{self.rm.__name__}|check file {filename!r}')
+        logger.info(f'check file {filename!r}')
         if os.path.isfile(filename):
-            print(f'{__class__.__name__}.{self.rm.__name__}|{filename!r} exists')
-            print(f'{__class__.__name__}.{self.rm.__name__}|call os.remove({filename!r})')
-            os.remove(filename)
+            # print(f'{__class__.__name__}.{self.rm.__name__}|{filename!r} exists')
+            # print(f'{__class__.__name__}.{self.rm.__name__}|call os.remove({filename!r})')
+            logger.info(f'{filename!r} exists')
+            logger.info(f'call os.remove({filename!r})')
+            # os.remove(filename)
         else:
-            print(f'{__class__.__name__}.{self.rm.__name__}|{filename} does not exists')
+            # print(f'{__class__.__name__}.{self.rm.__name__}|{filename} does not exists')
+            logger.error(f'{filename!r} does not exists')
+            pass
+
+
+if __name__ == '__main__':
+    rs = RemovalService()
+    rs.rm('NonExistingFile')
