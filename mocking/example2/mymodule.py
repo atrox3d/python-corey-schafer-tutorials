@@ -44,6 +44,15 @@ class RemovalService(object):
             logger.error(f'{filename!r} does not exists')
 
 
+class UploadService(object):
+
+    def __init__(self, removal_service):
+        self.removal_service = removal_service
+
+    def upload_complete(self, filename):
+        self.removal_service.rm(filename)
+
+
 if __name__ == '__main__':
     rs = RemovalService()
     rs.rm('NonExistingFile')
