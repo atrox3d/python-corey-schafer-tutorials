@@ -38,10 +38,10 @@ class RemovalService(object):
         logger.info(f'check file {filename!r}')
         if os.path.isfile(filename):
             logger.info(f'{filename!r} exists')
-            logger.info(f'call os.remove({filename!r})')
+            logger.info(f'call os.remove({filename!r})\n')
             os.remove(filename)
         else:
-            logger.error(f'{filename!r} does not exists')
+            logger.error(f'{filename!r} does not exists\n')
 
 
 class UploadService(object):
