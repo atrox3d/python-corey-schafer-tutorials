@@ -20,6 +20,7 @@ class SimpleClass:
         self.instancelogger = logger.getCLIlogger('instancelogger')
         self.instancelogger.info(value)
         self.classlogger.info(value)
+        modulelogger.info(value)
 
 
 if __name__ == '__main__':
