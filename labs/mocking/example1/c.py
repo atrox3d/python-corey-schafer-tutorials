@@ -1,5 +1,5 @@
 # import mocking.a
-from mocking.example1 import a
+from labs.mocking.example1 import a
 from unittest.mock import patch
 
 sc = a.SomeClass()

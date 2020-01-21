@@ -1,5 +1,5 @@
 # from a import SomeClass
-from mocking.example1.a import SomeClass
+from labs.mocking.example1.a import SomeClass
 from unittest.mock import patch
 
 sc = SomeClass()
