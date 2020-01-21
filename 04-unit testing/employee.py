@@ -1,4 +1,5 @@
 import requests
+from modules import logger
 
 
 class Employee:
@@ -10,6 +11,9 @@ class Employee:
         self.first = first
         self.last = last
         self.pay = pay
+
+        self.log = logger.getCLIlogger(self.__class__.__name__)
+        self.log.info('init')
 
     @property
     def email(self):
@@ -28,3 +32,7 @@ class Employee:
             return response.text
         else:
             return 'Bad Response!'
+
+
+if __name__ == '__main__':
+    e = Employee('first', 'last', 1000)
