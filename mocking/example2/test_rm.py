@@ -37,45 +37,45 @@ class RemovalServiceTestCase(unittest.TestCase):
     injected in the right order.    
     """
 
-    @mock.patch('mymodule.os.path')  # second decorator
-    @mock.patch('mymodule.os')  # first decorator
+    @mock.patch('mymodule.os.path')                                     # second decorator
+    @mock.patch('mymodule.os')                                          # first decorator
     def test_rm_decorator(self, mock_os, mock_path):
-        reference = RemovalService()  # instantiate RemovalService
+        reference = RemovalService()                                    # instantiate RemovalService
 
-        mock_path.isfile.return_value = False  # setup the mock: file does not exist
+        mock_path.isfile.return_value = False                           # setup the mock: file does not exist
 
-        reference.rm("any path")  # test object not to delete
+        reference.rm("any path")                                        # test object not to delete
 
-        self.assertFalse(  # test that the remove call was NOT called
+        self.assertFalse(                                               # test that the remove call was NOT called
             mock_os.remove.called,
             "failed to not remove the file if not present"
         )
 
-        mock_path.isfile.return_value = True  # make the file exist
+        mock_path.isfile.return_value = True                            # make the file exist
 
-        reference.rm("any path")  # test again: fake delete
+        reference.rm("any path")                                        # test again: fake delete
 
-        mock_os.remove.assert_called_with("any path")  # check argument
+        mock_os.remove.assert_called_with("any path")                   # check argument
 
     def test_rm_context(self):
         with mock.patch('mymodule.os') as mock_os:
             with mock.patch('mymodule.os.path') as mock_path:
-                reference = RemovalService()  # instantiate RemovalService
+                reference = RemovalService()                            # instantiate RemovalService
 
-                mock_path.isfile.return_value = False  # setup the mock: file does not exist
+                mock_path.isfile.return_value = False                   # setup the mock: file does not exist
 
-                reference.rm("any path")  # test object not to delete
+                reference.rm("any path")                                # test object not to delete
 
-                self.assertFalse(  # test that the remove call was NOT called
+                self.assertFalse(                                       # test that the remove call was NOT called
                     mock_os.remove.called,
                     "failed to not remove the file if not present"
                 )
 
-                mock_path.isfile.return_value = True  # make the file exist
+                mock_path.isfile.return_value = True                    # make the file exist
 
-                reference.rm("any path")  # test again: fake delete
+                reference.rm("any path")                                # test again: fake delete
 
-                mock_os.remove.assert_called_with("any path")  # check argument
+                mock_os.remove.assert_called_with("any path")           # check argument
 
 
 class UploadServiceTestCase(unittest.TestCase):
@@ -85,21 +85,17 @@ class UploadServiceTestCase(unittest.TestCase):
     """
     @mock.patch.object(RemovalService, 'rm')
     def test_upload_complete(self, mock_rm):
-        # build our dependencies
-        removal_service = RemovalService()
+
+        removal_service = RemovalService()                              # build our dependencies
         reference = UploadService(removal_service)
 
-        # call upload_complete, which shoul, in turn, 'rm'
-        reference.upload_complete("my uploaded file")
+        reference.upload_complete("my uploaded file")                   # call upload_complete, which shoul, in turn, 'rm'
 
-        # check that it called the rm method of any RemovalService
-        mock_rm.assert_called_with("my uploaded file")
+        mock_rm.assert_called_with("my uploaded file")                  # check that it called the rm method of any RemovalService
 
-        # check that it called the rm of _our_ removal_service
-        removal_service.rm.assert_called_with("my uploaded file")
+        removal_service.rm.assert_called_with("my uploaded file")       # check that it called the rm of _our_ removal_service
 
-        # my check: is mock_rm the same as removal_service.rm?
-        print(mock_rm is removal_service.rm)
+        print(mock_rm is removal_service.rm)                            # my check: is mock_rm the same as removal_service.rm?
 
 
 if __name__ == '__main__':
