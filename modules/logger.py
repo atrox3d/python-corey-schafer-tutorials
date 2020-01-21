@@ -16,15 +16,23 @@ def getCLIlogger(classname=None):
         - SET LEVEL TO INFO (DEFAULT IS WARNING)
     ########################################################################################################################
     """
-    _defaultlogger = logging.getLogger(__name__)  # get local logger
+    if classname is not None:
+        _defaultlogger = logging.getLogger(classname)  # get local logger
+    else:
+        _defaultlogger = logging.getLogger(__name__)  # get local logger
+
     _defaultlogger.setLevel(logging.DEBUG)  # set logger level >= INFO
     """
     ########################################################################################################################
         - GET SAME FORMATTER INSTANCE FOR ALL HANDLERS
     ########################################################################################################################
     """
-    formatter = logging.Formatter(
-        '%(asctime)s | %(levelname)-10s | %(name)s | %(funcName)s | %(message)s')  # get formatter
+    if classname is not None:
+        formatstring = f'%(asctime)s | %(levelname)-10s | %(name)s | {classname}.%(funcName)s | %(message)s'
+    else:
+        formatstring = '%(asctime)s | %(levelname)-10s | %(name)s | %(funcName)s | %(message)s'
+
+    formatter = logging.Formatter(formatstring)  # get formatter
     """
     ########################################################################################################################
         - GET CLI HANDLER INSTANCE
@@ -46,3 +54,15 @@ if __name__ == '__main__':
     logger.warning('testing testing')
     logger.error('testing testing')
     logger.critical('testing testing')
+
+    logger = getCLIlogger('classname')
+    logger.debug('testing testing')
+    logger.info('testing testing')
+    logger.warning('testing testing')
+    logger.error('testing testing')
+    logger.critical('testing testing')
+
+    print(logger.handlers)
+    print(logger.handlers[0])
+    print(logger.handlers[0].formatter)
+    print(logger.handlers[0].formatter._fmt)
