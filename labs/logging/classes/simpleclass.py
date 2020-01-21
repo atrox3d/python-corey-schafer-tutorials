@@ -1,15 +1,15 @@
 from modules import logger
 
-
 """
     module level logger
 """
 modulelogger = logger.getCLIlogger()
-modulelogger.info('hello')
+modulelogger.info('format: {}'.format(modulelogger.handlers[0].formatter._fmt))
 
 
 class SimpleClass:
     classlogger = logger.getCLIlogger('classlogger')
+    modulelogger.info('class')
     classlogger.info('class')
 
     def __init__(self, value='default'):
@@ -17,10 +17,10 @@ class SimpleClass:
         """
         instance level logger
         """
+        modulelogger.info(value)
+        self.classlogger.info(value)
         self.instancelogger = logger.getCLIlogger('instancelogger')
         self.instancelogger.info(value)
-        self.classlogger.info(value)
-        modulelogger.info(value)
 
 
 if __name__ == '__main__':

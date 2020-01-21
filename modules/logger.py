@@ -28,9 +28,9 @@ def getCLIlogger(classname=None):
     ########################################################################################################################
     """
     if classname is not None:
-        formatstring = f'%(asctime)s | %(levelname)-10s | %(name)s | {classname}.%(funcName)s | %(message)s'
+        formatstring = f'%(asctime)s | %(levelname)-10s | %(name)-20s | {classname}.%(funcName)s | %(message)s'
     else:
-        formatstring = '%(asctime)s | %(levelname)-10s | %(name)s | %(funcName)s | %(message)s'
+        formatstring = '%(asctime)s | %(levelname)-10s | %(name)-20s | %(funcName)s | %(message)s'
 
     formatter = logging.Formatter(formatstring)  # get formatter
     """
