@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 # from employee_test import Employee
 from modules import employee_test
+import employee
 import logging
 
 
@@ -11,8 +12,11 @@ class TestEmployee(unittest.TestCase):
         self.log.info('setUp')
         # print('setUp')
 
-        self.emp_1 = employee_test.Employee('Corey', 'Schafer', 50000)
-        self.emp_2 = employee_test.Employee('Sue', 'Smith', 60000)
+        # self.emp_1 = employee_test.Employee('Corey', 'Schafer', 50000)
+        # self.emp_2 = employee_test.Employee('Sue', 'Smith', 60000)
+
+        self.emp_1 = employee.Employee('Corey', 'Schafer', 50000)
+        self.emp_2 = employee.Employee('Sue', 'Smith', 60000)
 
     def tearDown(self):
         self.log.info('tearDown\n')
@@ -83,7 +87,7 @@ class TestEmployee(unittest.TestCase):
 
         with patch('os.getcwd') as mocked_getcwd:
             mocked_getcwd.return_value = "ciao"
-            print(os.getcwd())
+            self.log.info(os.getcwd())
 
 
 if __name__ == '__main__':
