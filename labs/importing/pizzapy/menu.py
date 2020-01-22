@@ -4,7 +4,8 @@ https://alex.dzyoba.com/blog/python-import/
 # menu.py file
 
 from typing import List
-from pizza import Pizza
+# from pizza import Pizza
+from pizzapy.pizza import Pizza
 
 MENU: List[Pizza] = [
     Pizza('Margherita', 30, 10),
