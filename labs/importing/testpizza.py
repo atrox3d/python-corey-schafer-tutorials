@@ -1,10 +1,17 @@
-import pizzapy                  # works
-from pizzapy import pizza       # works
+from pizza_app.pizzapy import menu
+from pizza_app.pizzapy import pizza
 
-# from pizzapy import menu
-#       works, but then menu.py cannot find pizza
-#       ModuleNotFoundError: No module named 'pizza'
-
-
+print(menu.MENU)
+mypizza = pizza.Pizza('profumata', 30, 12)
+print(mypizza)
 
 
+class Pizza(pizza.Pizza):
+    def __str__(self):
+        return f'{self.name}({self.size}): EUR {self.price}'
+
+
+oldpizza = pizza.Pizza('oldpizza', 0, 0)
+newpizza = Pizza('strpizza', 0, 0)
+print(oldpizza)
+print(newpizza)
