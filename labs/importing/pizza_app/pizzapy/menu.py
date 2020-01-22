@@ -4,8 +4,9 @@ https://alex.dzyoba.com/blog/python-import/
 # menu.py file
 
 from typing import List
-# from pizza import Pizza
-from pizzapy.pizza import Pizza
+# from pizza import Pizza                   # not working
+# from pizzapy.pizza import Pizza           # working version
+from pizza_app.pizzapy.pizza import Pizza   # most correct version
 
 MENU: List[Pizza] = [
     Pizza('Margherita', 30, 10),
@@ -14,5 +15,5 @@ MENU: List[Pizza] = [
 ]
 
 if __name__ == '__main__':
-    print(MENU)
+    print('menu.py    | ', MENU)
 
