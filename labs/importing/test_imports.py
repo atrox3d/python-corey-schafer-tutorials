@@ -1,3 +1,9 @@
+"""
+https://alex.dzyoba.com/blog/python-import/
+https://stackoverflow.com/questions/72852/how-to-do-relative-imports-in-python
+"""
+
+
 def filternames(collection, *exclude):
     """
     print collection, excluding dunders and names in the optional list
