@@ -2,29 +2,43 @@ import unittest
 from unittest.mock import patch
 # from employee_test import Employee
 from modules import employee_test
+import employee
+import logging
 
 
 class TestEmployee(unittest.TestCase):
 
     def setUp(self):
-        print('setUp')
+        self.log.info('setUp')
+        # print('setUp')
 
-        self.emp_1 = employee_test.Employee('Corey', 'Schafer', 50000)
-        self.emp_2 = employee_test.Employee('Sue', 'Smith', 60000)
+        # self.emp_1 = employee_test.Employee('Corey', 'Schafer', 50000)
+        # self.emp_2 = employee_test.Employee('Sue', 'Smith', 60000)
+
+        self.emp_1 = employee.Employee('Corey', 'Schafer', 50000)
+        self.emp_2 = employee.Employee('Sue', 'Smith', 60000)
 
     def tearDown(self):
-        print('tearDown\n')
+        self.log.info('tearDown\n')
 
     @classmethod
     def setUpClass(cls):
-        print('setupClass')
+        formatstring = '%(asctime)s | %(levelname)-10s | %(name)s | %(funcName)s | %(message)s'
+        formatter = logging.Formatter(formatstring)  # get formatter
+        cli_handler = logging.StreamHandler()  # get CLI handler (default=stderr)
+        cli_handler.setFormatter(formatter)  # set formatter for CLI handler
+
+        cls.log = logging.getLogger(cls.__name__)
+        cls.log.setLevel(logging.DEBUG)
+        cls.log.addHandler(cli_handler)  # add CLI handler to logger
+        cls.log.info('setupClass')
 
     @classmethod
     def tearDownClass(cls):
-        print('tearDownClass')
+        cls.log.info('tearDownClass')
 
     def test_email(self):
-        print('test_email')
+        self.log.info('test_email')
 
         self.assertEqual(self.emp_1.email, 'Corey.Schafer@email.com')
         self.assertEqual(self.emp_2.email, 'Sue.Smith@email.com')
@@ -36,7 +50,7 @@ class TestEmployee(unittest.TestCase):
         self.assertEqual(self.emp_2.email, 'Jane.Smith@email.com')
 
     def test_fullname(self):
-        print('test_fullname')
+        self.log.info('test_fullname')
 
         self.assertEqual(self.emp_1.fullname, 'Corey Schafer')
         self.assertEqual(self.emp_2.fullname, 'Sue Smith')
@@ -48,7 +62,7 @@ class TestEmployee(unittest.TestCase):
         self.assertEqual(self.emp_2.fullname, 'Jane Smith')
 
     def test_apply_raise(self):
-        print('test_apply_raises')
+        self.log.info('test_apply_raises')
 
         self.emp_1.apply_raise()
         self.emp_2.apply_raise()
@@ -73,7 +87,7 @@ class TestEmployee(unittest.TestCase):
 
         with patch('os.getcwd') as mocked_getcwd:
             mocked_getcwd.return_value = "ciao"
-            print(os.getcwd())
+            self.log.info(os.getcwd())
 
 
 if __name__ == '__main__':
