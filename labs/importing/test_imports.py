@@ -22,6 +22,14 @@ def filternames(collection, *exclude):
 
 
 def print_prettifycollection(name, collection, indent=4):
+    """
+    print prettified collection
+
+    :param name:
+    :param collection:
+    :param indent:
+    :return:
+    """
     print(f'{name}:')
     if type(collection) is list:
         for name in collection:
@@ -32,6 +40,11 @@ def print_prettifycollection(name, collection, indent=4):
 
 
 def printnames():
+    """
+    print names in locals, globals and dir
+
+    :return:
+    """
     print('-----------------------------------------------------------------------------------------------------------')
     _locals = filternames(locals(), printnames.__name__, print_prettifycollection.__name__)
     _globals = filternames(globals(), printnames.__name__, print_prettifycollection.__name__)
