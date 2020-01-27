@@ -69,58 +69,58 @@ printnames()
 #
 #
 print('import pizza_app:')
-import pizza_app_experiments                                    # creates namespace pizza_app
-print(pizza_app_experiments)
-# print(pizza_app_experiments.pizzapy)                          # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
-# pizza_app_experiments.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
+import pizzaapp_exp                                    # creates namespace pizza_app
+print(pizzaapp_exp)
+# print(pizzaapp_exp.pizzapy)                          # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
+# pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
 printnames()
 #
 #
 #
-print('import pizza_app_experiments.pizzapy:')
-import pizza_app_experiments.pizzapy
-# pizza_app_experiments.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizza_app_experiments.pizzapy' has no attribute 'pizza'
-print(pizza_app_experiments.pizzapy)
+print('import pizzaapp_exp.pizzapy:')
+import pizzaapp_exp.pizzapy
+# pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizzaapp_exp.pizzapy' has no attribute 'pizza'
+print(pizzaapp_exp.pizzapy)
 printnames()
 #
 #
 #
 print('from pizza_app import pizzapy:')
 from pizza_app import pizzapy                       # creates namespace pizzapy
-print(pizza_app_experiments.pizzapy)
+print(pizzaapp_exp.pizzapy)
 print(pizzapy)
 # pizzapy.pizza.Pizza('', 0, 0)                     # NO
 printnames()
 #
 #
 #
-print('import pizza_app_experiments.pizzapy.pizza:')
-import pizza_app_experiments.pizzapy.pizza                      #
+print('import pizzaapp_exp.pizzapy.pizza:')
+import pizzaapp_exp.pizzapy.pizza                      #
 # Pizza('name', 10, 10.0)                           # NameError: name 'Pizza' is not defined
-print(pizza_app_experiments.pizzapy.pizza)
+print(pizzaapp_exp.pizzapy.pizza)
 # print(pizza)                                      # NameError: name 'pizza' is not defined
 printnames()
-pizza_app_experiments.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
+pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
 #
 #
 #
-print('from pizza_app_experiments.pizzapy import pizza:')
-from pizza_app_experiments.pizzapy import pizza                 # creates namespace pizza
+print('from pizzaapp_exp.pizzapy import pizza:')
+from pizzaapp_exp.pizzapy import pizza                 # creates namespace pizza
 # Pizza('name', 10, 10.0)                           # NameError: name 'Pizza' is not defined
-print(pizza_app_experiments.pizzapy.pizza)
+print(pizzaapp_exp.pizzapy.pizza)
 print(pizza)
 printnames()
-pizza_app_experiments.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
+pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
 #
 #
 #
-# import pizza_app_experiments.pizzapy.pizza.Pizza              # ModuleNotFoundError: No module named 'pizza_app_experiments.pizzapy.pizza.Pizza'; 'pizza_app_experiments.pizzapy.pizza' is not a package
+# import pizzaapp_exp.pizzapy.pizza.Pizza              # ModuleNotFoundError: No module named 'pizzaapp_exp.pizzapy.pizza.Pizza'; 'pizzaapp_exp.pizzapy.pizza' is not a package
 #
 #
 #
-print('from pizza_app_experiments.pizzapy.pizza import Pizza:')
-from pizza_app_experiments.pizzapy.pizza import Pizza           # creates class Pizza in namespace
-print(pizza_app_experiments.pizzapy.pizza)
+print('from pizzaapp_exp.pizzapy.pizza import Pizza:')
+from pizzaapp_exp.pizzapy.pizza import Pizza           # creates class Pizza in namespace
+print(pizzaapp_exp.pizzapy.pizza)
 print(pizza)
 print(Pizza)
 printnames()
@@ -139,8 +139,8 @@ print()
 #
 #
 #
-print('del pizza_app_experiments.pizzapy.pizza.Pizza:')
-del pizza_app_experiments.pizzapy.pizza.Pizza                   # no effect
+print('del pizzaapp_exp.pizzapy.pizza.Pizza:')
+del pizzaapp_exp.pizzapy.pizza.Pizza                   # no effect
 printnames()
 #
 #
@@ -151,8 +151,8 @@ printnames()
 #
 #
 #
-print('del pizza_app_experiments.pizzapy.pizza:')
-del pizza_app_experiments.pizzapy.pizza                         # no effect
+print('del pizzaapp_exp.pizzapy.pizza:')
+del pizzaapp_exp.pizzapy.pizza                         # no effect
 printnames()
 #
 #
@@ -163,8 +163,8 @@ printnames()
 #
 #
 #
-print('del pizza_app_experiments.pizzapy:')
-del pizza_app_experiments.pizzapy                               # no effect
+print('del pizzaapp_exp.pizzapy:')
+del pizzaapp_exp.pizzapy                               # no effect
 printnames()
 #
 #
