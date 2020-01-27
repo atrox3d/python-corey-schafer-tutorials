@@ -7,7 +7,7 @@ import math
 
 
 class Pizza:
-    print('pizza.py   | always executed: set fields')
+    print('pizza.py   | Pizza | always executed: set fields')
     name: str = ''
     size: int = 0
     price: float = 0

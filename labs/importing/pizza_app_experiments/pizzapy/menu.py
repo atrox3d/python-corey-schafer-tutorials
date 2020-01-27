@@ -13,7 +13,7 @@ https://stackoverflow.com/questions/45446418/modulenotfounderror-no-module-named
 Note that relative imports are based on the name of the current module. Since the name of the main module is always 
 __main__, modules intended for use as the main module of a Python application must always use absolute imports. 
 """
-from pizza_app.pizzapy.pizza import Pizza  # most correct version
+from pizza import Pizza  # most correct version
 
 MENU: List[Pizza] = [
     Pizza('Margherita', 30, 10),
