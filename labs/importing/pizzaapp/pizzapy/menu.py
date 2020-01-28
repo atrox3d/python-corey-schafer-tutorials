@@ -4,7 +4,10 @@ https://alex.dzyoba.com/blog/python-import/
 # menu.py file
 
 from typing import List
-from .pizza import Pizza
+if __name__ == '__main__':
+    from pizza import Pizza
+else:
+    from .pizza import Pizza
 
 MENU: List[Pizza] = [
     Pizza('Margherita', 30, 10.0),
