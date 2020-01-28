@@ -4,7 +4,14 @@ https://alex.dzyoba.com/blog/python-import/
 # menu.py file
 
 from typing import List
+
 if __name__ == '__main__':
+    """
+    if __name__ == '__main__' then the dot becomes:
+        from __main__.pizza
+    
+    so, to avoid the error we test __name__ and omit the dot
+    """
     from pizza import Pizza
 else:
     from .pizza import Pizza
