@@ -4,6 +4,7 @@ https://alex.dzyoba.com/blog/python-import/
 # pizza.py file
 
 import math
+import os
 
 
 class Pizza:
@@ -26,6 +27,6 @@ class Pizza:
         return self.size // int(self.price) * 100
 
 
-print('pizza.py module name is %s' % __name__)
+print(f'{os.path.basename(__file__)} | module name is {__name__}')
 if __name__ == '__main__':
-    print('Carbonara is the most awesome pizza.')
+    print(f'{os.path.basename(__file__)} | Carbonara is the most awesome pizza')
