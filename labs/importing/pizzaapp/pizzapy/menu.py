@@ -4,7 +4,6 @@ https://alex.dzyoba.com/blog/python-import/
 # menu.py file
 
 from typing import List
-import os
 
 if __name__ == '__main__':
     """
@@ -13,10 +12,10 @@ if __name__ == '__main__':
     
     so, to avoid the error we test __name__ and omit the dot
     """
-    print(f'{os.path.basename(__file__)} | from pizza import Pizza')
+    print('menu.py | from pizza import Pizza')
     from pizza import Pizza
 else:
-    print(f'{os.path.basename(__file__)} | from .pizza import Pizza')
+    print(f'menu.py  | from .pizza import Pizza')
     from .pizza import Pizza
 
 MENU: List[Pizza] = [
@@ -26,5 +25,5 @@ MENU: List[Pizza] = [
 ]
 
 if __name__ == '__main__':
-    print(f'{os.path.basename(__file__)} | MENU = {MENU}')
+    print(f'menu.py  | MENU = {MENU}')
 
