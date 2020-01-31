@@ -7,7 +7,6 @@ import math
 
 
 class Pizza:
-    print('pizza.py   | always executed: set fields')
     name: str = ''
     size: int = 0
     price: float = 0
@@ -27,7 +26,6 @@ class Pizza:
         return self.size // int(self.price) * 100
 
 
-print('pizza.py   | module name is %s' % __name__)
-
+print(f'pizza.py | module name is {__name__}')
 if __name__ == '__main__':
-    print('pizza.py   | Carbonara is the most awesome pizza.')
+    print(f'pizza.py | Carbonara is the most awesome pizza')

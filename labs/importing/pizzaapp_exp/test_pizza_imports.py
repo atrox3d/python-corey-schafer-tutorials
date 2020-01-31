@@ -1,3 +1,9 @@
+"""
+https://alex.dzyoba.com/blog/python-import/
+https://stackoverflow.com/questions/72852/how-to-do-relative-imports-in-python
+"""
+
+
 def filternames(collection, *exclude):
     """
     print collection, excluding dunders and names in the optional list
@@ -16,6 +22,14 @@ def filternames(collection, *exclude):
 
 
 def print_prettifycollection(name, collection, indent=4):
+    """
+    print prettified collection
+
+    :param name:
+    :param collection:
+    :param indent:
+    :return:
+    """
     print(f'{name}:')
     if type(collection) is list:
         for name in collection:
@@ -26,6 +40,11 @@ def print_prettifycollection(name, collection, indent=4):
 
 
 def printnames():
+    """
+    print names in locals, globals and dir
+
+    :return:
+    """
     print('-----------------------------------------------------------------------------------------------------------')
     _locals = filternames(locals(), printnames.__name__, print_prettifycollection.__name__)
     _globals = filternames(globals(), printnames.__name__, print_prettifycollection.__name__)
@@ -50,58 +69,58 @@ printnames()
 #
 #
 print('import pizza_app:')
-import pizza_app                                    # creates namespace pizza_app
-print(pizza_app)
-# print(pizza_app.pizzapy)                          # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
-# pizza_app.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
+import pizzaapp_exp                                    # creates namespace pizza_app
+print(pizzaapp_exp)
+# print(pizzaapp_exp.pizzapy)                          # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
+# pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizza_app' has no attribute 'pizzapy'
 printnames()
 #
 #
 #
-print('import pizza_app.pizzapy:')
-import pizza_app.pizzapy
-# pizza_app.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizza_app.pizzapy' has no attribute 'pizza'
-print(pizza_app.pizzapy)
+print('import pizzaapp_exp.pizzapy:')
+import pizzaapp_exp.pizzapy
+# pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)   # AttributeError: module 'pizzaapp_exp.pizzapy' has no attribute 'pizza'
+print(pizzaapp_exp.pizzapy)
 printnames()
 #
 #
 #
 print('from pizza_app import pizzapy:')
 from pizza_app import pizzapy                       # creates namespace pizzapy
-print(pizza_app.pizzapy)
+print(pizzaapp_exp.pizzapy)
 print(pizzapy)
 # pizzapy.pizza.Pizza('', 0, 0)                     # NO
 printnames()
 #
 #
 #
-print('import pizza_app.pizzapy.pizza:')
-import pizza_app.pizzapy.pizza                      #
+print('import pizzaapp_exp.pizzapy.pizza:')
+import pizzaapp_exp.pizzapy.pizza                      #
 # Pizza('name', 10, 10.0)                           # NameError: name 'Pizza' is not defined
-print(pizza_app.pizzapy.pizza)
+print(pizzaapp_exp.pizzapy.pizza)
 # print(pizza)                                      # NameError: name 'pizza' is not defined
 printnames()
-pizza_app.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
+pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
 #
 #
 #
-print('from pizza_app.pizzapy import pizza:')
-from pizza_app.pizzapy import pizza                 # creates namespace pizza
+print('from pizzaapp_exp.pizzapy import pizza:')
+from pizzaapp_exp.pizzapy import pizza                 # creates namespace pizza
 # Pizza('name', 10, 10.0)                           # NameError: name 'Pizza' is not defined
-print(pizza_app.pizzapy.pizza)
+print(pizzaapp_exp.pizzapy.pizza)
 print(pizza)
 printnames()
-pizza_app.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
+pizzaapp_exp.pizzapy.pizza.Pizza('name', 10, 10.0)     # YES
 #
 #
 #
-# import pizza_app.pizzapy.pizza.Pizza              # ModuleNotFoundError: No module named 'pizza_app.pizzapy.pizza.Pizza'; 'pizza_app.pizzapy.pizza' is not a package
+# import pizzaapp_exp.pizzapy.pizza.Pizza              # ModuleNotFoundError: No module named 'pizzaapp_exp.pizzapy.pizza.Pizza'; 'pizzaapp_exp.pizzapy.pizza' is not a package
 #
 #
 #
-print('from pizza_app.pizzapy.pizza import Pizza:')
-from pizza_app.pizzapy.pizza import Pizza           # creates class Pizza in namespace
-print(pizza_app.pizzapy.pizza)
+print('from pizzaapp_exp.pizzapy.pizza import Pizza:')
+from pizzaapp_exp.pizzapy.pizza import Pizza           # creates class Pizza in namespace
+print(pizzaapp_exp.pizzapy.pizza)
 print(pizza)
 print(Pizza)
 printnames()
@@ -120,8 +139,8 @@ print()
 #
 #
 #
-print('del pizza_app.pizzapy.pizza.Pizza:')
-del pizza_app.pizzapy.pizza.Pizza                   # no effect
+print('del pizzaapp_exp.pizzapy.pizza.Pizza:')
+del pizzaapp_exp.pizzapy.pizza.Pizza                   # no effect
 printnames()
 #
 #
@@ -132,8 +151,8 @@ printnames()
 #
 #
 #
-print('del pizza_app.pizzapy.pizza:')
-del pizza_app.pizzapy.pizza                         # no effect
+print('del pizzaapp_exp.pizzapy.pizza:')
+del pizzaapp_exp.pizzapy.pizza                         # no effect
 printnames()
 #
 #
@@ -144,8 +163,8 @@ printnames()
 #
 #
 #
-print('del pizza_app.pizzapy:')
-del pizza_app.pizzapy                               # no effect
+print('del pizzaapp_exp.pizzapy:')
+del pizzaapp_exp.pizzapy                               # no effect
 printnames()
 #
 #

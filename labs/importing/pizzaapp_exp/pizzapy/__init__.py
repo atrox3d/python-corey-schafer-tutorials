@@ -1,3 +1,6 @@
+"""
+https://alex.dzyoba.com/blog/python-import/
+"""
 from os.path import basename
 thisfile = basename(__file__)
 
