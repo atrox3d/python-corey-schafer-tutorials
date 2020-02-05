@@ -5,5 +5,9 @@ import os
 import os.path
 
 thisfile = os.path.relpath(__file__, '..')
-print(thisfile)
+print(f'{thisfile:<25} | ')
+
+
+def a1_func():
+    print(f'{thisfile:<25} | running packA.a1.a1_func()')
 
