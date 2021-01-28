@@ -2,27 +2,30 @@
 # https://www.youtube.com/watch?v=W8KRzm-HUcc
 #
 #################################################################################
-
+#
 # empty lists
+#
 el = []
 el = list()
-
+#
 # empty tuples
+#
 et = ()
 et = tuple()
-
+#
 # empty dictionaries
+#
 ed = {}
 ed = dict()
-
+#
 # empty sets
+#
 es = {}  # no, this is an empty dictionary
 es = set()
-
 #
 # empty generators
+#
 eg = (x for x in [])
-
 #
 # memo
 #
