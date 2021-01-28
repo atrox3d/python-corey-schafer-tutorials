@@ -2,52 +2,68 @@
 # https://www.youtube.com/watch?v=k9TUPpGqYTo
 #
 #################################################################################
+#
 # string
+#
 message = 'Hello World'
+#
 # string length
-print(len(message))
+#
+print(len(message))                 # 11
+#
 # string index
-print(message[0])
+#
+print(message[0])                   # H
+#
 # string index error
+#
 try:
     print(message[11])
 except IndexError as ie:
-    print(ie)
+    print(ie)                       # string index out of range
+#
 # slicing
-print(message[0:5])
-print(message[:5])
-print(message[6:])
+#
+print(message[0:5])                 # Hello
+print(message[:5])                  # Hello
+print(message[6:])                  # World
 #
 # string methods
 #
-print(message.lower())
-print(message.count('Hello'))
-print(message.count('l'))
-print(message.find('World'))
-print(message.find('Universe'))
+print(message.lower())              # hello world
+print(message.count('Hello'))       # 1
+print(message.count('l'))           # 3
+print(message.find('World'))        # 6
+print(message.find('Universe'))     # -1
 #
 # create new string object
 #
 new_message = message.replace('World', 'Universe')
-print(new_message)
-print(message)
+print(new_message)                  # Hello Universe
+print(message)                      # Hello World
 #
 # string concatenation
 #
 greeting = 'Hello'
 name = 'Michael'
+#
 # base concatenation
+#
 message = greeting + name
-print(message)
-
+print(message)                      # HelloMichael
+#
 message = greeting + ', ' + name + '. Welcome!'
-print(message)
+print(message)                      # Hello, Michael. Welcome!
+#
 # str format method
+#
 message = '{}, {}. Welcome!'.format(greeting, name)
-print(message)
+print(message)                      # Hello, Michael. Welcome!
+#
 # f strings
+#
 message = f'{greeting}, {name.upper()}. Welcome!'
-print(message)
+print(message)                      # Hello, MICHAEL. Welcome!
 #
 # dir, help
 #
