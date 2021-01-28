@@ -11,6 +11,7 @@ thisfile = os.path.relpath(__file__, '..')
 print(f'{thisfile:<25} | import packA')
 import packA  # "import packA.a1" will work just the same
 print(f'{thisfile:<25} | packA imported\n')
+print(f'{thisfile:<25} | {packA}\n')
 #
 #   functions
 #
