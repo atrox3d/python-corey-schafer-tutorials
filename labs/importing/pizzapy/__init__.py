@@ -1,1 +1,0 @@
-print(f'hello, {__file__} here')
