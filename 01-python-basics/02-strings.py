@@ -1,6 +1,8 @@
 #
 # https://www.youtube.com/watch?v=k9TUPpGqYTo
 #
+# Python Tutorial for Beginners 2: Strings - Working with Textual Data
+#
 #################################################################################
 #
 # string
