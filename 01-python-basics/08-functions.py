@@ -53,19 +53,38 @@ def student_info(*args, **kwargs):
     print(f'kwargs : {kwargs}')
 
 
+##################################################################################################
+#
+#
+# direct approach, explicit specification of parameters
+#
+#
+##################################################################################################
+print(f"\n\ncall: student_info('args1', 'args2', kwargs1=1, kwargs2=2)")
 student_info('args1', 'args2', kwargs1=1, kwargs2=2)
                                     # student_info
                                     # args   : ('args1', 'args2')
                                     # kwargs : {'kwargs1': 1, 'kwargs2': 2}
+
+print(f"\n\ncall: student_info('math', 'art', name='robb', age=40)")
+                                    # student_info(courses, info)
+student_info('math', 'art', name='robb', age=40)
+##################################################################################################
+#
 #
 #   unpacking parameters
 #
+#
+##################################################################################################
 courses = ['math', 'art']
 info = {'name': 'robb', 'age': 40}
 #
 # not what we want:
 # courses and info become two elements of the tuple args
 #
+print(f"\n\ncourses={courses}, info={info}")
+print(f"call: student_info({courses}, {info}")
+                                    # student_info(courses, info)
 student_info(courses, info)
                                     # student_info
                                     # args   : (['math', 'art'], {'name': 'robb', 'age': 40})
@@ -73,6 +92,9 @@ student_info(courses, info)
 #
 # correct, unpacking
 #
+print(f"\n\ncourses={courses}, info={info}")
+print(f"call: student_info({courses}, {info}")
+                                    # student_info(courses, info)
 student_info(*courses, **info)
                                     # student_info
                                     # args   : ('math', 'art')
