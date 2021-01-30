@@ -1,6 +1,8 @@
 #
 # https://www.youtube.com/watch?v=W8KRzm-HUcc
 #
+# Python Tutorial for Beginners 4: Lists, Tuples, and Sets
+#
 #################################################################################
 #
 # empty lists
@@ -58,5 +60,8 @@ type_empties[type(eg)] = eg
 #   display dictionary
 #
 for typeclass, typeempty in type_empties.items():
+    #
+    # extract class name
+    #
     typename = typeclass.__name__
     print(f'{typename:<10}: {typeempty}')
