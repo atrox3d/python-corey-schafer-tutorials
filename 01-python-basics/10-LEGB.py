@@ -1,6 +1,8 @@
 #
 # https://www.youtube.com/watch?v=QVdf0LgmICw
 #
+# Python Tutorial: Variable Scope - Understanding the LEGB rule and global/nonlocal statements
+#
 #################################################################################
 """
 LEGB
