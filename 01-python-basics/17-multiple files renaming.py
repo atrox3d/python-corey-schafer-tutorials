@@ -1,6 +1,8 @@
 #
 #   https://www.youtube.com/watch?v=ve2pmm5JqmI
 #
+#   Python Tutorial: Automate Parsing and Renaming of Multiple Files
+#
 #################################################################################
 from modules import utils
 import os

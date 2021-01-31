@@ -1,6 +1,8 @@
 #
 #   https://www.youtube.com/watch?v=GfxJYp9_nJA
 #
+#   Python Tutorial: Namedtuple - When and why should you use namedtuples?
+#
 #################################################################################
 from modules import utils
 from collections import namedtuple

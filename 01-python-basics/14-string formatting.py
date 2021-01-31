@@ -1,6 +1,8 @@
 #
 # https://www.youtube.com/watch?v=vTX3IwquFkc
 #
+# Python Tutorial: String Formatting - Advanced Operations for Dicts, Lists, Numbers, and Dates
+#
 #################################################################################
 person = {'name': 'john', 'age': 23}
 #

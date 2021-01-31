@@ -1,6 +1,8 @@
 #
 #   https://www.youtube.com/watch?v=K8L6KVGG-7o
 #
+#   Python Tutorial: re Module - How to Write and Match Regular Expressions (Regex)
+#
 #################################################################################
 from modules import utils
 import re

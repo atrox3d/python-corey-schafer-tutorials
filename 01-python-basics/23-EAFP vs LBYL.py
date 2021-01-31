@@ -1,6 +1,8 @@
 #
 #   https://www.youtube.com/watch?v=x3v9zMX1s4s
 #
+#   Python Tutorial: Duck Typing and Asking Forgiveness, Not Permission (EAFP)
+#
 #################################################################################
 from modules import utils
 
