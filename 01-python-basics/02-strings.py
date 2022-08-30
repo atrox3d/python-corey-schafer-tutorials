@@ -26,6 +26,9 @@ except IndexError as ie:
 #
 # slicing
 #
+                                    # size      12345
+                                    # string    Hello World
+                                    # index     0123456789
 print(message[0:5])                 # Hello
 print(message[:5])                  # Hello
 print(message[6:])                  # World
@@ -59,13 +62,17 @@ print(message)                      # Hello, Michael. Welcome!
 #
 # str format method
 #
-message = '{}, {}. Welcome!'.format(greeting, name)
-print(message)                      # Hello, Michael. Welcome!
+#               +------------------------------+
+#               |                              |
+#           +---+----------------------+       |
+#           |   |                      |       |
+message = '{}, {}. Welcome!'.format(greeting, name)     # positional {} substitution
+print(message)                                          # Hello, Michael. Welcome!
 #
 # f strings
 #
-message = f'{greeting}, {name.upper()}. Welcome!'
-print(message)                      # Hello, MICHAEL. Welcome!
+message = f'{greeting}, {name.upper()}. Welcome!'       # direct expression evaluation
+print(message)                                          # Hello, MICHAEL. Welcome!
 #
 # dir, help
 #

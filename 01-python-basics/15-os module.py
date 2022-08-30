@@ -108,7 +108,7 @@ for k, v in {name: getattr(stats, name) for name in dir(stats) if name.startswit
     print(f'{k:<20}|{str(type(v)):<20}:{v:>20}')
 
 from datetime import datetime
-modification_time =  os.stat('../data/test.txt').st_mtime
+modification_time = os.stat('../data/test.txt').st_mtime
 print('modification time : ', datetime.fromtimestamp(modification_time))
 
 banner("os.walk")

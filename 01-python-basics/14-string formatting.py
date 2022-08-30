@@ -13,6 +13,11 @@ print(sentence)
 #
 #   .format placeholder
 #
+#
+#                                  +----------------------------------------+
+#                                  |                                        |
+#                      +-----------+--------------------------+             |
+#                      |           |                          |             |
 sentence = 'my name is {} and i am {} years old'.format(person['name'], person['age'])
 print(sentence)
 #
@@ -20,7 +25,12 @@ print(sentence)
 #
 tag = 'h1'
 text = 'this is a headline'
-
+#
+#
+#                 +-----------------------+
+#                 |                       |
+#             +---+----+============+     |
+#             |   |    |            |     |
 sentence = '<{0}>{1}</{0}>'.format(tag, text)
 print(sentence)
 
