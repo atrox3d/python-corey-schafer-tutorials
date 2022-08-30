@@ -5,52 +5,39 @@
 #
 #################################################################################
 #
-# normal import
-# rename module
+from modules import module                          # normal import
+from modules import module as m                     # rename module
 #
-from modules import module, module as m
+from modules.module import find_index as fi         # import and rename symbol
 #
-# import some symbol
-# import and rename symbols
+from modules.module import *                        # import everything
 #
-from modules.module import find_index as fi
-#
-# import everything
-#
-from modules.module import *
-
 import sys
+
+
+def foundat(index):
+    return f'math {"found at " + str(index) if index >= 0 else "not found"}'
+
 
 courses = ['history', 'math', 'physics', 'compsci']
 print(f"courses = {courses}")
 #
-# fully qualified name module
+index = module.find_index(courses, 'math')          # fully qualified name module
+print(foundat(index))
 #
-index = module.find_index(courses, 'math')
-print(f'math {"found at " + str(index) if index >= 0 else "not found"}')
+index = m.find_index(courses, 'math')               # renamed module
+print(foundat(index))
 #
-# renamed module
+index = find_index(courses, 'math')                 # just the function
+print(foundat(index))
 #
-index = m.find_index(courses, 'math')
-print(f'math {"found at " + str(index) if index >= 0 else "not found"}')
+index = fi(courses, 'math')                         # renamed function
+print(foundat(index))
 #
-# just the function
+print(test)                                         # print module symbol
 #
-index = find_index(courses, 'math')
-print(f'math {"found at " + str(index) if index >= 0 else "not found"}')
-#
-# renamed function
-#
-index = fi(courses, 'math')
-print(f'math {"found at " + str(index) if index >= 0 else "not found"}')
-#
-#   print module symbol
-#
-print(test)
-
-print(f'sys.path = {sys.path}')
-
-for path in sys.path:
+print(f'sys.path = {sys.path}')                     # print all syspath
+for path in sys.path:                               # print each element
     print(f'path = {path}')
 
 print(f'module path: {module.__file__}')

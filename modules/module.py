@@ -9,25 +9,20 @@ test = 'Test String'
 
 
 def find_index(to_search, target):
-    """Find the index of a value in a sequence"""
-    #
-    #   associate index to every element
-    #
-    for i, value in enumerate(to_search):
-        #
-        #   return index if value is found
-        #
-        if value == target:
+    """
+    Find the index of a value in a sequence
+    """
+    for i, value in enumerate(to_search):           # associate index to every element
+        if value == target:                         # return index if value is found
             return i
-    #
-    #   return -1 if value not found
-    #
-    return -1
+
+    return -1                                       # return -1 if value not found
 
 
 def double(n):
     """
-    >>> double(2)
-    4
+    :returns n * 2
+    >>> double(5)
+    10
     """
     return n * 2

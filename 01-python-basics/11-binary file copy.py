@@ -8,57 +8,38 @@ from modules import utils
 
 #os.chdir(os.path.join(os.getcwd(), 'data'))
 
-"""
-try to copy binary file in text mode
-"""
+#################################################################################
+# try to copy binary file in text mode
+#################################################################################
 utils.banner('try to copy binary file in text mode')
 try:
-    #
-    #   open source file for reading
-    #
-    with open('../data/bronx.jpg', 'r') as rf:
-        #
-        #   open dest file for writing
-        #
-        with open('../data/bronx.copy.jpg', 'w') as wf:
-            for line in rf:
-                wf.write(line)
+    with open('../data/bronx.jpg', 'r') as rf:              # open source file for reading
+        with open('../data/bronx.copy.jpg', 'w') as wf:     # open dest file for writing
+            for line in rf:                                 # read each line from rf
+                wf.write(line)                              # andwrite it on wf
 except UnicodeDecodeError as ude:
     print(f'cannot read binary file : {ude}')
 
-"""
-try to copy binary file in binary mode  line by line
-"""
+#################################################################################
+# try to copy binary file in binary mode  line by line
+#################################################################################
 utils.banner('try to copy binary file in binary mode line by line')
 try:
-    #
-    #   open source file for reading
-    #
-    with open('../data/bronx.jpg', 'rb') as rf:
-        #
-        #   open dest file for writing
-        #
-        with open('../data/bronx.copy.jpg', 'wb') as wf:
-            for line in rf:
-                wf.write(line)
+    with open('../data/bronx.jpg', 'rb') as rf:             # open source file for reading
+        with open('../data/bronx.copy.jpg', 'wb') as wf:    # open dest file for writing
+            for line in rf:                                 # read each line from rf
+                wf.write(line)                              # andwrite it on wf
 except UnicodeDecodeError as ude:
     print(f'cannot read binary file : {ude}')
 
-"""
-try to copy binary file in binary mode  chunk by chunk
-"""
+#################################################################################
+# try to copy binary file in binary mode  chunk by chunk
+#################################################################################
 utils.banner('try to copy binary file in binary mode chunk by chunk')
-#
-#   open source file for reading
-#
-with open('../data/bronx.jpg', 'rb') as rf:
-    #
-    #   open dest file for writing
-    #
-    with open('../data/bronx.copy.chunk.jpg', 'wb') as wf:
+with open('../data/bronx.jpg', 'rb') as rf:                 # open source file for reading
+    with open('../data/bronx.copy.chunk.jpg', 'wb') as wf:  # open dest file for writing
         chunk_size = 4096
-        rf_chunk = rf.read(chunk_size)
-        # check if we read something
-        while len(rf_chunk) > 0:
-            wf.write(rf_chunk)
-            rf_chunk = rf.read(chunk_size)
+        rf_chunk = rf.read(chunk_size)                      # read first chunk
+        while len(rf_chunk) > 0:                            # check if we read something
+            wf.write(rf_chunk)                              # write chunk
+            rf_chunk = rf.read(chunk_size)                  # read next chunk
