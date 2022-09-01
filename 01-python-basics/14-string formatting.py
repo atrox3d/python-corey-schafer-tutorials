@@ -5,28 +5,28 @@
 #
 #################################################################################
 person = {'name': 'john', 'age': 23}
-#
+
+#################################################################################
 #   unformatted strings
-#
+#################################################################################
 sentence = 'my name is ' + person['name'] + ' and i am ' + str(person['age']) + ' years old.'
 print(sentence)
-#
+
+#################################################################################
 #   .format placeholder
-#
-#
+#################################################################################
 #                                  +----------------------------------------+
 #                                  |                                        |
 #                      +-----------+--------------------------+             |
 #                      |           |                          |             |
 sentence = 'my name is {} and i am {} years old'.format(person['name'], person['age'])
 print(sentence)
-#
+
+#################################################################################
 #   .format with indexes
-#
+#################################################################################
 tag = 'h1'
 text = 'this is a headline'
-#
-#
 #                 +-----------------------+
 #                 |                       |
 #             +---+----+============+     |
@@ -34,15 +34,33 @@ text = 'this is a headline'
 sentence = '<{0}>{1}</{0}>'.format(tag, text)
 print(sentence)
 
-#
+#################################################################################
 #   .format with subscript
-#
+#################################################################################
+#                                    +--------------------------------------------+
+#                                    |                                            |
+#                      +-------------+------------------------------+             |
+#                      |             |                              |             |
 sentence = 'my name is {0} and i am {1} years old'.format(person['name'], person['age'])
 print(sentence)
+#                                            +----------------------------------+
+#                                            |                                  |
+#                           +----------------+-------------------------+        |
+#                           |                |                         |        |
 sentence = 'my name is {0[name]} and i am {1[age]} years old'.format(person, person)
 print(sentence)
+#                           +----------------+=========================+        |
+#                           |                |                         |        |
 sentence = 'my name is {0[name]} and i am {0[age]} years old'.format(person)
 print(sentence)
+
+print(f"person.keys()       : {person.keys()}")
+print(f"list(person.keys()) : {list(person.keys())}")
+print(f"person.values()       : {person.values()}")
+print(f"list(person.values()) : {list(person.values())}")
+
+#                           +----------------+=========================+        |
+#                           |                |                         |        |
 sentence = 'my name is {0[0]} and i am {0[1]} years old'.format(list(person.values()))
 print(sentence)
 
@@ -69,6 +87,7 @@ print(sentence)
 #
 sentence = 'my name is {name} and i am {age} years old'.format(**person)
 print(sentence)
+
 """
 
 

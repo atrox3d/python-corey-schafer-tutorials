@@ -6,13 +6,35 @@
 #################################################################################
 
 
+def same(list1, list2):
+    if list1 is list2:
+        return ""
+    else:
+        return "not"
+
+
 def print_sortedlist(banner_title, original_list, sorted_list):
     print("#" * 80)
     print(banner_title)
     print("#" * 80)
-    print(f'original list id({id(original_list)}) : {original_list}')
-    print(f'sorted() list id({id(sorted_list)}) : {sorted_list}')
-    print(f'----> ids are {"" if original_list is sorted_list else "not"} the same')
+
+    print(
+        f'original list '
+        f'id({id(original_list)}) : '
+        f'{original_list}'
+    )
+
+    print(
+        f'sorted() list '
+        f'id({id(sorted_list)}) : '
+        f'{sorted_list}'
+    )
+
+    print(
+        f'----> ids are '
+        f'{same(original_list, sorted_list)}'
+        f' the same'
+    )
     print()
 
 
