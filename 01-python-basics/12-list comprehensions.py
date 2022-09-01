@@ -20,7 +20,7 @@ print(f'{"my_list":<10} = {my_list}')
 # copy list - list comprehension version
 #################################################################################
 print("\ncopy nums in my_list, list comprehension: [n for n in nums]")
-my_list = [
+my_list = [                                             # *** square bracket ***
     n                                                   # appends n to my_list
     for n in nums                                       # iterates through nums
 ]
@@ -40,7 +40,7 @@ print(f'{"my_list":<10} = {my_list}')
 # generate list of squares of n - list comprehension version
 #################################################################################
 print("\ngenerate list of squares of nums in my_list, list comprehension: [n*n for n in nums]")
-my_list = [
+my_list = [                                             # *** square bracket ***
     n * n                                               # appends square n to my_list
     for n in nums                                       # iterate through nums
 ]
@@ -73,7 +73,7 @@ print(f'{"my_list":<10} = {my_list}')
 # conditional list copy - list comprehension version
 #################################################################################
 print("\ngenerate sublist of even elements from nums to my_list, list comprehension: [n for n in nums if not n%2]")
-my_list = [
+my_list = [                                             # *** square bracket ***
     n                                                   # appends n to my_list
     for n in nums                                       # loop through nums
     if not n % 2                                        # assigns n only if even
@@ -110,7 +110,7 @@ print(f'{"my_list":<10} = {my_list}')
 #################################################################################
 print(
     "\ngenerate a list of letter, num pairs for each element of abcd 0123, list comprehension: [n for n in nums if not n%2]")
-my_list = [
+my_list = [                                             # *** square bracket ***
     (letter, num)                                       # assigns tuple to my_list
     for letter in 'abcd'                                # a, b, c, d
     for num in range(4)                                 # 0, 1, 2, 3
@@ -142,7 +142,7 @@ print(f'{"my_dict":<10} = {my_dict}')
 #################################################################################
 print(
     "\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes)}")
-my_dict = {
+my_dict = {                                             # *** brace ***
     name: hero                                          # adds dict item
     for name, hero in zip(names, heroes)                # loop through iterator
 }
@@ -153,7 +153,7 @@ print(f'{"my_dict":<10} = {my_dict}')
 #################################################################################
 print(
     "\ngenerate a dictionary of civilian names of superheroes, list comprehension: {name: hero for name, hero in zip(names, heroes) if name != 'peter'}")
-my_dict = {
+my_dict = {                                             # *** brace ***
     name: hero                                          # adds dict item
     for name, hero in zip(names, heroes)                # loop through iterator
     if name != 'peter'                                  # adds condition
@@ -180,9 +180,9 @@ print(f'{"my_set":<10} = {my_set}')
 # set comprehension version
 #################################################################################
 print("\ngenerate a set of unique numbers from a list, set comprehension: {n for n in nums}")
-my_set = {
-    n
-    for n in nums
+my_set = {                                              # *** brace ***
+    n                                                   # adds n to set
+    for n in nums                                       # loop through list
 }
 print(f'{"my_set":<10} = {my_set}')
 
@@ -206,9 +206,9 @@ for n in my_gen:                                        # iterate
     print(n)
 
 print("use a generator expression to obtain an iterable of square numbers, (n * n for n in nums)")
-my_gen = (
+my_gen = (                                              # *** parenthesis ***
     n * n                                               # yields square n
-    for n in nums
+    for n in nums                                       # loops through nums
 )
 
 for n in my_gen:
