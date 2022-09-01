@@ -22,21 +22,42 @@ def banner(text, height=3, width=160, char='#'):
     hashline(width, char)
 
 
-def get_dict_from_obj(obj):                             # return dict from object
-                                                        # even with __dict__ missing
-    return {                                            # dict comprehension
-        name: getattr(obj, name)                        # dict element: name, value
-        for name in dir(obj)                            # iterates over list of attributes names
-        if not name.startswith('__')                    # excluding __*
-    }.items()                                           # view object on dict
+def get_dict_from_obj(obj):                             # return dict.items() from object
+    try:
+        return vars(obj).items()                        # let's try with vars
+    except TypeError:
+        pass                                            # probably doesn't have __dict__
+
+    try:
+        return obj.__dict__.items()                     # should not be here then
+    except AttributeError:
+        pass                                            # in fact, nope, no __dict__
+
+    try:
+        return {                                        # dict comprehension
+            name: getattr(obj, name)                    # dict element: name, value
+            for name in obj.__slots__                   # maybe() has __slots
+        }.items()                                       # view object on dict
+    except AttributeError:
+        pass                                            # ok, neither __slots__ ...
+
+    try:                                                # so, even without __dict__ or __slots__
+        return {                                        # dict comprehension
+            name: getattr(obj, name)                    # dict element: name, value
+            for name in dir(obj)                        # iterates over list of attributes names
+            if not name.startswith('__')                # excluding __*
+        }.items()                                       # view object on dict
+    except Exception as e:
+        print(e)
+        exit(1)
 
 
-def print_object_details(obj, name, properties=True, innerclasses=True, functions=True):
+def print_object_details(obj, name, /, *, properties=True, innerclasses=True, functions=True):
 
     try:
         items = vars(obj).items()                       # get view dict from obj
     except TypeError:
-        items = get_dict_from_obj(obj)                  # get view dict from obj if __dict__ missing
+        items = get_dict_from_obj(obj)                  # get view dict from obj or exits
 
     if properties:
         banner(f'properties of {name}')
@@ -93,6 +114,7 @@ bday = datetime.date(2020, 7, 13)
 till_bday = bday - today
 print(f'\ndays until my birthday : {till_bday}')
 print_object_details(till_bday, 'timedelta')
+exit()
 
 banner('timedelta functions')
 print(f'weekday     : {today.weekday()}')
