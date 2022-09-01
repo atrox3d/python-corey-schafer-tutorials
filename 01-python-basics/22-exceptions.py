@@ -13,31 +13,19 @@ datafilepath = os.path.join(utils.PROJECT_PATH, 'data', 'test_file.txt')
 wrongdatafilepath = os.path.join(utils.PROJECT_PATH, 'data', 'testfile.txt')
 
 try:
-    f = open(corruptfilepath)
-    name = os.path.basename(f.name)
-    if name == 'corrupt_file.txt':
+    f = open(corruptfilepath)                           # open fake corrupt file
+    name = os.path.basename(f.name)                     # gest just the filename
+    if name == 'corrupt_file.txt':                      # fake exception
         print('raising')
-        raise Exception
-except FileNotFoundError as e:
-    """
-    more specific first
-    """
+        raise Exception                                 # raise fake exception
+except FileNotFoundError as e:                          # more specific first
     print(e)
-except Exception as e:
-    """
-    less specific after
-    """
+except Exception as e:                                  # less specific after
     print('error')
-else:
-    """
-    everything went ok
-    """
+else:                                                   # everything went ok, no exceptions
     print(f.read())
     f.close()
 finally:
-    """
-    no matter the outcome
-    """
-    print('executing finally')
+    print('executing finally')                          # no matter the outcome
 
 
