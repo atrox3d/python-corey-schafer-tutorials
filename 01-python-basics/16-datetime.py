@@ -22,12 +22,21 @@ def banner(text, height=3, width=160, char='#'):
     hashline(width, char)
 
 
-def get_dict_from_obj(obj):
-    return {name: getattr(obj, name) for name in dir(obj) if not name.startswith('__')}.items()
+def get_dict_from_obj(obj):                             # return dict from object
+                                                        # even with __dict__ missing
+    return {                                            # dict comprehension
+        name: getattr(obj, name)                        # dict element: name, value
+        for name in dir(obj)                            # iterates over list of attributes names
+        if not name.startswith('__')                    # excluding __*
+    }.items()                                           # view object on dict
 
 
 def print_object_details(obj, name, properties=True, innerclasses=True, functions=True):
-    items = get_dict_from_obj(obj)
+
+    try:
+        items = vars(obj).items()                       # get view dict from obj
+    except TypeError:
+        items = get_dict_from_obj(obj)                  # get view dict from obj if __dict__ missing
 
     if properties:
         banner(f'properties of {name}')
@@ -62,6 +71,7 @@ print(d)
 #
 #
 today = datetime.date.today()
+print(type(today))
 print(today)
 print_object_details(today, 'today')
 
