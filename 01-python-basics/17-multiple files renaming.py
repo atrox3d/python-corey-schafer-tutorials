@@ -14,13 +14,15 @@ def remove_examplefiles(dirname):
     :param dirname: example files directory
     :return:
     """
-    utils.banner('DELETE EXISTING EXAMPLE FILES')
-    files = os.listdir(dirname)
-    for f in files:
-        f = os.path.join(dirname, f)
-        if os.path.isfile(f):
+    utils.banner('DELETING EXISTING EXAMPLE FILES')
+    files = os.listdir(dirname)                         # gets list of directory entries
+    for f in files:                                     # for each entry
+        f = os.path.join(dirname, f)                    # creates absolute path
+        if os.path.isfile(f):                           # check if is a file
             print(f'deleting {f}')
-            os.remove(f)
+            os.remove(f)                                # delete file
+        else:
+            print(f'skipping {f}')
 
 
 def create_examplefiles(dirname):
@@ -30,14 +32,10 @@ def create_examplefiles(dirname):
     :param maxfile:
     :return:
     """
-    if os.path.exists(dirname):
-        remove_examplefiles(dirname)
-        os.removedirs(dirname)
 
     utils.banner('CREATE EXAMPLE FILES')
-    os.makedirs(dirname)
-    # create random ordered list
-    planets = {
+
+    planets = {                                         # create set
         'earth',
         'jupiter',
         'mars',
@@ -51,21 +49,27 @@ def create_examplefiles(dirname):
 
     planetnum = 0
     for planet in planets:
-        filename = f'{planet} - our solar system - #{planetnum}.mp4'
-        filepath = os.path.join(dirname, filename)
+        filename = f'{planet} - '\
+                   f'our solar system - '\
+                   f'#{planetnum}.mp4'                  # format each filename
+        filepath = os.path.join(dirname, filename)      # add path
         print(f'creating : {filepath}')
-        with open(filepath, 'w') as file:
+        with open(filepath, 'w') as _:                  # create empty file
             pass
         planetnum += 1
+
     os.listdir(dirname)
 
 
-"""
-
-    start by creating the files
-    
-"""
+#################################################################################
+# start by creating the files
+#################################################################################
 exampledir = '../multifile'
+if os.path.exists(exampledir):
+    remove_examplefiles(exampledir)
+    os.removedirs(exampledir)
+
+os.makedirs(exampledir)                                 # create directory
 create_examplefiles(exampledir)
 #
 #   check our new files
@@ -85,22 +89,26 @@ for file in os.listdir():
 #
 #   get max length of string representation of tuples
 #
-maxtuplelen = max(
-    # returns a map of lengths
-    map(
-        # return the length of the string representation of the tuple
-        lambda afile: len(str(os.path.splitext(afile))),
-        os.listdir()
+maxtuplelen = max(                                      # return max length
+
+    map(                                                # returns a map of lengths
+
+        lambda afile: len(                              # return the length of the string representation of the tuple
+            str(                                        # convert tuple to string
+                os.path.splitext(afile)                 # get tuple name, ext
+            )
+        ),
+        os.listdir()                                    # for all files
     )
 )
 #
 #   get max length of first string of tuples
 #
 maxfilenamelen = max(
-    # returns a map of lengths
-    map(
-        # return the length of the first string of the tuple
-        lambda afile: len(os.path.splitext(afile)[0]),
+    map(                                                # returns a map of lengths
+        lambda afile: len(                              # return the length of the first string of the tuple
+            os.path.splitext(afile)[0]                  # returns first element of tuple 'filename'
+        ),
         os.listdir()
     )
 )
@@ -110,41 +118,35 @@ utils.banner("parse filenames")
 #   1) filename, extension
 #
 for file in os.listdir():
-    #
-    #   split file in filename, extension
-    #
-    filesplit = os.path.splitext(file)
-    #
-    #   assign filename and extension to variables
-    #
-    filename, filext = filesplit
-    #print(f'{str(filesplit):<{maxtuplelen + 5}} -> {filename:<{maxfilenamelen + 5}} {filext}')
-    #print(f'filename: {filename:<{maxfilenamelen + 5}}, filext: {filext}')
-
-    # name, ext = [x for x in file.values()]
+    filesplit = os.path.splitext(file)                  # split file in filename, extension
+    filename, filext = filesplit                        # assign filename and extension to variables
     print(
-            'filename={:<{maxfilenamelen}}, filext={}'.format(
-                                                            f'"{filename}"',
-                                                            f'"{filext}"',
-                                                            maxfilenamelen=maxfilenamelen+5
-                                                )
+        'filename={:<{maxfilenamelen}}, '               # align filename in a field
+        'filext={}'.format(                             # print filext
+            f'"{filename}"',
+            f'"{filext}"',
+            maxfilenamelen=maxfilenamelen + 5           # define field witdth
+        )
     )
 
-    title, course, number = filename.split('-')
+    title, course, number = filename.split('-')         # extract vars from filename
+    title = title.strip()                               # remove whitespace
+    course = course.strip()                             # remove whitespace
+    number = number.strip()[1:].zfill(2)                # remove whitespace and zero pads
 
-    title = title.strip()
-    course = course.strip()
-    number = number.strip()[1:].zfill(2)
-
-    print('title: "{}", course: "{}", number: {}'.format(title, course, number))
-    newname = "{}-{}-{}{}".format(number, course, title, filext)
+    print('title: "{}", course: "{}", number: {}'
+          .format(title, course, number))               # print formatted info
+    newname = "{}-{}-{}{}".format(                      # recreate filename
+        number,
+        course,
+        title,
+        filext
+    )
     print(f'file = {file}')
     print(f'newname = {newname}')
-    os.rename(file, newname)
+    os.rename(file, newname)                            # rename file
     print('.')
 
 utils.banner('final result')
 for file in os.listdir():
     print(file)
-
-
