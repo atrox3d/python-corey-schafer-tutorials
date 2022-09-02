@@ -114,9 +114,13 @@ def print_object_details(obj, name, properties=True, innerclasses=True, function
             print(f'{k:<20}|{str(type(v)):<20}')
 
 
-def printfvar(var, varname=None):
+MAXLEN = 30
+
+
+def printfvar(var, varname=None, maxlen=MAXLEN):
     """
     prints varname, var type and value formatted
+    :param maxlen:
     :param varname:
     :param var:
     :return:
@@ -124,10 +128,10 @@ def printfvar(var, varname=None):
     if varname is None:
         varname = getattr(var, '__name__', f'{{{var.__class__.__name__}}}')
 
-    varname = f'{varname},'
-    vartype = f'{str(type(var))},'
+    varname = f'{varname}'
+    vartype = f'{str(type(var))}'
     # print(f'{varname:<20} type: {vartype:<30} value: {var if not var is None else "none"}')
-    print(f'{varname:<20} type: {vartype:<30} value: {repr(var)}')
+    print(f'{"varname: " + varname:>{MAXLEN}.{MAXLEN}} | {"type: " + vartype:<30} | value: {repr(var)}')
 
 
 def getprojectpath(subfolder=None):

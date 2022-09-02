@@ -21,7 +21,7 @@ logging.basicConfig(
 def logger(func):
     #
     #   create logfunc
-    #   will remeber func and args
+    #   will remeber func
     #   will run func(*args) after logging the call
     #
     def logfunc(*args):

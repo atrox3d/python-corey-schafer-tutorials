@@ -12,24 +12,25 @@ person1 = dict(
     job='programmer'
 )
 
-person2 = dict(
-    name='jess',
-    age=23,
-)
+
+def printpersonEAFP(p):                                 # Easier Ask Forgiveness than Permission (pythonic)
+    try:
+        print("i'm {name}. i'm {age} and i am a {job}".format(**p))
+    except KeyError as ke:
+        print('missing {} key'.format(ke))
 
 
-def printpersonLBYL(p):
+def printpersonLBYL(p):                                 # Look Before You Leap (non pythonic)
     if 'name' in p and 'age' in p and 'job' in p:
         print("i'm {name}. i'm {age} and i am a {job}".format(**p))
     else:
         print('missing some keys')
 
 
-def printpersonEAFP(p):
-    try:
-        print("i'm {name}. i'm {age} and i am a {job}".format(**p))
-    except KeyError as ke:
-        print('missing {} key'.format(ke))
+person2 = dict(
+    name='jess',
+    age=23,
+)
 
 
 ########################################################################################################################

@@ -16,21 +16,27 @@ from modules.person import Person
 #
 #
 #################################################################################
+#
+#    LBYL: Look Before You Leap (non pythonic)
+#
+#################################################################################
 utils.banner('ducktyping | pythonic | EAFP: easier ask forgiveness than permission')
 
 
-def quackandfly(thing):
-    # EAFP
-    # pythonic
-    # duck-typed
+def quackandfly(thing):                                 # EAFP
     try:
         thing.quack()
         thing.fly()
         thing.bark()
-    except AttributeError as ae:
+    except AttributeError as ae:                        # ask forgiveness
         print(ae)
-
     print()
+
+
+def lbyl(thing):                                        # LBYL
+    if hasattr(thing, 'quack'):                         # ask for permission
+        if callable(thing.quack):                       # ask for permission
+            thing.quack()
 
 
 duck = Duck()
