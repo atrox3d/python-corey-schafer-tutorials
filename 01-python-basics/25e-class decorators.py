@@ -33,7 +33,7 @@ utils.banner('decorators annotated syntax')
 
 #
 #   this is the same as:
-#           decorated_display = decorator_function(display)
+#           display = decorator_function(display)
 @DecoratorClass
 def display():
     print('display function ran')
